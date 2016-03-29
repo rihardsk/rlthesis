@@ -1,0 +1,17 @@
+*.aux
+*.aux
+*.log
+Tex/*.pdf
+*.synctex.gz
+*.toc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.bib.bak
+*.out
+ludis.cls
+*Thumbs.db
+nncasmdp.pdf
+*.fls
+*.fdb_latexmk
