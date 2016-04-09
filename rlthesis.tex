@@ -1,0 +1,148 @@
+\documentclass{ludis} % pieejams https://github.com/rihardsk/LU-nosl-guma-darbs---LaTeX
+
+% xelatex
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+
+%\usepackage[utf8]{inputenc}
+
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=false
+}
+\urlstyle{same}
+
+% languages
+\usepackage{fixlatvian}
+\usepackage{polyglossia}
+\setdefaultlanguage{latvian}
+\setotherlanguages{english,russian}
+
+% fonts
+\usepackage{xltxtra}
+% \setmainfont[Mapping=tex-text]{Times New Roman}
+%\defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
+
+% bibliography
+%\usepackage{csquotes}
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    natbib=true,
+    url=false,
+    doi=true%,
+    %eprint=false
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+% toc
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+%tables
+\usepackage{longtable}
+
+%papildus matemātika
+\usepackage[showonlyrefs]{mathtools}
+\newenvironment{thmenum}
+ {\begin{enumerate}[label=\upshape(\arabic*),ref=\thethm(\arabic*)]}
+ {\end{enumerate}}
+\usepackage{amsmath}
+
+%pseidokodam
+%\usepackage[noend]{algpseudocode}
+%\usepackage{algpseudocode}
+\usepackage[boxed,linesnumbered]{algorithm2e}
+\SetAlgorithmName{Algoritms}{}{Algoritmu saraksts}
+
+%main line spacing, kur vajag
+\usepackage{setspace}
+
+%lai flushotu floatus
+\usepackage{placeins}
+
+%images
+\usepackage{graphicx}
+\usepackage{float}
+
+%dalīšana kolonnās
+\usepackage{multicol}
+
+%saraksti
+\usepackage{enumitem}
+
+\fakultate{Datorikas}
+\nosaukums{Paredzošā stimulētā mācišanās}
+\darbaveids{Maģistra kursa}
+\autors{Rihards Krišlauks}
+\studapl{rk09006}
+\vaditajs{Asoc.prof., Dr. dat. Jānis Zuters}
+%\recenzents{Juris Vīksna profesors Dr.sc.comp.}
+\vieta{Rīga}
+\gads{2015}
+
+\begin{document}
+\maketitle
+
+\begin{abstract-lv}
+  TODO
+
+\keywords{stimulētā mācīšanās; neironu tīkli; Markova izvēles procesi; nepārtrauktas telpas.}
+\end{abstract-lv}
+\clearpage
+
+\begin{abstract-en}
+  TODO
+
+\keywords{reinforcement learning; artificial neural networks; Markov decision processes; continuous spaces.}
+\end{abstract-en}
+
+
+\tableofcontents
+
+\iffalse
+\specnodala{Apzīmējumu saraksts}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\begin{longtable}{| c | p{28em} |}
+  \hline
+  \textbf{Apzīmējums} & \textbf{Atšifrējums}\\ 
+  \endhead
+
+  \hline
+  $D_X \in \mathbb{N}_+$ & \\ %TODO šis jādefinē arī telpas elementiem
+  $S \subseteq \mathbb{R}^{D_S}$ & \\
+  $A \subseteq \mathbb{R}^{D_A}$ & \\
+  $R:S \times A \times S \rightarrow \mathbb{R}$ & \\
+  $T:S \times A \times S \rightarrow [0,1]$ & Apzīmējuma nosaukums \\
+  $\pi(s, a)$ &  Apzīmējuma nosaukums 2\\
+  \hline
+\end{longtable}
+\fi
+
+\specnodala{Ievads}
+  TODO
+
+\chapter{Nodaļās nosaukums} \label{chap:mdp}
+TODO
+\section{Apakšnodaļas nosaukums}
+TODO
+
+\chapter{Diskusija}
+TODO
+\chapter{Secinājumi}
+TODO
+
+
+\printbibliography
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-engine: xetex
+%%% End:
