@@ -156,14 +156,45 @@ modeli. Tuvākas izpētes vērts ir jautājums, vai šāds iekšējs modelis pal
 macīšanās procesā.
 
 Šajā darbā tiks pētītas iespējas, izmantot paredzošās kodēšanas idejas stimulētās
-mācīšanas uzdevumu risināšanai. Darbs tiek iesākts ar vispārīgu stimulētās
+mācīšanas uzdevumu risināšanai, kā arī tiek pētītas dažādas citas iespējas ar
+papildus informāciju uzlabot mācīšanās ātrumu. Darbs tiek iesākts ar vispārīgu stimulētās
 mācīšanās paradigmas apskatu, kur autors galvenokārt pieturas pie izklāsta kas
 atrodams \autocite{Krislauks2015}. Tam seko COMBO CACLA algoritma apraksts, un
 salīdzinājums ar CACLA algoritmu, uz kā tas ir balstīts. %TODO papildināt, kad
                                 %ir vairāk gatavs no satura
+%NOTE: pie cacla algoritma jāpastāsta, kas ir tie aspekti, kas padara viņu
+%pievilcīgu modifikācijām.
+\chapter{CCACLA algoritms} \label{chap:ccacla}
+CACLA algoritms izmanto divus neironu tīklus, no kuriem viens aproksimē optimālo
+stratēģiju, bet otrs -- stāvokļu vērtības funkciju. Abu neironu tīklu parametri
+tiek pielāgoti, tiem savstarpēji mijiedarbojoties algoritma darbības laikā --
+stāvokļu vērtības funkcija ir atkarīga no optimālās stratēģijas aproksimācijas,
+jo tā nosaka, kādas darbības tiek veiktas katrā stāvoklī, kas laika gaitā
+ietekmē stāvokļu vērtību, savukārt optimālās stratēģijas aproksimācija tiek
+pielāgota atkarībā no stāvokļu funkcijas izmaiņām, ņemot vērā, vai stratēģijas
+noteiktā darbība dotā stāvoklī pēc izpildes palielina stāvokļa vērtību. Šīs
+savstarpējās mijiedarbības rezultātā algritms ir spējīgs mācīties, bet rodas
+jautājums, vai šādi netiek darīts lieks darbs. Gan stāvokļu vērtības funkcijas
+aproksimācijas \f gan optimālās stratēģijas funkcijas aproksimācijas \p domēns
+ir vides stāvokļu telpa \t. Ir saprātīgi pieņemt, ka abu funkciju vērtības
+varētu noteikt līdzīgas pazīmes stāvokļu telpā. Abu attiecīgo neironu tīklu
+otrais slānis varētu būt trenēšānas rezultātā iemācījies izejā dot līdzīgus
+aktivācijas vienos un tajos pašos stāvokļus, tāpēc rodas jautājums, vai abus
+tīklus nav iespējams apvienot.
 
-\chapter{Nodaļās nosaukums} \label{chap:mdp}
-TODO
+Skatījumu uz neironu tīkliem kā hierarhiskiem pazīmju izgūšanas rīkiem sniedz
+pēdējā laikā lielu popularitāti ieguvusī dziļās mācīšanās paradigma. Tās pamatā
+ir ideja, ka daudzos dažādos ar reālo pasauli saistītos domēnos, piemēram, attēlu
+vai runas atpazīšānā, dabīgās valodas apstrādē u.c. domēnos, pētāmos objektus ir
+iespējams raksturot ar hierarhisku vairāklīmeņu pazīmju kopumu. Tas ļauj
+izmantot vairākļīmeņu neironu tīklus šo pazīmju izgūšanai. %TODO piemērs
+Lai arī šajā darbā apskatītajās stimulētās mačīšanās problēmas atāvokļu telpas
+nav tik sarežģītas, lai būtu nepieciešamība izmanot dziļus neironu tīklus, tomēr
+arī uz sekliem neironu tīkliem var raudzīties kā uz ierīcēm, kas izgūst zema
+līmeņa pazīmes, ko pēdējais tīkla līmenis ir iemācījies apstrādāt. Šis skatījums
+rada papildus motivāciju pētīt, vai nav iespējams lietderīgi izmantot CACLA
+algoritmā izmantoto neironu tīklu apakšējo līmeņu izgūto pazīmju īpatnības.
+
 \section{Apakšnodaļas nosaukums}
 TODO
 
