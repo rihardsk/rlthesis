@@ -164,7 +164,7 @@ salīdzinājums ar CACLA algoritmu, uz kā tas ir balstīts. %TODO papildināt, 
                                 %ir vairāk gatavs no satura
 %NOTE: pie cacla algoritma jāpastāsta, kas ir tie aspekti, kas padara viņu
 %pievilcīgu modifikācijām.
-\chapter{CCACLA algoritms} \label{chap:ccacla}
+\chapter{CCACLA algoritms}\label{chap:ccacla}
 CACLA algoritms izmanto divus neironu tīklus, no kuriem viens aproksimē optimālo
 stratēģiju, bet otrs -- stāvokļu vērtības funkciju. Abu neironu tīklu parametri
 tiek pielāgoti, tiem savstarpēji mijiedarbojoties algoritma darbības laikā --
@@ -175,8 +175,8 @@ pielāgota atkarībā no stāvokļu funkcijas izmaiņām, ņemot vērā, vai str
 noteiktā darbība dotā stāvoklī pēc izpildes palielina stāvokļa vērtību. Šīs
 savstarpējās mijiedarbības rezultātā algritms ir spējīgs mācīties, bet rodas
 jautājums, vai šādi netiek darīts lieks darbs. Gan stāvokļu vērtības funkcijas
-aproksimācijas \f gan optimālās stratēģijas funkcijas aproksimācijas \p domēns
-ir vides stāvokļu telpa \t. Ir saprātīgi pieņemt, ka abu funkciju vērtības
+aproksimācijas $V$ gan optimālās stratēģijas funkcijas aproksimācijas $A$ domēns
+ir vides stāvokļu telpa $S$. Ir saprātīgi pieņemt, ka abu funkciju vērtības
 varētu noteikt līdzīgas pazīmes stāvokļu telpā. Abu attiecīgo neironu tīklu
 otrais slānis varētu būt trenēšānas rezultātā iemācījies izejā dot līdzīgus
 aktivācijas vienos un tajos pašos stāvokļus, tāpēc rodas jautājums, vai abus
@@ -185,8 +185,8 @@ tīklus nav iespējams apvienot.
 Skatījumu uz neironu tīkliem kā hierarhiskiem pazīmju izgūšanas rīkiem sniedz
 pēdējā laikā lielu popularitāti ieguvusī dziļās mācīšanās paradigma. Tās pamatā
 ir ideja, ka daudzos dažādos ar reālo pasauli saistītos domēnos, piemēram, attēlu
-vai runas atpazīšānā, dabīgās valodas apstrādē u.c. domēnos, pētāmos objektus ir
-iespējams raksturot ar hierarhisku vairāklīmeņu pazīmju kopumu. Tas ļauj
+vai runas atpazīšānā, dabīgās valodas apstrādē u.c., pētāmos objektus ir
+iespējams raksturot ar hierarhisku vairāklīmeņu pazīmju kopumu \autocite{Lecun2015}. Tas ļauj
 izmantot vairākļīmeņu neironu tīklus šo pazīmju izgūšanai. %TODO piemērs
 Lai arī šajā darbā apskatītajās stimulētās mačīšanās problēmas atāvokļu telpas
 nav tik sarežģītas, lai būtu nepieciešamība izmanot dziļus neironu tīklus, tomēr
@@ -195,8 +195,17 @@ līmeņa pazīmes, ko pēdējais tīkla līmenis ir iemācījies apstrādāt. Š
 rada papildus motivāciju pētīt, vai nav iespējams lietderīgi izmantot CACLA
 algoritmā izmantoto neironu tīklu apakšējo līmeņu izgūto pazīmju īpatnības.
 
-\section{Apakšnodaļas nosaukums}
-TODO
+Šajā nodaļā tiks apskatītas vairākas CACLA algoritma modifikācijas, kuras to
+kopīgo īpašību dēļ autors ievieto vienā algoritmu grupā ar kopīgo nosaukumu
+Combined CACLA, jeb CCACLA. Visu algoritmu kopīgā iezīme, kas tos atšķir no
+iepriekš apskatītā CACLA algoritma ir viena neironu tīkla izmantošana gan
+vērtību funkcijas $V$ gan optimālās stratēģijas funkcijas $A$ aproksimācijai.
+Tiek apskatīti vairāki šī algoritma paveidi, kas ietver modifikācijas tajā, kāda
+informācija tiek izmantota tīkla trenēšanai.
+
+\section{CCACLA pamatalgoritms}
+CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
+algoritma, izmanto funkciju $\hat{A}_\Theta:S \rightarrow A$
 
 \chapter{Diskusija}
 TODO
