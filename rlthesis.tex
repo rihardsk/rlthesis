@@ -205,8 +205,66 @@ informācija tiek izmantota tīkla trenēšanai.
 
 \section{CCACLA pamatalgoritms}
 CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
-algoritma, izmanto funkciju $\hat{A}_\Theta:S \rightarrow A$
+algoritma, izmanto funkciju $\hat{A}_\Theta:S \rightarrow A \times \mathbb{R}$,
+lai stāvoklī $s$ paredzētu gan optimālo darbību $a$, gan stāvokļa vērtību $v$ kā
+$\hat{A}_\Theta(s) = (a, v)$. Funkcija $\hat{A}_\Theta$ tiek realizēta ar
+neironu tīklu, kas sastāv no ieejas slāņa, slēptā slāņa, un diviem izejas
+slāņiem, kas slēptā slāņa aktivācijas pārvērš, respektīvi, optimālajā darbībā
+$a$ un stāvokļa vērtībā. Šīs vērtības tad attiecīgi var izteikt, kā
+\begin{equation}
+  a = V(s), V(s) = f_a(f_h(s^T \cdot W_h) \cdot W_a)
+\end{equation} un
+\begin{equation}
+  v = Ac(s), Ac(s) = f_v(f_h(s^T \cdot W_h) \cdot W_v)
+\end{equation}, kur $s$ ir
+ieejas vektors (stāvoklis), $W_h$ ir slēptā slāņa svaru matrica, $W_a$ ir
+darbības slāņā svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
+slēptā slāņā aktivācijas funkcija, $f_a$ ir darbības slāņā aktivācijas funkcija
+un $f_v$ ir vērtības slāņā aktivācijas funkcija. Ar ieviestajiem mainīgajiem
+varam arī izteikt funkciju $\hat{A}$
+\begin{equation}\label{eq:ccacla-actval}
+  \hat{A}(s) = (f_a(h^{(0 \ldots D(A))}), f_v(h^{(D(A) + 1)})), \text{ kur } 
+  h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
+\end{equation}
+%TODO: pateikt, ka bias vērtības ir iekļautas W
 
+Citos aspektos CCACLA pamatalgoritms neatšķiras no CACLA. Šādi izteiktas funkcijas
+$V(s)$ un $Ac(s)$ ļauj izmantot jau iepriekš definēto CACLA algoritmu <reference
+uz cacla pseidokodu>. Atbilstoši vienādojumam \ref{eq:ccacla-actval} iespējams
+arī definēt optimizētu versiju, kas izmanto faktu, ka $a$ un $v$ iespējams
+izrēķināt vienlaicīgi. Tas parādīts algoritmā \ref{alg:ccacla-basic}.
+
+\begin{spacing}{1}
+\begin{algorithm}
+\caption{CACLA pseidokods}\label{alg:ccacla-basic}
+inicializē $\theta_0, \psi_0, s_0$ \\
+$(a_0', v_0) := \hat{A}_0(s_0)$ \\
+ņem $a_0$ ar izkliedi ap $a_0'$ \\
+\For{$t \in \{1,2,\ldots\}$}{
+	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
+  $(a_t', v_t) := \hat{A}_t(s_t)$ \\
+	ņem $a_t$ ar izkliedi ap $a_t'$ \\
+	\eIf{$s_t$ ir gala stāvoklis}{
+		$V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
+		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšanas epizodē)
+    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
+    % var rakstīt goto 1)
+	}{
+		$V_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} r_{t-1} + \gamma v_t$
+	}
+	\If{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+		$V_t(s_{t-1}) \xleftarrow{\beta_t(s_{t-1})} a_{t-1}$
+	}
+}
+\end{algorithm}
+\end{spacing}
+
+
+\section{CCACLA ar stāvokļa paredzēšanu}
+$\hat{A}_\Theta:S \rightarrow A \times S \times \mathbb{R}$
+\section{CCACLA ar paredzēšanu nākotnē}
+$\hat{A}_\Theta:S \rightarrow A \times S \times \mathbb{R}$
+ 
 \chapter{Diskusija}
 TODO
 \chapter{Secinājumi}
