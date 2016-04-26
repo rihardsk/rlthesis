@@ -207,10 +207,10 @@ informācija tiek izmantota tīkla trenēšanai.
 CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
 algoritma, izmanto funkciju 
 \begin{equation}
-  \hat{A}_\Theta:S \rightarrow A \times \mathbb{R},
+  Av_\Theta:S \rightarrow A \times \mathbb{R},
 \end{equation}
 lai stāvoklī $s$ paredzētu gan optimālo darbību $a$, gan stāvokļa vērtību $v$ kā
-$\hat{A}_\Theta(s) = (a, v)$. Funkcija $\hat{A}_\Theta$ tiek realizēta ar
+$Av_\Theta(s) = (a, v)$. Funkcija $Av_\Theta$ tiek realizēta ar
 neironu tīklu, kas sastāv no ieejas slāņa, slēptā slāņa, un diviem izejas
 slāņiem, kas slēptā slāņa aktivācijas pārvērš, respektīvi, optimālajā darbībā
 $a$ un stāvokļa vērtībā. Šīs vērtības tad attiecīgi var izteikt, kā
@@ -224,9 +224,9 @@ ieejas vektors (stāvoklis), $W_h$ ir slēptā slāņa svaru matrica, $W_a$ ir
 darbības slāņā svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
 slēptā slāņā aktivācijas funkcija, $f_a$ ir darbības slāņā aktivācijas funkcija
 un $f_v$ ir vērtības slāņā aktivācijas funkcija. Ar ieviestajiem mainīgajiem
-varam arī izteikt funkciju $\hat{A}$
+varam arī izteikt funkciju $Av$
 \begin{equation}\label{eq:ccacla-actval}
-  \hat{A}(s) = (f_a(h^{(1 \ldots D(A))}), f_v(h^{(D(A) + 1)})), \text{ kur } 
+  Av(s) = (f_a(h^{(1 \ldots D(A))}), f_v(h^{(D(A) + 1)})), \text{ kur } 
   h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
 \end{equation}
 %TODO: pateikt, ka bias vērtības ir iekļautas W
@@ -241,11 +241,11 @@ izrēķināt vienlaicīgi. Tas parādīts algoritmā \ref{alg:ccacla-basic}.
 \begin{algorithm}
 \caption{CACLA pseidokods}\label{alg:ccacla-basic}
 inicializē $\theta_0, \psi_0, s_0$ \\
-$(a_0', v_0) := \hat{A}_0(s_0)$ \\
+$(a_0', v_0) := Av_0(s_0)$ \\
 ņem $a_0$ ar izkliedi ap $a_0'$ \\
 \For{$t \in \{1,2,\ldots\}$}{
 	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
-  $(a_t', v_t) := \hat{A}_t(s_t)$ \\
+  $(a_t', v_t) := Av_t(s_t)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
 	\eIf{$s_t$ ir gala stāvoklis}{
 		$V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
@@ -277,9 +277,9 @@ veidot iekšēju vides modeli ar mērķi paātrināt mācīšanos. Šajā nolūk
 ieviests CCACLA algoritms ar stāvokļa paredzēšanu, kas no iepriekš aprakstītā
 CCACLA pamatalgoritma atšķiras ar to, ka kombinētajam neironu tīklam tagad ir
 jāparedz arī nākamais stāvoklis, kurā nonāks aģents pēc paredzētās optimālās
-darbības veikšanas. Tas noved pie izmaiņām funkcijā $\hat{A}$ 
+darbības veikšanas. Tas noved pie funkcijas $Aov$ 
 \begin{equation}
-  \hat{A}_\Theta':S \rightarrow A \times S \times \mathbb{R}
+  Aov_\Theta:S \rightarrow A \times S \times \mathbb{R}
 \end{equation}
 Līdz ar funkciju \ref{eq:ccacla-act} un \ref{eq:ccacla-val} tagad ieviesīsim arī
 funkciju $St$, kas vēlāk tiks izmantota, CCACLA' algiritma pseidokodā, lai
@@ -289,11 +289,11 @@ atvieglotu gradient descent soļu pierakstu
 \end{equation} 
 , kur $W_S$ ir nākamā stāvokļa paredzēšanas slāņa svaru matrica, un $f_S$ ir
 slāņa aktivācijas funkcija.
-Analogi vienādojumam \ref{eq:ccacla-actval} varam definēt funkciju $\hat{A}'$,
+Analogi vienādojumam \ref{eq:ccacla-actval} tagad varam definēt funkciju $Aov$,
 kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
 \ref{eq:ccacla-act} apvieno vienā neironu tīklā.
 \begin{equation}\label{eq:ccacla-actobsval}
-  \hat{A}'(s) = (f_a(h^{(1 \ldots D(A))}),
+  Aov(s) = (f_a(h^{(1 \ldots D(A))}),
                  f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
                  f_v(h^{(D(A) + D(S) + 1)}))
   \text{ kur } h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
@@ -318,11 +318,11 @@ algoritmā \ref{alg:ccacla-state}.
 \begin{algorithm}
 \caption{CACLA pseidokods}\label{alg:ccacla-state}
 inicializē $\theta_0, \psi_0, s_0$ \\
-$(a_0', v_0) := \hat{A}_0(s_0)$ \\
+$(a_0', v_0) := Av_0(s_0)$ \\
 ņem $a_0$ ar izkliedi ap $a_0'$ \\
 \For{$t \in \{1,2,\ldots\}$}{
 	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
-  $(a_t', v_t) := \hat{A}_t(s_t)$ \\
+  $(a_t', v_t) := Av_t(s_t)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
 	\eIf{$s_t$ ir gala stāvoklis}{
     \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
@@ -345,7 +345,7 @@ $(a_0', v_0) := \hat{A}_0(s_0)$ \\
 \end{spacing}
 
 \section{CCACLA ar paredzēšanu nākotnē}
-$\hat{A}_\Theta:S \rightarrow A \times S \times \mathbb{R}$
+$Aov'_\Theta:S \rightarrow A \times S \times \mathbb{R}$
  
 \chapter{Diskusija}
 TODO
