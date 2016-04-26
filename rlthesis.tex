@@ -289,13 +289,61 @@ atvieglotu gradient descent soļu pierakstu
 \end{equation} 
 , kur $W_S$ ir nākamā stāvokļa paredzēšanas slāņa svaru matrica, un $f_S$ ir
 slāņa aktivācijas funkcija.
-Analogi vienādojumam \ref{eq:ccacla-actval} varam definēt $\hat{A}'$ kā 
+Analogi vienādojumam \ref{eq:ccacla-actval} varam definēt funkciju $\hat{A}'$,
+kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
+\ref{eq:ccacla-act} apvieno vienā neironu tīklā.
 \begin{equation}\label{eq:ccacla-actobsval}
   \hat{A}'(s) = (f_a(h^{(1 \ldots D(A))}),
                  f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
                  f_v(h^{(D(A) + D(S) + 1)}))
   \text{ kur } h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
 \end{equation}
+
+Lai aprakstītu CACLA' pseidokodā pietrūkst vēl viena funkcija. Atšķirība no
+CCACLA pamatalgoritma ir tajā, ka tagad nākas šķirot gadījumus, kuros
+trenēšanai kā ieejas dati ir pieejama stāvokļa vārtība, kuros nākamais
+stāvoklis, kuros optimālā darbība, un kuros ir pieejama kāda kombinācija no
+minētajām vērtībām. Tādēļ nākas ieviest funkciju, nākamā stāvokļa paredzēšānai
+un esošā stāvokļa vērtības paredzēšanai.
+\begin{equation}
+  Ov: S \rightarrow S \times \mathbb{R},
+        Ov(s) = (f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
+                 f_v(h^{(D(A) + D(S) + 1)}))
+  \text{ kur } h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
+\end{equation}
+Ar tās un iepriekš definēto funkciju paldīzību varam ideju definēt precīzāk
+algoritmā \ref{alg:ccacla-state}.
+
+\begin{spacing}{1}
+\begin{algorithm}
+\caption{CACLA pseidokods}\label{alg:ccacla-state}
+inicializē $\theta_0, \psi_0, s_0$ \\
+$(a_0', v_0) := \hat{A}_0(s_0)$ \\
+ņem $a_0$ ar izkliedi ap $a_0'$ \\
+\For{$t \in \{1,2,\ldots\}$}{
+	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
+  $(a_t', v_t) := \hat{A}_t(s_t)$ \\
+	ņem $a_t$ ar izkliedi ap $a_t'$ \\
+	\eIf{$s_t$ ir gala stāvoklis}{
+    \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+      $V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
+
+    }{
+    }
+		$V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
+		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšanas epizodē)
+    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
+    % var rakstīt goto 1)
+	}{
+		$V_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} r_{t-1} + \gamma v_t$
+	}
+	\If{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+		$V_t(s_{t-1}) \xleftarrow{\beta_t(s_{t-1})} a_{t-1}$
+	}
+}
+\end{algorithm}
+\end{spacing}
+
 \section{CCACLA ar paredzēšanu nākotnē}
 $\hat{A}_\Theta:S \rightarrow A \times S \times \mathbb{R}$
  
