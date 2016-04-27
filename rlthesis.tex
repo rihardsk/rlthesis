@@ -326,16 +326,19 @@ $(a_0', v_0) := Av_0(s_0)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
 	\eIf{$s_t$ ir gala stāvoklis}{
     \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
-      $V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
-
+      $Av_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} (a_{t-1}, r_{t-1})$ \\
     }{
+      $V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
     }
-		$V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
-		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšanas epizodē)
+		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšan as epizodē)
     % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
     % var rakstīt goto 1)
 	}{
-		$V_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} r_{t-1} + \gamma v_t$
+    \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+      $Aov_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} (a_{t-1}, s_t, r_{t-1} + \gamma v_t)$
+    }{
+      $Ov_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} (s_t, r_{t-1} + \gamma v_t)$
+    }
 	}
 	\If{$r_{t-1} + \gamma v_t > v_{t-1}$}{
 		$V_t(s_{t-1}) \xleftarrow{\beta_t(s_{t-1})} a_{t-1}$
