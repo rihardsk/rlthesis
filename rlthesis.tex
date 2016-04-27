@@ -203,6 +203,13 @@ vērtību funkcijas $V$ gan optimālās stratēģijas funkcijas $A$ aproksimāci
 Tiek apskatīti vairāki šī algoritma paveidi, kas ietver modifikācijas tajā, kāda
 informācija tiek izmantota tīkla trenēšanai.
 
+%TODO jāpasaka kaut kas par to, ka tiek šeit CACLA un CCACLA algoritmi tiek
+%aprakstīti tikai kontekstā ar neironu tīkliem. Idejas par kopīgu slāņu
+%izmantošanu gan aktiera gan kritiķa komponentei dabīgāk sasaistāmas ar neironu
+%tīkliem kā šo komponenšu implementācijām. Pastāv tomēr arī iespējas
+%alternatīvam formulējumam, kas izmanto patvaļīgus funkciju aproksimatorus. Šajā
+%interpretācijā uzdevums pārvēršas par mēģinājumu atrast kādu parametru
+%komplektu, ko šie funkciju aproksimētāji varētu dalīt savā starpā.
 \section{CCACLA pamatalgoritms}
 CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
 algoritma, izmanto funkciju 
@@ -348,7 +355,28 @@ $(a_0', v_0) := Av_0(s_0)$ \\
 \end{spacing}
 
 \section{CCACLA ar paredzēšanu nākotnē}
-$Aov'_\Theta:S \rightarrow A \times S \times \mathbb{R}$
+Iepriekšējā sadaļā aprakstītais CCACLA algoritms ar stāvokļa paredzēšānu ir
+veidots ar mērķi trenēšanas laikā likt stimulētās mācīšanās aģentam veidot
+iekšēju vides modeli. Algoritma formulējumā gan var ievērot kādu īpatnību.
+Funkcija $Aov(s) = (a, s', v)$ dotam stāvoklim $s$ atgriež optimālo darbību $a$
+un stāvokli $s'$, kurā vide (visticamāk) nonāks pēc $a$ veikšanas, tomēr
+atgrieztā vērtība $v$ atbilst stāvoklim $s$, nevis $s'$. Vērtības $v$
+sasaistīšana ar $s$ atbilst oriģinālajam CACLA algoritma formulējumam, tomēr
+varētu uzdot jautājumu, vai, liekot algoritma neironu tīklam paredzēt gan nākamo
+stāvokli gan šī stāvokļa vērtību, nevar uzlabot algoritma darbību. Sasaistot šo
+ideju ar iepriekš izteikto mērķi mēģināt rast veidus, kā stimulētās mācīšanās
+aģentam likt veidot iekšēju vides modeli, ideju var intuitīvi pamatot, sakot, ka
+nākamā stāvokļa vērtības paredzēšanai šāds modelis ir nepieciešams.
+
+Ņemot vērā iepriekšējos apsvērumus, veidosim algoritma CCACLA variantu ar
+paredzēšanu nākotnē. Ieviesīsim jaunu funkciju $Aov'$, kas dotam stāvoklim
+atgriež optimālo darbību šajā stāvokī, nākamo stāvokli, kurā vide nonāks pēc
+darbības veikšanas, un jauā stāvokļa vērtību
+\begin{equation}
+  Aov'_\Theta:S \rightarrow A \times S \times \mathbb{R}.
+\end{equation}
+
+
  
 \chapter{Diskusija}
 TODO
