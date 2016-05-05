@@ -308,11 +308,11 @@ kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
 
 Lai aprakstītu CACLA' pseidokodā pietrūkst vēl viena funkcija. Atšķirība no
 CCACLA pamatalgoritma ir tajā, ka tagad nākas šķirot gadījumus, kuros
-trenēšanai kā ieejas dati ir pieejama stāvokļa vārtība, kuros nākamais
-stāvoklis, kuros optimālā darbība, un kuros ir pieejama kāda kombinācija no
+trenēšanai kā ieejas dati ir pieejama stāvokļa vārtība, kuros -- nākamais
+stāvoklis, kuros -- optimālā darbība, un kuros ir pieejama kāda kombinācija no
 minētajām vērtībām. Tādēļ nākas ieviest funkciju, nākamā stāvokļa paredzēšānai
 un esošā stāvokļa vērtības paredzēšanai.
-\begin{equation}
+\begin{equation}\label{eq:ccacla-obsval}
   Ov: S \rightarrow S \times \mathbb{R},
         Ov(s) = (f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
                  f_v(h^{(D(A) + D(S) + 1)}))
@@ -347,9 +347,6 @@ $(a_0', v_0) := Av_0(s_0)$ \\
       $Ov_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} (s_t, r_{t-1} + \gamma v_t)$
     }
 	}
-	\If{$r_{t-1} + \gamma v_t > v_{t-1}$}{
-		$V_t(s_{t-1}) \xleftarrow{\beta_t(s_{t-1})} a_{t-1}$
-	}
 }
 \end{algorithm}
 \end{spacing}
@@ -369,12 +366,51 @@ aģentam likt veidot iekšēju vides modeli, ideju var intuitīvi pamatot, sakot
 nākamā stāvokļa vērtības paredzēšanai šāds modelis ir nepieciešams.
 
 Ņemot vērā iepriekšējos apsvērumus, veidosim algoritma CCACLA variantu ar
-paredzēšanu nākotnē. Ieviesīsim jaunu funkciju $Aov'$, kas dotam stāvoklim
-atgriež optimālo darbību šajā stāvokī, nākamo stāvokli, kurā vide nonāks pēc
-darbības veikšanas, un jauā stāvokļa vērtību
-\begin{equation}
-  Aov'_\Theta:S \rightarrow A \times S \times \mathbb{R}.
-\end{equation}
+paredzēšanu nākotnē. Šis algoritma variants izmantos tādu pat neirona tīkla
+struktūru, kā CCACLA ar stāvokļa paredzēšanu. Atšķirības būs tikai tīkla
+trenēšanas procesā, kā rezultātā tiks pielāgoti funkciju $V$, $Ov$ un $Aov$
+parametri tā, lai stāvokļa vērtība, ko atgriež šīs funkcijas, atbilstu stāvoklim
+$s'$ nevis $s$. Viennozīmības labad CCACLA algoritmā ar paredzēšanu nākotnē
+apzīmēsim šīs funkcijas, attiecīgi kā $V'$, $Ov'$ un $Aov'$. Šīs funkcijas
+nemainīgi tiek definētas atbilstoši
+vienādojumiem~\eqref{eq:ccacla-val}~\eqref{eq:ccacla-obsval}~\eqref{eq:ccacla-actobsval}.
+CCACLA ar paredzēšanu nākotnē precīzāk definēts algoritmā \ref{alg:ccacla-state}
+
+
+\begin{spacing}{1}
+\begin{algorithm}
+\caption{CACLA ar parezēšānu nākotnē pseidokods}\label{alg:ccacla-future}
+inicializē $\theta_0, \psi_0, s_0$ \\
+$(a_0', v_1) := Av_0(s_0)$ \\
+ņem $a_0$ ar izkliedi ap $a_0'$ \\
+\For{$t \in \{1,2,\ldots\}$}{
+	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
+  $(a_t', v_{t+1}) := Av_t(s_t)$ \\
+	ņem $a_t$ ar izkliedi ap $a_t'$ \\
+  \If{$s_{t-1}$ vai $s_t$ ir sākumstāvoklis}{
+    continue
+  }
+	\eIf{$s_t$ ir gala stāvoklis}{
+    \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+      $Av_t(s_{t-2}) \xleftarrow{\alpha_{t-1}(s_{t-2})} (a_{t-1}, r_{t-1})$ \\
+    }{
+      $V_t(s_{t-2}) \xleftarrow{\alpha_{t-1}(s_{t-2})} r_{t-1}$ \\
+    }
+		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšan as epizodē)
+    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
+    % var rakstīt goto 1)
+	}{
+    \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
+      $Aov_t(s_{t-2}) \xleftarrow{\alpha_t(s_{t-2})} (a_{t-1}, s_t, r_{t-1} + \gamma v_t)$
+    }{
+      $Ov_t(s_{t-2}) \xleftarrow{\alpha_t(s_{t-2})} (s_t, r_{t-1} + \gamma v_t)$
+    }
+	}
+}
+\end{algorithm}
+\end{spacing}
+
+
 
 
  
