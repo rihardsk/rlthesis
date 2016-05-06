@@ -410,7 +410,61 @@ $(a_0', v_1) := Av_0(s_0)$ \\
 \end{algorithm}
 \end{spacing}
 
+\section{Veiktie eksperimenti un rezultāti}
+Darba gaitā tika veikti vairāki eksperimenti ar mērķi novērtēt
+nodaļā~\ref{chap:ccacla} aprakstīto algoritmu veiktspēju, un tos savstarpēji
+salīdzināt. Lai arī darba gaitā tikai pastāvīgi veikti dažādi stimulētās
+mācīšanās eksperimenti, kas palīdzēja virzīt aprakstīto algoritmu izstrādi, šajā
+nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
+savstarpējo salīdzinājumu.
 
+\subsection{Eksperimentu tehniskā realizācija}
+Stimulētās mācīšanās eksperimentu vadīšānai tikai izmantots RL-Glue
+programmēšanas ietvars \autocite{rl-glue}. RL-Glue ietvars sniedz iespēju veidot
+modulārus stimulētās mācīšanās eksperimentus, kur uzdevuma vide, aģents un
+eksperiments ir atsevišķas komponentes, starp kurām komunikāciju vada RL-Glue
+programmatūra. Komponentes ir valodneatkarīgas. Tas nodrošināja iespēju izmantot
+publiski pieejamas, iepriekš implementētas stimulētās mācīšanās vides izstrādāto
+aģentu pārbaudīšanai. 
+
+Eksperimentos tika izmantotas vides, kas piejamas RL-Library interneta vietnē
+\autocite{rl-library}. Tās ir programmētas valodā Java, un realizē diskrētas vai
+nepārtrauktas stāvokļu telpas un diskrētas darbību telpas. Tā kā šī darba
+ietvaros īpaši tiek apskatīti algoritmi, kas paredzēti nepārtrauktām darbību
+telpām, tad vienai no vidēm -- Cart Pole -- tika veiktas izmaiņas, lai tā
+pieņemtu skalārus lielumus kā darbības.
+
+Stimulētās mācišanās aģenti, kas realizē nodaļā~\ref{chap:ccacla} aprakstītos
+algoritmus, tika rakstīti valodā Python. Algoritmos izmantotie neironu tīkli
+tika programmēti ar Theano bibliotēkas palīdzību \autocite{Bastien-Theano-2012}
+\autocite{bergstra+al:2010-scipy}, kas kompilē un optimizē simboliskas
+matemātiskas izteiksmes darbināšānai uz datora procesora vai videokartes, kā arī
+ļauj veikt automātisku funkciju atvasināšanu, kas ievērojami atvieglo neironu
+tīklu trenēšanu, un ļauj viegli veidot sarežģītas arhitektūras neironu tīklus.
+Tas būtiski atvieglo CCACLA algoritma variantos izmantotās kombinētās neironu
+tīkla arhitektūras izveidi. Papildus tika izmantota Lasagne bibliotēka, kas ir
+balstīta uz Theano, un piedāvā atkalizmantojamas komponentes neironu tīklu slāņu
+definēšanai \autocite{lasagne}.
+
+Lai nodrošinātu iespēju veidot atkārtojamu eksperimentu specifikācijas, kā arī
+darbināt eksperimentus paralēli un uz vairākiem tīklā saslēgtiem datoriem, tika
+izmantota ipyparallel bibliotēka \autocite{ipyparallel} un pašizveidots
+kofigurācijas failu pieraksts paralēlu RL-Glue eksperimentu specificēšanai, kā
+arī attiecīgā programmatūra eksperimentu darbināšanai.
+
+\subsection{Modeļu specifikācija}
+
+\subsection{Vides specifikācija}
+
+\subsection{Eksperimentu metodika}
+Salīdzināšana tika veikta, novērtējot algoritmus CACLA, CCACLA, CCACLA ar
+stāvokļa paredzēšanu un CCACLA ar paredzēšanu nākotnē. Katrs no ar attiecīgo
+algoritmu trenētajiem agēntiem tika pārbaudīts cart-pole uzdevumā. Katram no
+algoritmiem tika veikti 10 eksperimenti. Atsevišķie eksperimenti tika apkopoti,
+lai iegūtu attiecīgā algoritma vidējo rezultātu.
+
+
+\subsection{Rezultāti}
 
 
  
