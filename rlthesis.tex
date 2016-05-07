@@ -432,12 +432,16 @@ vektors $(x, v, \theta, \omega) \in \mathbb{R}^4$, kur $x$ ir ratiņu pozīcija,
 $v$ ir ratiņu horizontālais ātrums, $\theta$ ir kārts leņķis un $\omega$ ir
 kārts leņķiskais ātrums. Vides dinamiku apraksta vienādojumi
 \begin{align}
-  \ddot{\theta} &= \frac{g \sin\theta + \cos\theta (\frac{-F - m_p l \dot{\theta}^2\sin\theta}
+  \ddot{\theta} &= \frac{g \sin\theta_t + \cos\theta_t (\frac{-F - m_p l \omega_t^2\sin\theta_t}
                                                          {m_c + m_p})}
-                        {l (\frac{4}{3} - \frac{m_p\cos^2\theta}
-                                               {m_c + m_p})}\\ 
-  \ddot{x} &= \frac{F + m_p l (\dot{\theta}^2\sin\theta - \ddot{\theta}\cos\theta)}
-                   {m_c + m_p}
+                        {l (\frac{4}{3} - \frac{m_p\cos^2\theta_t}
+                                               {m_c + m_p})} \\ 
+  \ddot{x} &= \frac{F + m_p l (\omega_t^2\sin\theta_t - \ddot{\theta}\cos\theta_t)}
+                   {m_c + m_p} \\
+  x_{t+1} &= x_t + v_t \\
+  v_{t+1} &= v_t + \ddot{x} \\
+  \theta_{t+1} &= \theta_t + \omega_t \\
+  \omega_{t+1} &= \omega_t + \ddot{\theta}
 \end{align}
 
 \subsection{Mountain car vide}
