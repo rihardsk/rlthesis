@@ -222,10 +222,10 @@ neironu tīklu, kas sastāv no ieejas slāņa, slēptā slāņa, un diviem izeja
 slāņiem, kas slēptā slāņa aktivācijas pārvērš, respektīvi, optimālajā darbībā
 $a$ un stāvokļa vērtībā. Šīs vērtības tad attiecīgi var izteikt, kā
 \begin{equation}\label{eq:ccacla-act}
-  v = V(s), V(s) = f_a(f_h(s^T \cdot W_h) \cdot W_a)
+  v = V(s), V(s) = f_a\left(f_h(s^T \cdot W_h) \cdot W_a\right)
 \end{equation} un
 \begin{equation}\label{eq:ccacla-val}
-  a = Ac(s), Ac(s) = f_v(f_h(s^T \cdot W_h) \cdot W_v)
+  a = Ac(s), Ac(s) = f_v\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{equation}, kur $s$ ir
 ieejas vektors (stāvoklis), $W_h$ ir slēptā slāņa svaru matrica, $W_a$ ir
 darbības slāņā svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
@@ -233,8 +233,8 @@ slēptā slāņā aktivācijas funkcija, $f_a$ ir darbības slāņā aktivācija
 un $f_v$ ir vērtības slāņā aktivācijas funkcija. Ar ieviestajiem mainīgajiem
 varam arī izteikt funkciju $Av$
 \begin{equation}\label{eq:ccacla-actval}
-  Av(s) = (f_a(h^{(1 \ldots D(A))}), f_v(h^{(D(A) + 1)})), \text{ kur } 
-  h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
+  Av(s) = \left(f_a(h^{(1 \ldots D(A))}), f_v(h^{(D(A) + 1)})\right), \text{ kur } 
+  h = f_h\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{equation}
 %TODO: pateikt, ka bias vērtības ir iekļautas W
 
@@ -303,7 +303,7 @@ kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
   Aov(s) = \left(f_a(h^{(1 \ldots D(A))}),
                  f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
                  f_v(h^{(D(A) + D(S) + 1)})\right), \\
-  \text{ kur } h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
+  \text{ kur } h = f_h\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{multline}
 
 Lai aprakstītu CACLA' pseidokodā pietrūkst vēl viena funkcija. Atšķirība no
@@ -314,9 +314,9 @@ minētajām vērtībām. Tādēļ nākas ieviest funkciju, nākamā stāvokļa p
 un esošā stāvokļa vērtības paredzēšanai.
 \begin{multline}\label{eq:ccacla-obsval}
   Ov: S \rightarrow S \times \mathbb{R},
-        Ov(s) = (f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
-                 f_v(h^{(D(A) + D(S) + 1)})), \\
-  \text{ kur } h = f_h(f_h(s^T \cdot W_h) \cdot W_v)
+        Ov(s) = \left(f_s(h^{(D(A) + 1 \ldots D(A) + D(S))}),
+                 f_v(h^{(D(A) + D(S) + 1)})\right), \\
+  \text{ kur } h = f_h\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{multline}
 Ar tās un iepriekš definēto funkciju paldīzību varam ideju definēt precīzāk
 algoritmā \ref{alg:ccacla-state}.
@@ -432,11 +432,11 @@ vektors $(x, v, \theta, \omega) \in \mathbb{R}^4$, kur $x$ ir ratiņu pozīcija,
 $v$ ir ratiņu horizontālais ātrums, $\theta$ ir kārts leņķis un $\omega$ ir
 kārts leņķiskais ātrums. Vides dinamiku apraksta vienādojumi
 \begin{gather}
-  \ddot{\theta} = \frac{g \sin\theta_t + \cos\theta_t (\frac{-F - m_p l \omega_t^2\sin\theta_t}
-                                                         {m_c + m_p})}
-                        {l (\frac{4}{3} - \frac{m_p\cos^2\theta_t}
-                                               {m_c + m_p})} \\ 
-  \ddot{x} = \frac{F + m_p l (\omega_t^2\sin\theta_t - \ddot{\theta}\cos\theta_t)}
+  \ddot{\theta} = \frac{g \sin\theta_t + \cos\theta_t \left(\frac{-F - m_p l \omega_t^2\sin\theta_t}
+                                                         {m_c + m_p}\right)}
+                        {l \left(\frac{4}{3} - \frac{m_p\cos^2\theta_t}
+                                               {m_c + m_p}\right)} \\ 
+  \ddot{x} = \frac{F + m_p l \left(\omega_t^2\sin\theta_t - \ddot{\theta}\cos\theta_t\right)}
                    {m_c + m_p} \\
   x_{t+1} = x_t + v_t \\
   v_{t+1} = v_t + \ddot{x} \\
