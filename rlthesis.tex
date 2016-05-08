@@ -66,6 +66,7 @@
 %images
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{svg}
 
 %dalīšana kolonnās
 \usepackage{multicol}
@@ -511,6 +512,7 @@ arī attiecīgā programmatūra eksperimentu darbināšanai.
 Veicot eksperimentus, vidēm tika lietotas to noklusējuma konfigurācijas.
 Cart-pole uzdevumā atļautais intervāls kārts leņķim $\theta$ bija $(-12; 12)$
 grādi, un atļautais intervāls ratiņu pozīcijai $x$ bija $(-2,4; 2,4)$.
+%TODO: par citām vidēm
 
 
 \section{Modeļu specifikācija}
@@ -538,13 +540,44 @@ aģentu trenēšanas procesā.
 \section{Eksperimentu metodika}
 Salīdzināšana tika veikta, novērtējot algoritmus CACLA, CCACLA, CCACLA ar
 stāvokļa paredzēšanu un CCACLA ar paredzēšanu nākotnē. Katrs no ar attiecīgo
-algoritmu trenētajiem agēntiem tika pārbaudīts cart-pole uzdevumā. Katram no
-algoritmiem tika veikti 10 eksperimenti. Atsevišķie eksperimenti tika apkopoti,
-lai iegūtu attiecīgā algoritma vidējo rezultātu.
+algoritmu trenētajiem aģentiem tika pārbaudīts cart-pole uzdevumā. Katram no
+algoritmiem tika veikti 10 eksperimenti. Katrs eksperiments ilga 50000 epizodes
+(visi apskatītie stimulētās mācīšanās uzdevumi ir epizodiski). Atsevišķie
+eksperimenti tika apkopoti, lai iegūtu attiecīgā algoritma vidējo rezultātu.
+Eksperimentu gaitā tika apkopota kopējā katrā epizodē iegūtā atalgojuma vērtība,
+kā arī tika veidota statistika par vidējo līdz epizodei iegūto atalgojuma
+vērtību ar mērķi skaidrāk attēlot kopējo algoritma sniegumu, neņemot vērā
+troksni trenēšanas procesā.
+
+Trenēšanas procesā tika novērots, ka atsevišķos gadījumos aģenti mēdza iestrēgt
+pārmēru sliktās stratēģijās. Tas bija novērojams kā liels kritums aģenta iegūto
+atalgojumu līknē treniņa procesa vidū, kas turpinās līdz pat treniņa procesa
+beigām. Šādi gadījumi tika uzskatīti par anomālijām, un netika iekļauti gala
+rezultātos, jo atstāja dramatisku iespaidu uz aģenta iegūto vidējo atalgojumu 10
+veiktajos eksperimentos. Šī iemesla dēļ atsevišķos grafikos ir attēloti mazāk
+par 10 eksperimentiem kādam konkrētam aģentam. Tipiski šādu anomāliju skaits
+netika novērots vairāk kā 2 no 10 eksperimentos.
 
 
 \section{Rezultāti}
+Apskatot cart-pole uzdevumu
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{pma.all.normal}.pdf}
+  \caption{CACLA iegūtais atalgojums}
+\end{figure}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{pfa.all.normal}.pdf}
+  \caption{CCACLA ar paredzēšanu nākotnē iegūtais atalgojums}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{both.mean.normal}.pdf}
+  \caption{Visu algoritmu vidējie rezultāti}
+\end{figure}
 
  
 \chapter{Diskusija}
