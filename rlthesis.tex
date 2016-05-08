@@ -410,14 +410,14 @@ $(a_0', v_1) := Av_0(s_0)$ \\
 \end{algorithm}
 \end{spacing}
 
-\section{Stimulētās mācīšanās vides}
-Nodaļā tiks sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{sec:eksp}
+\chapter{Stimulētās mācīšanās vides}
+Nodaļā tiks sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{chap:exp}
 izmantoto stimulētās mācīšanās vižu īpatnībās. Tiks apskatītas 4 dažādas
 stimulētās mācīšanās vides -- cart-pole, mountain car, acrobat, helicopter.
 Visiem uzdevumiem ir nepērtrauktas stāvokļu telpas, tomēr to stāvokļu telpu
 dimensiju skaits, kā arī darbību telpu veids un dimensiju skaits atšķiras.
 
-\subsection{Cart-pole vide}
+\section{Cart-pole vide}
 Cart-pole vidē ir jāveic kārts balansēšanas uzdevums \autocite{Barto}. Mērķis ir
 pēc iespējas ilgāk balansēt kārti, kas piestiprināta kustīgā eņģē pie
 horizontāli (vienā dimensijā) kustināmiem ratiņiem. Aģents mijiedarbojas ar vidi
@@ -451,20 +451,20 @@ Uzdevumam ir 1 dimensijas nepārtraukta darbību telpa. Katrā laika vienībā
 aģentam ir iespēja noteikt spēku $F \in \mathbb{R}$, ar kuru tas iedarbosies uz
 ratiņiem.
 
-\subsection{Mountain car vide}
+\section{Mountain car vide}
 Mountain car uzdevumā aģentam ir jāuzbrauc no parabolas tipe ieplakas (divās
 dimensijās) ar mašīnu, kam pietrūkst jaudas, lai to izdarītu bez ieskrējiena.
 Lai pārvarētu uzdevumu, aģentam nākas vairākas reizes pārvietoties augšā
 pamīšus pretējās ieplakas malās, lai iegūtu potenciālo enerģiju, kas ļautu no
 ieplakas izbraukt. Uzdeums ir interesants ar to, ka 
 
-\subsection{Acrobat vide}
+\section{Acrobat vide}
 
-\subsection{Helicopter vide}
+\section{Helicopter vide}
 
 
 
-\section{Veiktie eksperimenti un rezultāti}\label{sec:eksp}
+\chapter{Veiktie eksperimenti un rezultāti}\label{chap:exp}
 Darba gaitā tika veikti vairāki eksperimenti ar mērķi novērtēt
 nodaļā~\ref{chap:ccacla} aprakstīto algoritmu veiktspēju, un tos savstarpēji
 salīdzināt. Lai arī darba gaitā tikai pastāvīgi veikti dažādi stimulētās
@@ -472,7 +472,7 @@ mācīšanās eksperimenti, kas palīdzēja virzīt aprakstīto algoritmu izstr�
 nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
 savstarpējo salīdzinājumu.
 
-\subsection{Eksperimentu tehniskā realizācija}
+\section{Eksperimentu tehniskā realizācija}
 Stimulētās mācīšanās eksperimentu vadīšānai tikai izmantots RL-Glue
 programmēšanas ietvars \autocite{rl-glue}. RL-Glue ietvars sniedz iespēju veidot
 modulārus stimulētās mācīšanās eksperimentus, kur uzdevuma vide, aģents un
@@ -507,13 +507,13 @@ kofigurācijas failu pieraksts paralēlu RL-Glue eksperimentu specificēšanai, 
 arī attiecīgā programmatūra eksperimentu darbināšanai.
 %TODO: linki uz abiem repozitorijiem
 
-\subsection{Vides specifikācija}
+\section{Vides specifikācija}
 Veicot eksperimentus, vidēm tika lietotas to noklusējuma konfigurācijas.
 Cart-pole uzdevumā atļautais intervāls kārts leņķim $\theta$ bija $(-12; 12)$
 grādi, un atļautais intervāls ratiņu pozīcijai $x$ bija $(-2,4; 2,4)$.
 
 
-\subsection{Modeļu specifikācija}
+\section{Modeļu specifikācija}
 CACLA algoritmā tika izmantoti divi neironu tīkli, kur katram bija 20
 neironi slēptajā slānī. CCACLA, CCACLA ar stāvokļa paredzēšanu un CCACLA ar
 paredzēšanu nākotnē algoritmos katrā tika izmantots viens neironu tīkls ar 20
@@ -535,7 +535,7 @@ Turlkāt netika novērots, ka kāda no minētajām izmaiņām sniegtu būtisku i
 aģentu trenēšanas procesā.
 
 
-\subsection{Eksperimentu metodika}
+\section{Eksperimentu metodika}
 Salīdzināšana tika veikta, novērtējot algoritmus CACLA, CCACLA, CCACLA ar
 stāvokļa paredzēšanu un CCACLA ar paredzēšanu nākotnē. Katrs no ar attiecīgo
 algoritmu trenētajiem agēntiem tika pārbaudīts cart-pole uzdevumā. Katram no
@@ -543,7 +543,7 @@ algoritmiem tika veikti 10 eksperimenti. Atsevišķie eksperimenti tika apkopoti
 lai iegūtu attiecīgā algoritma vidējo rezultātu.
 
 
-\subsection{Rezultāti}
+\section{Rezultāti}
 
 
  
