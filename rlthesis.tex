@@ -930,15 +930,15 @@ trenēšana, un katrā laika momentā $t$ tiek paveikts:
 	\item citādi:
 	\begin{itemize}
 		\item[--] veic stohastiskā \textit{gradient descent} soli $NTV$ parametriem
-      $\theta_t$ pa funkciju, kas izsaka $\left(NTV_{\theta_t}(s_t) - \left(r_t
-          + \gamma NTV_{\theta_t}(s_{t+1}) \right) \right)^2$ atkarībā no
+      $\theta_t$ pa funkciju, kas izsaka ${\left(NTV_{\theta_t}(s_t) - \left(r_t
+          + \gamma NTV_{\theta_t}(s_{t+1}) \right) \right)}^2$ atkarībā no
       $\theta_t$; iegūst $\theta_{t+1}$;
 	\end{itemize}
 	\item ja $NTV_{\theta_{t+1}}(s_t) > NTV_{\psi_t}(s_t)$ ($s_t$ vērtība
     palielinājusies):
 	\begin{itemize}
 		\item[--] veic stohastiskā gradient \textit{descent} soli $NTA$ parametriem
-      $\psi_t$ pa funkciju, kas izsaka $\left(NTA_{\psi_t}(s_t) - a_t\right)^2$
+      $\psi_t$ pa funkciju, kas izsaka ${\left(NTA_{\psi_t}(s_t) - a_t\right)}^2$
       atkarībā no $\psi_t$; iegūst $\psi_{t+1}$;
 	\end{itemize}
 	\item atkārto.
