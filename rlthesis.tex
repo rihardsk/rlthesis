@@ -1315,6 +1315,36 @@ attiecīgi nozīmē braukšanu uz atpakaļu, braukšanu brīvgaitā un braukšan
 priekšu.
 
 \section{Acrobat vide}
+Acrobot uzdevumā aģentam ir jādarbina divu posmu mehānisms ar aktuatoru starp
+abiem posmiem. Posmi brīvi nokarājas, piestiprināti fiksētā punktā (eņģē).
+Mērķis ir darbinot aktuatoru iesvārstīt sistēmu tā, lai abi posmi paceltos virs
+fiksētā punkta. Līdzīgi kā mountain car uzdevumā aktuators ir mazjaudīgs, un,
+lai sasniegtu mērķi, aģentam ir jāiesvārsta sistēma ar periodiskām kustībām.
+Otra līdzība ar mountain car uzdevumu ir arī tajā, ka arī šeit vide sākotnēji
+atrodas zema atalgojuma stāvoklī, un atalgojuma izmaiņas novērojamas tikai, kad
+aģentam izdodas iekustināt sistēmu tā, lai tā paceltos virs fiksētā posma.
+No atalgojuma signāla vien nav iespējams saprast, kā no sākotnējā stāvokļa
+nonākt līdz gala stāvoklim. Tā kā darbā apskatītajos algoritmos tiek izmantota
+izpētes stratēģija, kas izvēlētajām darbībām pievieno normālsadalījuma troksni,
+tad, sākot treniņu, aģentam izmaiņas atalgojma signālā iespējams sasniegt tikai
+nejaušu darbību rezultātā.
+%TODO: pēdējos pāris teikumus pārcelt pie kaut kādiem secinājumiem.
+
+Vides stāvokli raksturo kortežs $(\theta_1, \theta_2, \omega_1, \omega_2) \in
+\mathbb{R}^4$, kur $\theta_1 \in [-\pi; \pi]$ ir leņķis starp fiskēto pounktu un
+pirmo posmu, $\theta_2 \in [-\pi; \pi]$ ir leņķis starp pirmo un otro posmu,
+$\omega_1 \in [-4\pi; 4\pi]$ ir leņķiskais ātrums attiecībā pret $\theta_1$,
+$\omega_2 \in [-9\pi; 9\pi]$ ir leņķiskais ātrums attiecībā pret $\theta_2$.
+
+Videi ir 1 diemnsijas diskrēta darbību telpa. Katrā laika vienībā ir pieejamas 3
+darbības ${0, 1, 2}$, kas attiecīgi nozīmē, ka aktuators pielieto spēku $-1$,
+$0$ vai $1$ (patvaļīgas mērvienības, kas piemeklētas atkarībā no posmu masas un
+garuma).
+
+Katrā stāvokī aģents saņem atlagojumu 0, ja tiek sasniegts mērķa stāvoklis, un 1
+-- citādi. Mērķa stāvoklis parasti tiek definēts kā tāds, kur abi posmi atrodas
+virs fiksētā punkta. %TODO: pārbaudīt šo
+
 
 \section{Helicopter vide}
 
