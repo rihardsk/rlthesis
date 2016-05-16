@@ -1516,6 +1516,32 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
 
 
 \subsection{Acrobot vide}
+Acrobot vidē visiem algoritmiem tika novērotas daudz lielākas problēmas
+mācīties. CACLA algoritmam tika novērota ļoti plaša rezultātu izkliede (attēls
+\ref{fig:acrobot-cacla}). Lai arī atsevišķās eksperimenta instancēs algoritms
+praktiski nebija spējīgs mācīties, apmēram pusē no instancēm algoritmam sekmīgi
+izdevās laika gaitā uzlabot rezultātus, kas liecina par mācīšanos.
+
+Arī CCACLA-future algoritms acrobot vide sagādāja lielākas problēmas nekā
+cart-pole. Toties, salīdzinot ar CACLA, vērojams, ka tam ir mazāka rezultātu
+izkliede, un lielākā daļa eksperimenta instaču laika gaitā uzlabo rezultātus,
+kas liecina par mācīšanos (attēls \ref{fig:acrobot-ccacla-future}).
+
+CCACLA-state algoritmam vairāku eskperimenta instanču rezultātus nācās atmest,
+jo tajos mācīšanās bija diverģējusi. No atlikušajiem rezultātiem var secināt, ka
+arī šim algoritmam uzdevums sagādā problēmas, tomēr ir vērojama mazāka rezultātu
+izkliede nekā CACLA algoritmam (attēls \ref{fig:acrobot-ccacla-future}).
+
+CCACLA-basic algoritma rezultāti šeit netiek attēloti, jo nevienā no
+eksperiemnta instancēm tam neizdevās pabeigt treniņu nediverģējot. Šeit
+risinājums būtu vēl samazināt mācīšanās ātrumu, tomēr tā kā tas ievērojami
+palielināt trenēšanas laiku (šim un pārējiem acrobot eksperimentiem), tas netika
+darīts.
+
+Visu algoritmu kopējie rezutāti apskatāmi attēlā \ref{fig:acrobot-all}. Redzams,
+ka CCACLA-future sasniedz augstāko atalgojumu, tomēr kāpums attiecībā pret
+treniņa sākumu ir maznozīmīgs, kas atspoguļo katra algoritma eksperimentos
+novērotās mācīšanās problēmas.
 
 \begin{figure}
   \centering
@@ -1528,7 +1554,7 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{acrobot.ccacla-basic.all}.pdf}
   \caption{CCACLA pamatalgoritma iegūtais atalgojums acrobot uzdevumā}
-\label{fig:acrobot-ccacla-basic}
+\label{fig:acrobot-ccacla-basic} 
 \end{figure}
 
 \begin{figure}
