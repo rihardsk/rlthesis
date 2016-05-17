@@ -1533,8 +1533,8 @@ arī šim algoritmam uzdevums sagādā problēmas, tomēr ir vērojama mazāka r
 izkliede nekā CACLA algoritmam (attēls \ref{fig:acrobot-ccacla-future}).
 
 CCACLA-basic algoritma rezultāti šeit netiek attēloti, jo nevienā no
-eksperiemnta instancēm tam neizdevās pabeigt treniņu nediverģējot. Šeit
-risinājums būtu vēl samazināt mācīšanās ātrumu, tomēr tā kā tas ievērojami
+eksperimenta instancēm tam neizdevās pabeigt treniņu nediverģējot. Šeit
+risinājums būtu vēl samazināt mācīšanās ātrumu, tomēr, tā kā tas ievērojami
 palielināt trenēšanas laiku (šim un pārējiem acrobot eksperimentiem), tas netika
 darīts.
 
@@ -1580,7 +1580,25 @@ novērotās mācīšanās problēmas.
 
 
 \subsection{Mountain car vide}
+Mountain car uzdevumā visiem algoritmiem bija novērojama vislielākā rezultātu
+izkliede. Ne CCACLA-basic algoritms (attēls \ref{fig:car-ccacla-basic}), ne
+CCACLA-state algoritms (attēls \ref{fig:car-ccacla-state}) nebija spējīgs
+mācīties -- gandrīz nevienā no šo algoritmu eksperimentu instancēm nebija vērojams
+atalgojuma pieaugums trenēšanas rezultātā. 
 
+CACLA un CCACLA-future algoritmiem šajā uzdevumā veicās labāk. CACLA algoritma
+eksperimentos visās eksperimenta instancēs bija vērojams iegūtā atalgojuma
+pieaugums (attēls \ref{fig:car-cacla}), neskatoties uz ļoti lielo rezultātu
+izkliedi. Šajā ziņā rezultāti ir pārsteidzoši, jo ļoti lielā iegūtā
+atlagojuma amplitūda, kas tika novērota secīgiem secīgām eksperiementa epohām,
+liktu liktu domāt par mācīšanās diverģēšanu, tomēr, apskatot iegūtā atalgojuma
+vidējo vērtību grafikus, nākas secināt, ka algoritms tomēr mācās. CCACLA-future
+algoritmam rezultāti ir līdzīgi, tomēr tam bija vērojams krietni mazāks
+īpatsvars ar eksperimenta instancēm, kas spējīgas mācīties (attēls
+\ref{fig:car-ccacla-future}).
+
+Visu algoritmu apkopotie rezultāti mountain car uzdevumā apskatāmi attēlā
+\ref{fig:car-all}.
 
 \begin{figure}
   \centering
