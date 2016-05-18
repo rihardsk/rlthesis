@@ -76,7 +76,7 @@
 
 \fakultate{Datorikas}
 \nosaukums{Paredzošā stimulētā mācišanās}
-\darbaveids{Maģistra kursa}
+\darbaveids{Maģistra}
 \autors{Rihards Krišlauks}
 \studapl{rk09006}
 \vaditajs{Asoc.prof., Dr. dat. Jānis Zuters}
@@ -1094,17 +1094,19 @@ izrēķināt vienlaicīgi. Tas parādīts algoritmā \ref{alg:ccacla-basic}.
 \begin{algorithm}
 \caption{CCACLA pamatalgoritma pseidokods}\label{alg:ccacla-basic}
 inicializē $\theta_0, \psi_0, s_0$ \\
-$(a_0', v_0) := Av_0(s_0)$ \\
-ņem $a_0$ ar izkliedi ap $a_0'$ \\
-\For{$t \in \{1,2,\ldots\}$}{
+\For{$t \in \{0,1,2,\ldots\}$}{
+  \If{$s_t$ ir sākumstāvoklis}{
+    $(a_t', v_t) := Av_t(s_t)$ \\
+    ņem $a_t$ ar izkliedi ap $a_t'$ \\
+    \textit{continue}
+  }
 	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
   $(a_t', v_t) := Av_t(s_t)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
 	\eIf{$s_t$ ir gala stāvoklis}{
 		$V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
-		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšanas epizodē)
-    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
-    % var rakstīt goto 1)
+    ņem jaunu sākumstāvokli $s_{t+1}$ \\
+    \textit{continue}
 	}{
 		$V_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} r_{t-1} + \gamma v_t$
 	}
@@ -1171,9 +1173,12 @@ algoritmā \ref{alg:ccacla-state}.
 \begin{algorithm}
 \caption{CCACLA ar stāvokļa paredzēšanu pseidokods}\label{alg:ccacla-state}
 inicializē $\theta_0, \psi_0, s_0$ \\
-$(a_0', v_0) := Av_0(s_0)$ \\
-ņem $a_0$ ar izkliedi ap $a_0'$ \\
-\For{$t \in \{1,2,\ldots\}$}{
+\For{$t \in \{0,1,2,\ldots\}$}{
+  \If{$s_t$ ir sākumstāvoklis}{
+    $(a_t', v_t) := Av_t(s_t)$ \\
+    ņem $a_t$ ar izkliedi ap $a_t'$ \\
+    \textit{continue}
+  }
 	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
   $(a_t', v_t) := Av_t(s_t)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
@@ -1183,9 +1188,8 @@ $(a_0', v_0) := Av_0(s_0)$ \\
     }{
       $V_t(s_{t-1}) \xleftarrow{\alpha_{t-1}(s_{t-1})} r_{t-1}$ \\
     }
-		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšan as epizodē)
-    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
-    % var rakstīt goto 1)
+    ņem jaunu sākumstāvokli $s_{t+1}$ \\
+    \textit{continue}
 	}{
     \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
       $Aov_t(s_{t-1}) \xleftarrow{\alpha_t(s_{t-1})} (a_{t-1}, s_t, r_{t-1} + \gamma v_t)$
@@ -1227,13 +1231,16 @@ CCACLA ar paredzēšanu nākotnē precīzāk definēts algoritmā \ref{alg:ccacl
 \begin{algorithm}
 \caption{CACLA ar parezēšānu nākotnē pseidokods}\label{alg:ccacla-future}
 inicializē $\theta_0, \psi_0, s_0$ \\
-$(a_0', v_1) := Av_0(s_0)$ \\
-ņem $a_0$ ar izkliedi ap $a_0'$ \\
-\For{$t \in \{1,2,\ldots\}$}{
+\For{$t \in \{0,1,2,\ldots\}$}{
+  \If{$s_t$ ir sākumstāvoklis}{
+    $(a_t', v_t) := Av_t(s_t)$ \\
+    ņem $a_t$ ar izkliedi ap $a_t'$ \\
+    \textit{continue}
+  }
 	veic $a_{t-1}$, novēro $r_{t-1}, s_t$ \\
   $(a_t', v_{t+1}) := Av_t(s_t)$ \\
 	ņem $a_t$ ar izkliedi ap $a_t'$ \\
-  \If{$s_{t-1}$ vai $s_t$ ir sākumstāvoklis}{
+  \If{$s_{t-1}$ ir sākumstāvoklis}{
     continue
   }
 	\eIf{$s_t$ ir gala stāvoklis}{
@@ -1242,9 +1249,8 @@ $(a_0', v_1) := Av_0(s_0)$ \\
     }{
       $V_t(s_{t-2}) \xleftarrow{\alpha_{t-1}(s_{t-2})} r_{t-1}$ \\
     }
-		ņem jaunu $s_t$ ($s_t$ ir sākumstāvoklis nākamajā trenēšan as epizodē)
-    % TODO: šeit jāiestata arī a un v (vai arī jāpievieno ārējais cikls, un šeit
-    % var rakstīt goto 1)
+    ņem jaunu sākumstāvokli $s_{t+1}$ \\
+    \textit{continue}
 	}{
     \eIf{$r_{t-1} + \gamma v_t > v_{t-1}$}{
       $Aov_t(s_{t-2}) \xleftarrow{\alpha_t(s_{t-2})} (a_{t-1}, s_t, r_{t-1} + \gamma v_t)$
