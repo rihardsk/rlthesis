@@ -180,7 +180,8 @@ kā tas ir balstīts.
 %NOTE: pie cacla algoritma jāpastāsta, kas ir tie aspekti, kas padara viņu
 %pievilcīgu modifikācijām.
 
-\chapter{Markova izvēles procesi} \label{chap:mdp}
+\chapter{Konteksts}
+\section{Markova izvēles procesi} \label{chap:mdp}
 Nodaļā tiek apskatīti Markova izvēles procesi ar mērķi sniegt vispārīgu
 priekšstatu par tēmu. Tiek doti arī piemēri un paņēmieni, kas tieši neattiecas
 uz darba mērķi, bet doti, lai vieglāk izprast jēdziena kontekstu, tomēr lielākā
@@ -312,7 +313,7 @@ lielām telpām. Turpmākajā tekstā, runājot par diskrētām telpām, domāta
 telpas, kuras ir pietiekami mazas. Konkrēti apmēri šeit netiek minēti, jo tie
 atkarīgi no pieejamajiem skaitļošanas resursiem.
 
-\section{Stratēģijas optimalitāte}
+\subsection{Stratēģijas optimalitāte}
 Darbā jau vairākkārt ir pieminēts, ka stratēģijai, kas tiek izmantota MDP
 kontrolē jāapmierina kaut kādus optimalitātes kritērijus. Izteiksim šo prasību
 formālāk, norādot trīs iespējamos optimalitātes kritērijus, kā tie ieviesti
@@ -357,7 +358,7 @@ horizonta optimalitātes nosacījums.
 %value funkcija. es savukārt neredzu iemeslu, kāpēc mest \pi no definīcijas
 %laukā
 
-\section{Vērtības funkcija un stāvokļu-darbību vērtības funkcija}
+\subsection{Vērtības funkcija un stāvokļu-darbību vērtības funkcija}
 Stāvokļu vērtības funkcija, vai vienkāršāk -- vērtības funkcija -- tiek
 ieviesta, lai izteiktu stāvokļa vērtību pie konkrētas stratēģijas. Tā izsaka,
 cik izdevīgi ir atrasties kādā stāvoklī pie dotās stratēģijas, ņemot vērā
@@ -391,7 +392,7 @@ stāvokļiem $s \in S$ un visām stratēģijām $\pi$ izpildās:
 \]
 \end{definicija}
 
-\section{MDP risināšana un Bellmana vienādojumi}
+\subsection{MDP risināšana un Bellmana vienādojumi}
 Īsumā ieskatīsimies MDP risināšanas iespējās. Bellmana optimalitātes vienādojums
 ļauj rekursīvi izteikt optimālo stāvokļu vērtības funkciju $V^* = V^{\pi^*}$
 atkarībā no pārejas un atalgojuma funkcijām
@@ -422,7 +423,7 @@ kas ļauj izteikt optimālo stratēģiju arī ar stāvokļu-darbību vērtības 
 
 Augstāk redzamie vienādojumi ļauj kategorizēt veidus, kādos risināmi MDP.
 
-\subsection{Modeļa aproksimācija}
+\subsubsection{Modeļa aproksimācija}
 Modeļa aproksimācijas pieejā tiek mēģināts tuvināti atrast dotās MDP nezināmos
 parametrus -- pāreju funkciju $T$ un atalgojuma funkciju $R$ --, lai no tām
 atvasinātu aproksimētās MDP optimālo kontroles shēmu. Modeļa meklēšanā tiek
@@ -458,7 +459,7 @@ stimulētās mācīšanās metodēm, gadījumos, kad mācīšanās īstajā dom�
 resursietilpīga, bet šīs metodes saskaras jau ar citām problēmām
 \autocite{Hasselt2012}.
 
-\subsection{Vērtību aproksimācija}
+\subsubsection{Vērtību aproksimācija}
 Vērtību aproksimācijas piegājienā tiek nevis mēģināts atrast trūkstošās pāreju
 un atalgojuma funkcijas, bet gan tiek uzreiz mēģināts tuvināti atrast funkcijas
 $V^*$ vai $Q^*$. Kā redzams iepriekšējā sadaļā, vienādojumi \eqref{eq:1} un
@@ -527,7 +528,7 @@ problēmas pastāv \textit{off-policy} algoritmos, piemēram, minētajā
 \textit{Q-learning}. \textit{On-policy} algoritmi šajā aspektā darba ietvaros
 nav pētīti.
 
-\subsection{Stratēģijas aproksimācija}
+\subsubsection{Stratēģijas aproksimācija}
 Atšķirībā no vērtību aproksimācijas algoritmiem, stratēģijas aproksimācijas
 pieejas algoritmi optimālās stratēģijas tuvinājumu glabā tiešā veidā. Parasti
 nav nekādu šķēršļu $\pi^*$ reprezentācijai izmantot kādu vispārīgu funkciju
@@ -543,7 +544,7 @@ vērtību aproksimācijas algoritmus -- par \textit{critic-only} algoritmiem.
 Stratēģijas aproksimācijas algoritmi tiek tuvāk apskatīti \ref{chap:stim}
 nodaļā.
 
-\chapter{Funkciju aproksimācija}
+\section{Funkciju aproksimācija}
 Nodaļā tiek apskatītas funkciju aproksimācijas metodes, kas ir pamatā darbā
 minētajiem stimulētās mācīšanās algoritmiem. Izklāsts ir daļēji tehniskas dabas,
 bet tiek skaidrotas arī pielietojamo metožu sekas attiecībā uz stimulētās
@@ -585,7 +586,7 @@ atkarīgi no spēles stāvokļa novērtējuma.
 Nākamajās sadaļās tiek apskatītas galvenās funkciju aproksimētāju klases,
 lielāku uzmanību pievēršot nelineārajiem aproksimētājiem un neironu tīkliem.
 
-\section{Funkciju aproksimēšanas veidi}
+\subsection{Funkciju aproksimēšanas veidi}
 Funkciju aproksimētājus, atkarībā no to uzbūves, mēdz iedalīt lineārajos un
 nelineārajos. Lineārie aproksimētaji tiek apskatīti ierobežoti, vairāk uzmanības
 veltot nelineārajiem aproksimētājiem. Jēdziens funkciju aproksimētājs tiek
@@ -593,7 +594,7 @@ lietots, apzīmējot funkciju, kas tiek izmantota dotās mērķa funkcijas
 aproksimēšanai. Piemēram, sakot "lineārs funkciju aproksimētājs" jāsaprot, ka
 izmantotā funkcija ir lineāra.
 
-\subsection{Lineārā funkciju aproksimēšana}
+\subsubsection{Lineārā funkciju aproksimēšana}
 Par lineāru funkciju dēvē tādu funkciju, ko var izteikt formā
 \[
 	F(\phi) = \Theta^T \phi,
@@ -629,7 +630,7 @@ stimulētās mācīšanās uzdevumu risināšanai nepārtrauktās telpās. Turkl
 lineāriem funkciju aproksimētājiem ir citas problēmas, ar kurām var ar dažādiem
 panākumiem cīnīties, kas vairāk aprakstītas \autocite{Hasselt2012}.
 
-\subsection{Neironu tīkli un nelineārā funkciju aproksimēšana}
+\subsubsection{Neironu tīkli un nelineārā funkciju aproksimēšana}
 Neironu tīkli pieder pie nelineārajiem funkciju aproksimētājiem. Tie ir veidoti
 uz līdzību pamata ar bioloģisko neironu tīkliem smadzenēs un parasti tiek
 formulēti kā savstarpēji savienotu "neironu" sistēma, kas dotus ieejas datus
@@ -703,12 +704,12 @@ konverģences garantijas vismaz lokālā optimuma sasniegšanai
 \autocite{bhatnagar2009convergent}.
 
 \iffalse
-\section{Parametru pielāgošana}
-\subsection{Uz gradientiem bāzētās metodes}
-\subsection{Evolucionārās metodes}
+\subsection{Parametru pielāgošana}
+\subsubsection{Uz gradientiem bāzētās metodes}
+\subsubsection{Evolucionārās metodes}
 \fi
 
-\chapter{Stimulētā mācīšanās} \label{chap:stim}
+\section{Stimulētā mācīšanās} \label{chap:stim}
 Stimulētās mācīšanās (SM, angliski -- \textit{reinforcement learning}) pārziņā
 ir situācijas, kurās uzdevums jārisina mijiedarbojoties ar apkārtējo vidi. Tā
 vietā, lai problēmu risinātu, dodot algoritmam sagatavotus ieejas datus ar
@@ -731,7 +732,7 @@ vienādojumiem ir apskatītas nodaļā \ref{chap:mdp} Šajā nodaļā tiek piev�
 padziļināta uzmanība stratēģijas aproksimēšanas algoritmiem. Bet vispirms
 jāsniedz īss ieskats \textit{temporal difference} soļu izmantošanu algoritmos.
 
-\section{Temporal difference soļi} \label{chap:td}
+\subsection{Temporal difference soļi} \label{chap:td}
 \textit{Temporal difference} (TD) soļi tiek izmantoti stāvokļu vērtības
 funkcijas aproksimācijā. Šis paņēmiens ir idejiski tuvāks vērtības
 aproksimācijas metodēm, bet, kā vēlāk redzēsim, ir izmantojams arī
@@ -777,7 +778,7 @@ pārrakstīt TD soli kā
 
 Vairāk par TD metodēm var lasīt \autocite{Hasselt2012}.
 
-\section{Stratēģijas aproksimācija}
+\subsection{Stratēģijas aproksimācija}
 Kā iepriekš minēts, stratēģijas aproksimācijas pieeju raksturo stratēģijas
 funkcijas $\pi$ glabāšana tiešā veidā un pielāgošana algoritma darbības laikā,
 lai to tuvinātu optimālajai stratēģijai $\pi^*$. Tas ļauj izvairīties no
@@ -797,7 +798,7 @@ atrodoties stāvoklī $s$ veikt darbību $a$ pie stratēģijas parametru vērtī
 $\psi \in \Psi \subseteq \mathbb{R}^{D_\Psi}$.
 
 %TODO šeit iespējams vajag Actor-only virsrakstu
-\subsection{Actor-only metodes}
+\subsubsection{Actor-only metodes}
  
 Lai stratēģijas aproksimēšanai varētu izmantot kādu parametrizētu funkciju,
 nepieciešams ieviest veidu, kā pielāgot tās parametrus algoritma darbības laikā,
@@ -843,7 +844,7 @@ iespējams izvairīties vispār. %TODO: kas atrisina ar to saistītās problēma
 \textit{Actor-only} metodēm mēs tālāk šeit nesekosim.
 Vispārīgs pārskats ir dots \autocite{Hasselt2012}.
  
-\subsection{Actor-critic metodes}
+\subsubsection{Actor-critic metodes}
 \textit{Actor-critic} metodes ar iepriekšējā sadaļā norādītajiem ierobežojumiem
 cīnās līdztekus ar $\pi^*$ aproksimējot arī $V^*$. Gadījumā, kad parametru
 vektora $\psi$ pielāgošanai tiek izmantoti \textit{gradient ascent} soļi pa
@@ -867,7 +868,10 @@ prognožu kļūdas. Šī ideja ir būtiska \textit{continuous action-critic lear
   automaton} (CACLA) algoritmam, un nošķir to no vairuma citu
 \textit{actor-critic} metožu.
 
-\chapter{CACLA algoritms}
+\chapter{Algoritmi}
+
+
+\section{CACLA algoritms}
 CACLA algoritma pamatā ir vienkārša ideja -- ja veiktā darbība paaugstina
 stāvokļa vērtības novērtējumu, tad šim stāvoklim ir derīgi pielāgot stratēģiju
 veiktās darbības virzienā, jo tā potenciāli var novest pie lielāka kopējā
@@ -1023,7 +1027,7 @@ interesanti, ka ieguvums ir arī attiecībā pret pārējiem testētajiem nepār
 darbības telpu algoritmiem.
 
 %\subsubsection{CACLA darbības analīze literatūrā}
-\chapter{CCACLA algoritms}\label{chap:ccacla}
+\section{CCACLA algoritms}\label{chap:ccacla}
 CACLA algoritms izmanto divus neironu tīklus, no kuriem viens aproksimē optimālo
 stratēģiju, bet otrs -- stāvokļu vērtības funkciju. Abu neironu tīklu parametri
 tiek pielāgoti, tiem savstarpēji mijiedarbojoties algoritma darbības laikā --
@@ -1087,7 +1091,7 @@ pārvēršas par mēģinājumu atrast kādu parametru komplektu, ko šie funkcij
 aproksimētāji varētu dalīt savā starpā, tomēr šāds vispārīgāks formulējums darbā
 netiek apskatīts.
 
-\section{CCACLA pamatalgoritms}
+\subsection{CCACLA pamatalgoritms}
 CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
 algoritma, izmanto funkciju 
 \begin{equation}
@@ -1157,7 +1161,7 @@ inicializē $\theta_0, \psi_0, s_0$ \\
 % \end{equation}
 %TODO varbūt jāpastāsta par bakcprop. skat: https://en.wikipedia.org/wiki/Backpropagation
 
-\section{CCACLA ar stāvokļa paredzēšanu}
+\subsection{CCACLA ar stāvokļa paredzēšanu}
 Kā tika minēts iepriekš, interesi rada jautājums, vai ir iespējams ar kādas
 papildinformācijas palīdzību trenēšanas laikā likt stimulētās mācīšanās aģentam
 veidot iekšēju vides modeli ar mērķi paātrināt mācīšanos. Šajā nolūkā tiek
@@ -1233,7 +1237,7 @@ inicializē $\theta_0, \psi_0, s_0$ \\
 \end{algorithm}
 \end{spacing}
 
-\section{CCACLA ar paredzēšanu nākotnē}
+\subsection{CCACLA ar paredzēšanu nākotnē}
 Iepriekšējā sadaļā aprakstītais CCACLA algoritms ar stāvokļa paredzēšānu ir
 veidots ar mērķi trenēšanas laikā likt stimulētās mācīšanās aģentam veidot
 iekšēju vides modeli. Algoritma formulējumā gan var ievērot kādu īpatnību.
@@ -1294,14 +1298,17 @@ inicializē $\theta_0, \psi_0, s_0$ \\
 \end{algorithm}
 \end{spacing}
 
-\chapter{Stimulētās mācīšanās vides}
+\chapter{Eksperimenti}
+
+
+\section{Stimulētās mācīšanās vides}
 Nodaļā tiek sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{chap:exp}
 izmantoto stimulētās mācīšanās vižu īpatnībās. Tiek apskatītas 4 dažādas
 stimulētās mācīšanās vides -- cart-pole, mountain car, acrobat, helicopter.
 Visiem uzdevumiem ir nepērtrauktas stāvokļu telpas, tomēr to stāvokļu telpu
 dimensiju skaits, kā arī darbību telpu veids un dimensiju skaits atšķiras.
 
-\section{Cart-pole vide}
+\subsection{Cart-pole vide}
 Cart-pole vidē ir jāveic kārts balansēšanas uzdevums \autocite{Barto}. Mērķis ir
 pēc iespējas ilgāk balansēt kārti, kas piestiprināta kustīgā eņģē pie
 horizontāli (vienā dimensijā) kustināmiem ratiņiem. Aģents mijiedarbojas ar vidi
@@ -1335,7 +1342,7 @@ Uzdevumam ir 1 dimensijas nepārtraukta darbību telpa. Katrā laika vienībā
 aģentam ir iespēja noteikt spēku $F \in \mathbb{R}$, ar kuru tas iedarbosies uz
 ratiņiem.
 
-\section{Mountain car vide}
+\subsection{Mountain car vide}
 Mountain car uzdevumā aģentam ir jāuzbrauc no parabolas tipa ieplakas (divās
 dimensijās) ar mašīnu, kam pietrūkst jaudas, lai to izdarītu bez ieskrējiena.
 Lai pārvarētu uzdevumu, aģentam nākas vairākas reizes pārvietoties augšā
@@ -1353,7 +1360,7 @@ darbības ir \textit{reverse}, \textit{neutral} un \textit{forward}, kas
 attiecīgi nozīmē braukšanu uz atpakaļu, braukšanu brīvgaitā un braukšanu uz
 priekšu.
 
-\section{Acrobat vide}
+\subsection{Acrobat vide}
 Acrobot uzdevumā aģentam ir jādarbina divu posmu mehānisms ar aktuatoru starp
 abiem posmiem. Posmi brīvi nokarājas, piestiprināti fiksētā punktā (eņģē).
 Mērķis ir darbinot aktuatoru iesvārstīt sistēmu tā, lai abi posmi paceltos virs
@@ -1385,11 +1392,11 @@ Katrā stāvokī aģents saņem atlagojumu 0, ja tiek sasniegts mērķa stāvokl
 virs fiksētā punkta. %TODO: pārbaudīt šo
 
 
-\section{Helicopter vide}
+\subsection{Helicopter vide}
 TODO
 
 
-\chapter{Veiktie eksperimenti un rezultāti}\label{chap:exp}
+\section{Veiktie eksperimenti un rezultāti}\label{chap:exp}
 Darba gaitā tika veikti vairāki eksperimenti ar mērķi novērtēt
 nodaļā~\ref{chap:ccacla} aprakstīto algoritmu veiktspēju, un tos savstarpēji
 salīdzināt. Lai arī darba gaitā tikai pastāvīgi veikti dažādi stimulētās
@@ -1397,7 +1404,7 @@ mācīšanās eksperimenti, kas palīdzēja virzīt aprakstīto algoritmu izstr�
 nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
 savstarpējo salīdzinājumu.
 
-\section{Eksperimentu tehniskā realizācija}
+\subsection{Eksperimentu tehniskā realizācija}
 Stimulētās mācīšanās eksperimentu vadīšānai tikai izmantots RL-Glue
 programmēšanas ietvars \autocite{rl-glue}. RL-Glue ietvars sniedz iespēju veidot
 modulārus stimulētās mācīšanās eksperimentus, kur uzdevuma vide, aģents un
@@ -1432,14 +1439,14 @@ kofigurācijas failu pieraksts paralēlu RL-Glue eksperimentu specificēšanai, 
 arī attiecīgā programmatūra eksperimentu darbināšanai.
 %TODO: linki uz abiem repozitorijiem
 
-\section{Vides specifikācija}
+\subsection{Vides specifikācija}
 Veicot eksperimentus, vidēm tika lietotas to noklusējuma konfigurācijas.
 Cart-pole uzdevumā atļautais intervāls kārts leņķim $\theta$ bija $(-12; 12)$
 grādi, un atļautais intervāls ratiņu pozīcijai $x$ bija $(-2,4; 2,4)$.
 %TODO: par citām vidēm
 
 
-\section{Modeļu specifikācija}
+\subsection{Modeļu specifikācija}
 CACLA algoritmā tika izmantoti divi neironu tīkli, kur katram bija 20
 neironi slēptajā slānī. CCACLA, CCACLA ar stāvokļa paredzēšanu un CCACLA ar
 paredzēšanu nākotnē algoritmos katrā tika izmantots viens neironu tīkls ar 20
@@ -1461,7 +1468,7 @@ Turlkāt netika novērots, ka kāda no minētajām izmaiņām sniegtu būtisku i
 aģentu trenēšanas procesā.
 
 
-\section{Eksperimentu metodika}
+\subsection{Eksperimentu metodika}
 Salīdzināšana tika veikta, novērtējot algoritmus CACLA, CCACLA, CCACLA ar
 stāvokļa paredzēšanu un CCACLA ar paredzēšanu nākotnē. Katrs no ar attiecīgo
 algoritmu trenētajiem aģentiem tika pārbaudīts cart-pole uzdevumā. Katram no
@@ -1483,7 +1490,7 @@ par 10 eksperimentiem kādam konkrētam aģentam. Tipiski šādu anomāliju skai
 netika novērots vairāk kā 2 no 10 eksperimentos.
 
 
-\section{Rezultāti}
+\subsection{Rezultāti}
 Veicot eksperiemntus problēmas sagādāja fakts, ka algoritmi bija spējīgi
 mācīties pie dažādām mācīšanās ātruma (learning rate) parametra vērtībām.
 Pārsvarā novērojumi rādīja, ka CACLA un CCACLA ar paredzēšanu nākotnē derēja
@@ -1495,7 +1502,7 @@ CCACLA-state. Šī atšķirība tipiski bija ar kārtu 10 reizes. Tādēļ katr�
 dažādajām vidēm visiem algoritmiem tika izmantots viens augstākais visiem
 algoritmiem derīgais mācīšanās ātrums.
 
-\subsection{Cart-pole vide}
+\subsubsection{Cart-pole vide}
 Cart-pole uzdevumā bija vērojams, ka visātrāk augstu atalgojumu sasniedz
 algoritms ar stāvokļu skaita ziņā vismazāko izmantoto neironu
 tīklu~--~CCACLA-basic (attēls \ref{fig:pole-ccacla-basic}). Tomēr, aģentam sākot
@@ -1554,7 +1561,7 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
 \end{figure}
 
 
-\subsection{Acrobot vide}
+\subsubsection{Acrobot vide}
 Acrobot vidē visiem algoritmiem tika novērotas daudz lielākas problēmas
 mācīties. CACLA algoritmam tika novērota ļoti plaša rezultātu izkliede (attēls
 \ref{fig:acrobot-cacla}). Lai arī atsevišķās eksperimenta instancēs algoritms
@@ -1618,7 +1625,7 @@ novērotās mācīšanās problēmas.
 \end{figure}
 
 
-\subsection{Mountain car vide}
+\subsubsection{Mountain car vide}
 Mountain car uzdevumā visiem algoritmiem bija novērojama vislielākā rezultātu
 izkliede. Ne CCACLA-basic algoritms (attēls \ref{fig:car-ccacla-basic}), ne
 CCACLA-state algoritms (attēls \ref{fig:car-ccacla-state}) nebija spējīgs
