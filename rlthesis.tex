@@ -1040,6 +1040,22 @@ līmeņa pazīmes, ko pēdējais tīkla līmenis ir iemācījies apstrādāt. Š
 rada papildus motivāciju pētīt, vai nav iespējams lietderīgi izmantot CACLA
 algoritmā izmantoto neironu tīklu apakšējo līmeņu izgūto pazīmju īpatnības.
 
+Otra CACLA īpatnība, kas motivē pētīt iespējas apvienot algoritma aktiera un
+kritiķa komponenti ir iepriekš minētā īpašība, ka treniņa laikā optimālās
+stratēģijas funkcijas aproksimācijas parametri netiek mainīti, kad konkrētā
+stāvokļa vērtība stratēģijas izvēlētās darbības rezultātā nepalielinās. Lai arī
+trenēt aktiera komponenti, mainot tās parametrus kādas potenciāli sliktas
+darbības virzienā, nav vēlams, to tomēr varētu darīt, izmantojot citu
+pieejamo informāciju. No šiem apsvērumiem seko otra aktiera un kritiķa
+komponenšu apvienošanas idejas priekšrocība. Tā kā stāvokļu vērtību funkcijas
+parametri CACLA algoritmā tiek pielāgoti katrā algoritma solī, tad, stāvokļu
+vērtību funkcijas un optimālās stratēģijas funkcijas neironu tīkliem dalot
+kopīgus slāņus, daļa optimālās stratēģijas funkcijas parametru tiktu pielāgoti
+katrā solī, mainoties stāvokļu vērtību funkcijas parametriem. Tas ļautu aktiera
+komponentei mācīties arī, kad nav zināma darbība, kas konkrētajā stāvoklī
+uzlabotu stāvokļa vērtību. Tas novestu pie \textit{unsupervised learning} ideju
+izmantošanas trenēšansa procesā. %TODO: pārformulēt pēdējo teikumu.
+
 Šajā nodaļā tiks apskatītas vairākas CACLA algoritma modifikācijas, kuras to
 kopīgo īpašību dēļ autors ievieto vienā algoritmu grupā ar kopīgo nosaukumu
 Combined CACLA, jeb CCACLA. Visu algoritmu kopīgā iezīme, kas tos atšķir no
@@ -1048,13 +1064,15 @@ vērtību funkcijas $V$ gan optimālās stratēģijas funkcijas $A$ aproksimāci
 Tiek apskatīti vairāki šī algoritma paveidi, kas ietver modifikācijas tajā, kāda
 informācija tiek izmantota tīkla trenēšanai.
 
-%TODO jāpasaka kaut kas par to, ka tiek šeit CACLA un CCACLA algoritmi tiek
-%aprakstīti tikai kontekstā ar neironu tīkliem. Idejas par kopīgu slāņu
-%izmantošanu gan aktiera gan kritiķa komponentei dabīgāk sasaistāmas ar neironu
-%tīkliem kā šo komponenšu implementācijām. Pastāv tomēr arī iespējas
-%alternatīvam formulējumam, kas izmanto patvaļīgus funkciju aproksimatorus. Šajā
-%interpretācijā uzdevums pārvēršas par mēģinājumu atrast kādu parametru
-%komplektu, ko šie funkciju aproksimētāji varētu dalīt savā starpā.
+Jāpiemin, ka šeit un turpmāk CACLA un CCACLA algoritmi tiek aprakstīti tikai
+kontekstā ar neironu tīkliem. Idejas par kopīgu slāņu izmantošanu gan aktiera
+gan kritiķa komponentei dabīgāk sasaistāmas ar neironu tīkliem kā šo komponenšu
+implementācijām. Pastāv tomēr arī iespējas alternatīvam formulējumam, kas
+izmanto patvaļīgus funkciju aproksimatorus. Šajā interpretācijā uzdevums
+pārvēršas par mēģinājumu atrast kādu parametru komplektu, ko šie funkciju
+aproksimētāji varētu dalīt savā starpā, tomēr šāds vispārīgāks formulējums darbā
+netiks apskatīts.
+
 \section{CCACLA pamatalgoritms}
 CCACLA vienkāršākais variants, kas vismazāk atšķiras no par pamatu ņemtā CACLA
 algoritma, izmanto funkciju 
