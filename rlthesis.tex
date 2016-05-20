@@ -515,9 +515,9 @@ novērojumu.
 
 Pie \textit{on-policy} algoritmiem pieder, piemēram,
 \textit{temporal-difference} saimes algoritmi. Pie \textit{off-policy}
-algoritmiem pieskaitāms, piemēram, ir \textit{Q-learning} un tā varianti. Katrā
-minēto algoritmu grupā ietilpst gan \textit{online}, gan \textit{offline}
-algoritmu varianti \autocite{Barto}.
+algoritmiem pieskaitāms, piemēram, ir \textit{Q-learning} \autocite{Watkins1989}
+\autocite{Watkins1992} un tā varianti. Katrā minēto algoritmu grupā ietilpst gan
+\textit{online}, gan \textit{offline} algoritmu varianti \autocite{Barto}.
 
 Minētajiem algoritmiem darbošanās nepārtrauktās stāvokļu telpās nesagādā
 problēmas. Šādās situācijās parasti $V^{\pi^*}$ vai $Q^{\pi^*}$ reprezentācijai
@@ -812,16 +812,25 @@ Vairāk par TD metodēm var lasīt \autocite{Hasselt2012}.
 Kā iepriekš minēts, stratēģijas aproksimācijas pieeju raksturo stratēģijas
 funkcijas $\pi$ glabāšana tiešā veidā un pielāgošana algoritma darbības laikā,
 lai to tuvinātu optimālajai stratēģijai $\pi^*$. Tas ļauj izvairīties no
-grūtībām, ar ko nākas saskarties tīrajās vērtību aproksimācijas metodēs, tā kā
+grūtībām, ar ko nākas saskarties tīrajās vērtību aproksimācijas metodēs (sauktas
+arī par \textit{critic-only} metodēm), tā kā
 nav nepieciešams papildus darbs, lai atrastu labāko stratēģiju algoritma
 darbības beigās, vai arī labāko gājienu kādam stāvoklim algoritma darbības
 laikā. Tas ir nozīmīgs ieguvums nepārtrauktās darbību telpās, jo nav jāveic
 darbību telpas diskretizācija, un ir pat iespējams lietot procesa stāvokļus
-tiešā veidā bez atsevišķa parametru iegūšanas soļa.
+tiešā veidā bez atsevišķa parametru iegūšanas soļa. Šie ir būtiski ieguvumi, kas
+motivēja izvēli izmantot CACLA algoritmu, kas pieder pie tālāk apskatītajām
+\textit{actor-critic} metodēm, par pamatu darba mērķu sasniegšanai.
+% Šeit var
+% pretnostatīt, piemēram, \textit{critic-only} metodes, kas ietver plašāk pazīstamo
+% \textit{Q-learning} algoritmu \autocite{Watkins1989} \autocite{Watkins1992}. Lai
+% arī tas tiek sekmīgi izmantots nepārtrauktās stāvokļu telpās, lietojot to
+% nepārtrauktās darbību telpās, vides darbību telpas diskretizēšana ir neizbēgama.
+
 %TODO varbūt vajag pieminēt ATARI rakstu un pateikt, ka gribu darīt tāpat, kā
 %viņi ar value funkciju.
 
-Šeit mēs lietosim pielāgotu stratēģijas funkcijas definīciju, lai pieļautu
+Turpmāk nodaļā lietosim pielāgotu stratēģijas funkcijas definīciju, lai pieļautu
 iespēju lietot stratēģiju nosakošu parametru vektoru. Funkcija būs formā $\pi: S
 \times A \times \Psi \rightarrow [0,1]$, kur $\pi(s, a, \psi)$ norāda varbūtību
 atrodoties stāvoklī $s$ veikt darbību $a$ pie stratēģijas parametru vērtībām
