@@ -180,7 +180,32 @@ kā tas ir balstīts.
 %NOTE: pie cacla algoritma jāpastāsta, kas ir tie aspekti, kas padara viņu
 %pievilcīgu modifikācijām.
 
+
 \chapter{Konteksts}
+Stimulētā mācīšanāš ir plaša tēma, un problēmu risināšanai tajā daudz tiek
+izmantots funkciju aproksimācijas pētījumos sasniegtais. Tā rezultātā stimulētās
+mācīšanās uzdevumu risināšānai bieži tiek izmantotas metodes, kas aizgūtas vai
+arī tiešā veidā tiek lietotas citās mašīnmācīšanāš disciplīnās, piemēram,
+pārraudzītās mācīšanās nozarē (\textit{supervised learning}), tomēr atšķirīgu
+no pārējām disciplīnām stimulēto mācīšanos padara fakts, ka atalgojuma signāls,
+ko stimlētās mācīšanās aģentam būtu jāmaksimizē, var laikā nesakrist ar aģenta
+veiktajām darbībām. Lai arī stimulētajā mācīšanā izmantotās funkciju
+aproksimācijas metodes ir praktiski tādas pat, kā citās nozarēs, būtiski mainās
+veids, kādā izmantotie funkciju aproksimētāji tiek trenēti. Turlkāt vispārīgajā
+gadījumā var izrādīties, ka uzdevums ir pārlieku grūts, ja vide, kurā jādarobjas
+aģentam, netiek kādā veidā ierobežota. Parasti ierobežojums, kas tiek izmantots
+formulējot stimulētās mācīšanās uzdevumus ir, ka vides nākamais stāvoklis ir
+atkarīgs tikai un vienīgi no vides pašreizējā stāvokļa un aģenta veiktās
+darbības (šis process gan var nebūt deterministisks), un to neietekmē tālākā
+pagātnē notikušais, t.i., stimulētās mācīšanāš vide tiek formulēta kā Markova
+izvēles process.
+
+Lai sniegtu pilnīgāku priekšstatu par darbā izstrādātajiem CCACLA algoritma
+paveidiem un CACLA algoritmu, nodaļā tiek tuvāk apskatīti Markova izvēles
+procesi, funkciju aproksimācija, un tiek formāli definēta stimulētās mācīšanās
+problēma. Apskatot stimulētās mācīšanās tēmu, tiek pievērsta uzmanība arī
+\textit{actor-critic} metodēm, kas ir pamatā tālākā nodaļā aprakstītajiem CACLA
+un CCACLA algoritmiem.
 \section{Markova izvēles procesi} \label{chap:mdp}
 Nodaļā tiek apskatīti Markova izvēles procesi ar mērķi sniegt vispārīgu
 priekšstatu par tēmu. Tiek doti arī piemēri un paņēmieni, kas tieši neattiecas
