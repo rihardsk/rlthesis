@@ -206,7 +206,7 @@ procesi, funkciju aproksimācija, un tiek formāli definēta stimulētās mācī
 problēma. Apskatot stimulētās mācīšanās tēmu, tiek pievērsta uzmanība arī
 \textit{actor-critic} metodēm, kas ir pamatā tālākā nodaļā aprakstītajiem CACLA
 un CCACLA algoritmiem.
-\section{Markova izvēles procesi} \label{chap:mdp}
+\section{Markova izvēles procesi} \label{sec:mdp}
 Nodaļā tiek apskatīti Markova izvēles procesi ar mērķi sniegt vispārīgu
 priekšstatu par tēmu. Tiek doti arī piemēri un paņēmieni, kas tieši neattiecas
 uz darba mērķi, bet doti, lai vieglāk izprast jēdziena kontekstu, tomēr lielākā
@@ -566,7 +566,7 @@ izdevību, jeb $V^{\pi^*}$ vai $Q^{\pi^*}$, un ar \textit{actor} atsaucoties uz
 stratēģiju. Pēc analoģijas, stratēģijas aproksimācijas algoritmus, kas neizmanto
 kādu no vērtību funkcijām, dēvē par \textit{actor-only} algoritmiem, savukārt
 vērtību aproksimācijas algoritmus -- par \textit{critic-only} algoritmiem.
-Stratēģijas aproksimācijas algoritmi tiek tuvāk apskatīti \ref{chap:stim}
+Stratēģijas aproksimācijas algoritmi tiek tuvāk apskatīti \ref{sec:stim}
 nodaļā.
 
 \section{Funkciju aproksimācija}
@@ -734,7 +734,7 @@ konverģences garantijas vismaz lokālā optimuma sasniegšanai
 \subsubsection{Evolucionārās metodes}
 \fi
 
-\section{Stimulētā mācīšanās} \label{chap:stim}
+\section{Stimulētā mācīšanās} \label{sec:stim}
 Stimulētās mācīšanās (SM, angliski -- \textit{reinforcement learning}) pārziņā
 ir situācijas, kurās uzdevums jārisina mijiedarbojoties ar apkārtējo vidi. Tā
 vietā, lai problēmu risinātu, dodot algoritmam sagatavotus ieejas datus ar
@@ -747,17 +747,17 @@ mācīšanās vissvarīgākās raksturiezīmes. Stimulēto mācīšanos definē 
 mācīšanās metodes, bet gan risināmā problēma." Šīs pieejas ir interesantas, jo
 ir tuvas idealizētam skatījumam uz to, kā mācās dzīvnieki vai cilvēks.
 
-De facto modelis stimulētās mācīšanās problēmu formalizēšanai ir \ref{chap:mdp}
+De facto modelis stimulētās mācīšanās problēmu formalizēšanai ir \ref{sec:mdp}
 nodaļā apskatītie Markova izvēles procesi. Tiek pieņemts, ka aģentam sākotnēji
 nav pieejama nekāda informācija par procesu, izņemot, kādām kopām pieder procesa
 stāvokļi un pieejamās darbības.
 
 Dažādās konceptuālās MDP risināšanas pieejas, kas izriet no Bellmana
-vienādojumiem ir apskatītas nodaļā \ref{chap:mdp} Šajā nodaļā tiek pievērsta
+vienādojumiem ir apskatītas nodaļā \ref{sec:mdp} Šajā nodaļā tiek pievērsta
 padziļināta uzmanība stratēģijas aproksimēšanas algoritmiem. Bet vispirms
 jāsniedz īss ieskats \textit{temporal difference} soļu izmantošanu algoritmos.
 
-\subsection{Temporal difference soļi} \label{chap:td}
+\subsection{Temporal difference soļi} \label{sec:td}
 \textit{Temporal difference} (TD) soļi tiek izmantoti stāvokļu vērtības
 funkcijas aproksimācijā. Šis paņēmiens ir idejiski tuvāks vērtības
 aproksimācijas metodēm, bet, kā vēlāk redzēsim, ir izmantojams arī
@@ -895,7 +895,6 @@ prognožu kļūdas. Šī ideja ir būtiska \textit{continuous action-critic lear
 
 \chapter{Algoritmi}
 
-
 \section{CACLA algoritms}
 CACLA algoritma pamatā ir vienkārša ideja -- ja veiktā darbība paaugstina
 stāvokļa vērtības novērtējumu, tad šim stāvoklim ir derīgi pielāgot stratēģiju
@@ -914,7 +913,7 @@ Lai nodrošinātu darbību telpas izpēti, nepieciešams, lai galā izmantotā d
 atšķiras no ieteiktās, jeb $a_t \neq Ac(s_t, \psi_t)$. To var darīt, piemēram,
 ņemot $\pi(s_t, \psi_t)$ kā \textit{normālsadalījumu} ar centru $Ac(s_t,
 \psi_t)$. Kad ir iegūta veicamā darbība $a_t$, novēro atalgojumu $r_t$ un veic
-standarta TD soli vērtību funkcijai, kā tas aprakstīts sadaļā \ref{chap:td}
+standarta TD soli vērtību funkcijai, kā tas aprakstīts sadaļā \ref{sec:td}
 \[
 	V_{t+1}(s_t) \xleftarrow{\alpha_t(s_t)} r_t + \gamma V_t(s_{t + 1}).
 \]
@@ -1052,7 +1051,7 @@ interesanti, ka ieguvums ir arī attiecībā pret pārējiem testētajiem nepār
 darbības telpu algoritmiem.
 
 %\subsubsection{CACLA darbības analīze literatūrā}
-\section{CCACLA algoritms}\label{chap:ccacla}
+\section{CCACLA algoritms}\label{sec:ccacla}
 CACLA algoritms izmanto divus neironu tīklus, no kuriem viens aproksimē optimālo
 stratēģiju, bet otrs -- stāvokļu vērtības funkciju. Abu neironu tīklu parametri
 tiek pielāgoti, tiem savstarpēji mijiedarbojoties algoritma darbības laikā --
@@ -1327,7 +1326,7 @@ inicializē $\theta_0, \psi_0, s_0$ \\
 
 
 \section{Stimulētās mācīšanās vides}
-Nodaļā tiek sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{chap:exp}
+Nodaļā tiek sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{sec:exp}
 izmantoto stimulētās mācīšanās vižu īpatnībās. Tiek apskatītas 4 dažādas
 stimulētās mācīšanās vides -- cart-pole, mountain car, acrobat, helicopter.
 Visiem uzdevumiem ir nepērtrauktas stāvokļu telpas, tomēr to stāvokļu telpu
@@ -1421,9 +1420,9 @@ virs fiksētā punkta. %TODO: pārbaudīt šo
 TODO
 
 
-\section{Veiktie eksperimenti un rezultāti}\label{chap:exp}
+\section{Veiktie eksperimenti un rezultāti}\label{sec:exp}
 Darba gaitā tika veikti vairāki eksperimenti ar mērķi novērtēt
-nodaļā~\ref{chap:ccacla} aprakstīto algoritmu veiktspēju, un tos savstarpēji
+nodaļā~\ref{sec:ccacla} aprakstīto algoritmu veiktspēju, un tos savstarpēji
 salīdzināt. Lai arī darba gaitā tikai pastāvīgi veikti dažādi stimulētās
 mācīšanās eksperimenti, kas palīdzēja virzīt aprakstīto algoritmu izstrādi, šajā
 nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
@@ -1445,7 +1444,7 @@ ietvaros īpaši tiek apskatīti algoritmi, kas paredzēti nepārtrauktām darb�
 telpām, tad vienai no vidēm -- Cart Pole -- tika veiktas izmaiņas, lai tā
 pieņemtu skalārus lielumus kā darbības.
 
-Stimulētās mācišanās aģenti, kas realizē nodaļā~\ref{chap:ccacla} aprakstītos
+Stimulētās mācišanās aģenti, kas realizē nodaļā~\ref{sec:ccacla} aprakstītos
 algoritmus, tika rakstīti valodā Python. Algoritmos izmantotie neironu tīkli
 tika programmēti ar Theano bibliotēkas palīdzību \autocite{Bastien-Theano-2012}
 \autocite{bergstra+al:2010-scipy}, kas kompilē un optimizē simboliskas
