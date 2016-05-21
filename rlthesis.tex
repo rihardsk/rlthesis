@@ -448,7 +448,7 @@ kas ļauj izteikt optimālo stratēģiju arī ar stāvokļu-darbību vērtības 
 
 Augstāk redzamie vienādojumi ļauj kategorizēt veidus, kādos risināmi MDP.
 
-\subsubsection{Modeļa aproksimācija}
+\subsubsection{Modeļa aproksimācija}\label{sec:model-based}
 Modeļa aproksimācijas pieejā tiek mēģināts tuvināti atrast dotās MDP nezināmos
 parametrus -- pāreju funkciju $T$ un atalgojuma funkciju $R$ --, lai no tām
 atvasinātu aproksimētās MDP optimālo kontroles shēmu. Modeļa meklēšanā tiek
@@ -908,6 +908,24 @@ prognožu kļūdas. Šī ideja ir būtiska \textit{continuous action-critic lear
 \textit{actor-critic} metožu.
 
 \chapter{Algoritmi}
+CACLA un darbā ieviestie CCACLA algoritma paveidi ir stimulētās mācīšanās
+algoritmi, kas spējīgi mācīties vidēs ar nepārtrauktām stāvokļu un darbību
+telpām. Tie pieder pie \textit{actor-critic} algoritmu saimes -- tie savas
+darbības laikā uztur aktiera komponenti, kas atbild par aģenta darbības
+stratēģiju, un kritiķa komponenti, kas glabā informāciju par katra stāvokļa
+vērtīgumu. Šī pieeja ir pievilcīga darba sākumā pausto ideju par iekšēja vides
+modeļā veidošanu kontekstā -- uz aktiera un kritiķa komponentēm jau var
+skatīties kā uz kaut ko, kas uztur no uzdevuma vides atvasinātu modeli. Šāds
+modelis gan neder vides dinamikas paredzēšanai, kā tas būtu iespējams
+modeļbāzētās MDP risināšanas metodēs, kas īsumā apskatītas nodaļā
+\ref{sec:model-based}, bet tas tomēr ietver kādus vides aspektus, kas saistīti
+ar atalgojuma signālu un optimālo stratēģiju. CCACLA algoritmos veiktās
+modifikācijas, kas to atšķir no CACLA, visas ir veiktas ar mērķi likt aktiera un
+kritiķa komponentēm tuvoties pilnīgākam vides modelim. Lai arī tas vēl joprojām
+netiek darīts ar mērķi no šī modeļa tiešā veidā atvasināt optimālo stratēģiju,
+kā tas tiek darīts modeļbāzētās metodēs (un nav pamata uzskatīt, ka modelis tam
+vispār būtu piemērots), var izteikt hipotēzi, ka papildus informācija palīdzēs
+aģentam mācīties, veicot sava veida nepārraudzīto mācīšanos.
 
 \section{CACLA algoritms}
 CACLA algoritma pamatā ir vienkārša ideja -- ja veiktā darbība paaugstina
