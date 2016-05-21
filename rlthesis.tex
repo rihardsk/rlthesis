@@ -627,7 +627,7 @@ Par lineāru funkciju dēvē tādu funkciju, ko var izteikt formā
 kur $\Theta$ ir funkcijas parametru vektors un $D_\Theta = D_\phi$.
 % TODO D ir definēts telpām. jāpielāgo definīcija, vai šis jāmaina
 Stimulētās mācīšanās kontekstā parasti tiek pieņemts, ka $\phi$ ir kāda funkcija
-parametru iegūšanai no MDP stāvokļa $\phi : S \times \Phi$, kur $\Phi$ ir kāda
+parametru iegūšanai no MDP stāvokļa $\phi : S \rightarrow \Phi$, kur $\Phi$ ir kāda
 parametru telpa. Tad, lineāru funkciju izmantojot, piemēram, stāvokļu vērtības
 funkcijas aproksimēšanai, to var izteikt formā
 \[
@@ -647,15 +647,19 @@ sauc par \textit{tile coding}, kas tika minēts jau iepriekš.
 
 Lineārajiem funkciju aproksimētājiem nepārtrauktās telpās piemīt iepriekšējā
 sadaļā minētā īpašība par novērojumu vispārināšanu iepriekš neapskatītiem telpas
-punktiem. Tomēr stāvokļu un darbību telpas diskretizācija ir iemesls, kāpēc šajā
-darbā priekšroka tiek dota tādiem nelineārajiem funkciju aproksimētājiem kā
-neironu tīkli. Labākā telpas diskretizācijas pieeja var būt atkarīga no
-uzdevuma. Tas ir pretrunā ar vēlmi atrast pēc iespējas vispārīgu pieeju
-stimulētās mācīšanās uzdevumu risināšanai nepārtrauktās telpās. Turklāt
-lineāriem funkciju aproksimētājiem ir citas problēmas, ar kurām var ar dažādiem
-panākumiem cīnīties, kas vairāk aprakstītas \autocite{Hasselt2012}.
+punktiem. Šajā darbā gan lineārā funkciju aproksimēšana tiešā veidā netiek
+lietota, jo priekšroka tiek dota tādiem nelineārajiem funkciju aproksimētājiem
+kā neironu tīkli. Lineārā funkciju aproksimēšana gan darbā parādās netiešā
+veidā. Vēlāk aprakstītajos CACLA un CCACLA algoritmos tiek izmantoti neironu
+tīkli ar lineāru pēdējo slāni (ar identitātes aktivācijas funkciju), kas nozīmē,
+ka to pēdējais slānis darbojas, kā lineārs funkciju aproksimators. Tiešā veidā
+lineāro funkciju aproksimēšanu gan traucē izmantot arī citas problēmas (ar kurām
+gan var ar dažādiem panākumiem cīnīties), kas vairāk aprakstītas
+\autocite{Hasselt2012}.
 
 \subsubsection{Neironu tīkli un nelineārā funkciju aproksimēšana}
+Neironu tīkliem ir īpaša nozīme darba ietvaros, jo tie tiek izmantoti kā aktiera
+un kritiķa komponentes CACLA un jaunizveidotajā CCACLA algoritmā.
 Neironu tīkli pieder pie nelineārajiem funkciju aproksimētājiem. Tie ir veidoti
 uz līdzību pamata ar bioloģisko neironu tīkliem smadzenēs un parasti tiek
 formulēti kā savstarpēji savienotu "neironu" sistēma, kas dotus ieejas datus
