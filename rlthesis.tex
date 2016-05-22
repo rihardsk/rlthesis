@@ -507,7 +507,7 @@ Kad modelis ir zināms, optimālās stratēģijas atrašana galīgam stāvokļu 
 darbību telpām ir samērā vienkārša. Var tikt izmantots, piemēram, \textit{value
   iteration} vai \textit{policy iteration} algoritms, kam ir var pierādīt, ka
 tie konverģē uz optimālo $\pi^*$ \autocite{Barto}. Tomēr vispārīgā gadījumā MDP
-nepārtrauktās stāvokļu telpās situācija ir krietni sarežģītāka -- katram katram
+nepārtrauktās stāvokļu telpās situācija ir krietni sarežģītāka -- katram
 stāvoklim optimālo stratēģiju atrast nav iespējams \autocite{Otterlo}. Piemēram,
 iepriekš minētie \textit{value iteration} un \textit{policy iteration} algoritmi
 satur ciklu pa visu stāvokļu kopu, kas algoritmu padara nelietojamu, ja stāvokļu
@@ -966,7 +966,7 @@ telpām. Tie pieder pie \textit{actor-critic} algoritmu saimes -- tie savas
 darbības laikā uztur aktiera komponenti, kas atbild par aģenta darbības
 stratēģiju, un kritiķa komponenti, kas glabā informāciju par katra stāvokļa
 vērtīgumu. Šī pieeja ir pievilcīga darba sākumā pausto ideju par iekšēja vides
-modeļā veidošanu kontekstā -- uz aktiera un kritiķa komponentēm jau var
+modeļa veidošanu kontekstā -- uz aktiera un kritiķa komponentēm jau var
 skatīties kā uz kaut ko, kas uztur no uzdevuma vides atvasinātu modeli. Šāds
 modelis gan neder vides dinamikas paredzēšanai, kā tas būtu iespējams
 modeļbāzētās MDP risināšanas metodēs, kas īsumā apskatītas nodaļā
@@ -1144,22 +1144,22 @@ jo tā nosaka, kādas darbības tiek veiktas katrā stāvoklī, kas laika gaitā
 ietekmē stāvokļu vērtību, savukārt optimālās stratēģijas aproksimācija tiek
 pielāgota atkarībā no stāvokļu funkcijas izmaiņām, ņemot vērā, vai stratēģijas
 noteiktā darbība dotā stāvoklī pēc izpildes palielina stāvokļa vērtību. Šīs
-savstarpējās mijiedarbības rezultātā algritms ir spējīgs mācīties, bet rodas
+savstarpējās mijiedarbības rezultātā algoritms ir spējīgs mācīties, bet rodas
 jautājums, vai šādi netiek darīts lieks darbs. Gan stāvokļu vērtības funkcijas
 aproksimācijas $V$ gan optimālās stratēģijas funkcijas aproksimācijas $A$ domēns
 ir vides stāvokļu telpa $S$. Ir saprātīgi pieņemt, ka abu funkciju vērtības
 varētu noteikt līdzīgas pazīmes stāvokļu telpā. Abu attiecīgo neironu tīklu
-otrais slānis varētu būt trenēšānas rezultātā iemācījies izejā dot līdzīgus
+otrais slānis varētu būt trenēšanas rezultātā iemācījies izejā dot līdzīgus
 aktivācijas vienos un tajos pašos stāvokļus, tāpēc rodas jautājums, vai abus
 tīklus nav iespējams apvienot.
 
 Skatījumu uz neironu tīkliem kā hierarhiskiem pazīmju izgūšanas rīkiem sniedz
 pēdējā laikā lielu popularitāti ieguvusī dziļās mācīšanās paradigma. Tās pamatā
 ir ideja, ka daudzos dažādos ar reālo pasauli saistītos domēnos, piemēram, attēlu
-vai runas atpazīšānā, dabīgās valodas apstrādē u.c., pētāmos objektus ir
+vai runas atpazīšanā, dabīgās valodas apstrādē u.c., pētāmos objektus ir
 iespējams raksturot ar hierarhisku vairāklīmeņu pazīmju kopumu \autocite{Lecun2015}. Tas ļauj
-izmantot vairākļīmeņu neironu tīklus šo pazīmju izgūšanai. %TODO piemērs
-Lai arī šajā darbā apskatītajās stimulētās mačīšanās problēmas atāvokļu telpas
+izmantot vairāklīmeņu neironu tīklus šo pazīmju izgūšanai. %TODO piemērs
+Lai arī šajā darbā apskatītajās stimulētās mācīšanās problēmas stāvokļu telpas
 nav tik sarežģītas, lai būtu nepieciešamība izmanot dziļus neironu tīklus, tomēr
 arī uz sekliem neironu tīkliem var raudzīties kā uz ierīcēm, kas izgūst zema
 līmeņa pazīmes, ko pēdējais tīkla līmenis ir iemācījies apstrādāt. Šis skatījums
@@ -1180,7 +1180,7 @@ kopīgus slāņus, daļa optimālās stratēģijas funkcijas parametru tiktu pie
 katrā solī, mainoties stāvokļu vērtību funkcijas parametriem. Tas ļautu aktiera
 komponentei mācīties arī, kad nav zināma darbība, kas konkrētajā stāvoklī
 uzlabotu stāvokļa vērtību. Tas novestu pie \textit{unsupervised learning} ideju
-izmantošanas trenēšansa procesā. %TODO: pārformulēt pēdējo teikumu.
+izmantošanas trenēšanas procesā. %TODO: pārformulēt pēdējo teikumu.
 
 Šajā nodaļā tiek apskatītas vairākas CACLA algoritma modifikācijas, kuras to
 kopīgo īpašību dēļ autors ievieto vienā algoritmu grupā ar kopīgo nosaukumu
@@ -1217,9 +1217,9 @@ $a$ un stāvokļa vērtībā. Šīs vērtības tad attiecīgi var izteikt, kā
   a = Ac(s), Ac(s) = f_v\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{equation}, kur $s$ ir
 ieejas vektors (stāvoklis), $W_h$ ir slēptā slāņa svaru matrica, $W_a$ ir
-darbības slāņā svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
-slēptā slāņā aktivācijas funkcija, $f_a$ ir darbības slāņā aktivācijas funkcija
-un $f_v$ ir vērtības slāņā aktivācijas funkcija. Ar ieviestajiem mainīgajiem
+darbības slāņa svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
+slēptā slāņa aktivācijas funkcija, $f_a$ ir darbības slāņa aktivācijas funkcija
+un $f_v$ ir vērtības slāņa aktivācijas funkcija. Ar ieviestajiem mainīgajiem
 varam arī izteikt funkciju $Av$
 \begin{equation}\label{eq:ccacla-actval}
   Av(s) = \left(f_a(h^{(1 \ldots D(A))}), f_v(h^{(D(A) + 1)})\right), \text{ kur } 
@@ -1281,7 +1281,7 @@ darbības veikšanas. Tas noved pie funkcijas $Aov$
   Aov_\Theta:S \rightarrow A \times S \times \mathbb{R}
 \end{equation}
 Līdz ar funkciju \ref{eq:ccacla-act} un \ref{eq:ccacla-val} tagad ieviesīsim arī
-funkciju $St$, kas vēlāk tiek izmantota, CCACLA-state algiritma pseidokodā, lai
+funkciju $St$, kas vēlāk tiek izmantota, CCACLA-state algoritma pseidokodā, lai
 atvieglotu gradient descent soļu pierakstu
 \begin{equation}\label{eq:ccacla-obs}
   s' = St(s), St(s) = f_s(f_h(s^T \cdot W_h) \cdot W_a)
@@ -1300,9 +1300,9 @@ kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
 
 Lai aprakstītu CCACLA-state pseidokodā pietrūkst vēl viena funkcija. Atšķirība no
 CCACLA pamatalgoritma ir tajā, ka tagad nākas šķirot gadījumus, kuros
-trenēšanai kā ieejas dati ir pieejama stāvokļa vārtība, kuros -- nākamais
+trenēšanai kā ieejas dati ir pieejama stāvokļa vērtība, kuros -- nākamais
 stāvoklis, kuros -- optimālā darbība, un kuros ir pieejama kāda kombinācija no
-minētajām vērtībām. Tādēļ nākas ieviest funkciju, nākamā stāvokļa paredzēšānai
+minētajām vērtībām. Tādēļ nākas ieviest funkciju, nākamā stāvokļa paredzēšanai
 un esošā stāvokļa vērtības paredzēšanai.
 \begin{multline}\label{eq:ccacla-obsval}
   Ov: S \rightarrow S \times \mathbb{R},
@@ -1310,7 +1310,7 @@ un esošā stāvokļa vērtības paredzēšanai.
                  f_v(h^{(D(A) + D(S) + 1)})\right), \\
   \text{ kur } h = f_h\left(f_h(s^T \cdot W_h) \cdot W_v\right)
 \end{multline}
-Ar tās un iepriekš definēto funkciju paldīzību varam ideju definēt precīzāk
+Ar tās un iepriekš definēto funkciju palīdzību varam ideju definēt precīzāk
 algoritmā \ref{alg:ccacla-state}.
 
 \begin{spacing}{1}
@@ -1346,7 +1346,7 @@ inicializē $\theta_0, \psi_0, s_0$ \\
 \end{spacing}
 
 \subsection{CCACLA ar paredzēšanu nākotnē}
-Iepriekšējā sadaļā aprakstītais CCACLA algoritms ar stāvokļa paredzēšānu ir
+Iepriekšējā sadaļā aprakstītais CCACLA algoritms ar stāvokļa paredzēšanu ir
 veidots ar mērķi trenēšanas laikā likt stimulētās mācīšanās aģentam veidot
 iekšēju vides modeli. Algoritma formulējumā gan var ievērot kādu īpatnību.
 Funkcija $Aov(s) = (a, s', v)$ dotam stāvoklim $s$ atgriež optimālo darbību $a$
@@ -1414,9 +1414,9 @@ CACLA pozitīvās īpašības. Nodaļā aprakstītie eksperimenti tika veidoti a
 pēc iespējas vienādos apstākļos salīdzināt visu algoritmu sniegumu. Algoritmi
 tika darbināti vairākās atšķirīgās stimulētās mācīšanās vidēs, kas izvēlētas ar
 mērķi mēģināt izcelt algoritmu atšķirības, it īpaši cenšoties pārbaudīt, vai
-hipotēze, ka CCACLA algiritmā izmantotā papildus informācija par vides dinamiku
+hipotēze, ka CCACLA algoritmā izmantotā papildus informācija par vides dinamiku
 palīdz mācīšanās procesā, un ka nepārraudzītā mācīšanās, ko veic aktiera
-komponentes neironu tīkla slēptais slēnis uz kritiķa komponentes biežāk
+komponentes neironu tīkla slēptais slānis uz kritiķa komponentes biežāk
 notiekošo izmaiņu rēķinam, dod kādus ieguvumus. Jāpiebilst, ka veiktajos
 eksperimentos nebija būtiski mēģināt demonstrēt pēc iespējas labāku algoritmu
 sniegumu un mācīšanās ātrumu, bet gan demonstrēt algoritmu savstarpējās
@@ -1426,8 +1426,8 @@ sastopamajiem rezultātiem CACLA algoritmam.
 \section{Stimulētās mācīšanās vides}
 Nodaļā tiek sniegts īss ieskats tālāk aprakstītajos eksperimentos~\ref{sec:exp}
 izmantoto stimulētās mācīšanās vižu īpatnībās. Tiek apskatītas 3 dažādas
-stimulētās mācīšanās vides -- cart-pole, mountain car, acrobat.
-Visiem uzdevumiem ir nepērtrauktas stāvokļu telpas, tomēr to stāvokļu telpu
+stimulētās mācīšanās vides -- cart-pole, mountain car, acrobot.
+Visiem uzdevumiem ir nepārtrauktas stāvokļu telpas, tomēr to stāvokļu telpu
 dimensiju skaits, kā arī darbību telpu veids un dimensiju skaits atšķiras.
 
 \subsection{Cart-pole vide}
@@ -1469,7 +1469,7 @@ Mountain car uzdevumā aģentam ir jāuzbrauc no parabolas tipa ieplakas (divās
 dimensijās) ar mašīnu, kam pietrūkst jaudas, lai to izdarītu bez ieskrējiena.
 Lai pārvarētu uzdevumu, aģentam nākas vairākas reizes pārvietoties augšā
 pamīšus pretējās ieplakas malās, lai iegūtu potenciālo enerģiju, kas ļautu no
-ieplakas izbraukt. Uzdeums ir interesants ar to, ka, lai nonāktu stāvoklī ar
+ieplakas izbraukt. Uzdevums ir interesants ar to, ka, lai nonāktu stāvoklī ar
 augstāko atalgojumu (gala stāvoklī ieplakas augšā), aģentam nākas sākotnēji
 virzīties virzienā prom no mērķa stāvokļa.
 
@@ -1477,12 +1477,12 @@ Vides stāvokli raksturo pāris $(x, v) \in \mathbb{R}^2$, kur $x \in (-1.2; 0.6
 ir mašīnas pozīcija uz ieplakas virsmas un $v \in (-0.07; 0.07)$ ir mašīnas
 ātrums.
 
-Videi ir 1 diemnsijas diskrēta darbību telpa. Katrā laika vienībā pieejamās
+Videi ir 1 dimensijas diskrēta darbību telpa. Katrā laika vienībā pieejamās
 darbības ir \textit{reverse}, \textit{neutral} un \textit{forward}, kas
-attiecīgi nozīmē braukšanu uz atpakaļu, braukšanu brīvgaitā un braukšanu uz
+attiecīgi nozīmē braukšanu atpakaļ, braukšanu brīvgaitā un braukšanu uz
 priekšu.
 
-\subsection{Acrobat vide}
+\subsection{Acrobot vide}
 Acrobot uzdevumā aģentam ir jādarbina divu posmu mehānisms ar aktuatoru starp
 abiem posmiem. Posmi brīvi nokarājas, piestiprināti fiksētā punktā (eņģē).
 Mērķis ir darbinot aktuatoru iesvārstīt sistēmu tā, lai abi posmi paceltos virs
@@ -1494,22 +1494,22 @@ aģentam izdodas iekustināt sistēmu tā, lai tā paceltos virs fiksētā posma
 No atalgojuma signāla vien nav iespējams saprast, kā no sākotnējā stāvokļa
 nonākt līdz gala stāvoklim. Tā kā darbā apskatītajos algoritmos tiek izmantota
 izpētes stratēģija, kas izvēlētajām darbībām pievieno normālsadalījuma troksni,
-tad, sākot treniņu, aģentam izmaiņas atalgojma signālā iespējams sasniegt tikai
+tad, sākot treniņu, aģentam izmaiņas atalgojuma signālā iespējams sasniegt tikai
 nejaušu darbību rezultātā.
 %TODO: pēdējos pāris teikumus pārcelt pie kaut kādiem secinājumiem.
 
 Vides stāvokli raksturo kortežs $(\theta_1, \theta_2, \omega_1, \omega_2) \in
-\mathbb{R}^4$, kur $\theta_1 \in [-\pi; \pi]$ ir leņķis starp fiskēto pounktu un
+\mathbb{R}^4$, kur $\theta_1 \in [-\pi; \pi]$ ir leņķis starp fiksēto punktu un
 pirmo posmu, $\theta_2 \in [-\pi; \pi]$ ir leņķis starp pirmo un otro posmu,
 $\omega_1 \in [-4\pi; 4\pi]$ ir leņķiskais ātrums attiecībā pret $\theta_1$,
 $\omega_2 \in [-9\pi; 9\pi]$ ir leņķiskais ātrums attiecībā pret $\theta_2$.
 
-Videi ir 1 diemnsijas diskrēta darbību telpa. Katrā laika vienībā ir pieejamas 3
+Videi ir 1 dimensijas diskrēta darbību telpa. Katrā laika vienībā ir pieejamas 3
 darbības ${0, 1, 2}$, kas attiecīgi nozīmē, ka aktuators pielieto spēku $-1$,
 $0$ vai $1$ (patvaļīgas mērvienības, kas piemeklētas atkarībā no posmu masas un
 garuma).
 
-Katrā stāvokī aģents saņem atlagojumu 0, ja tiek sasniegts mērķa stāvoklis, un 1
+Katrā stāvoklī aģents saņem atalgojumu 0, ja tiek sasniegts mērķa stāvoklis, un 1
 -- citādi. Mērķa stāvoklis parasti tiek definēts kā tāds, kur abi posmi atrodas
 noteiktā augstumā virs fiksētā punkta.
 
@@ -1527,7 +1527,7 @@ nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
 savstarpējo salīdzinājumu.
 
 \subsection{Eksperimentu tehniskā realizācija}
-Stimulētās mācīšanās eksperimentu vadīšānai tikai izmantots RL-Glue
+Stimulētās mācīšanās eksperimentu vadīšanai tikai izmantots RL-Glue
 programmēšanas ietvars \autocite{rl-glue}. RL-Glue ietvars sniedz iespēju veidot
 modulārus stimulētās mācīšanās eksperimentus, kur uzdevuma vide, aģents un
 eksperiments ir atsevišķas komponentes, starp kurām komunikāciju vada RL-Glue
@@ -1535,18 +1535,18 @@ programmatūra. Komponentes ir valodneatkarīgas. Tas nodrošināja iespēju izm
 publiski pieejamas, iepriekš implementētas stimulētās mācīšanās vides izstrādāto
 aģentu pārbaudīšanai. 
 
-Eksperimentos tika izmantotas vides, kas piejamas RL-Library interneta vietnē
+Eksperimentos tika izmantotas vides, kas pieejamas RL-Library interneta vietnē
 \autocite{rl-library}. Tās ir programmētas valodā Java, un realizē diskrētas vai
 nepārtrauktas stāvokļu telpas un diskrētas darbību telpas. Tā kā šī darba
 ietvaros īpaši tiek apskatīti algoritmi, kas paredzēti nepārtrauktām darbību
 telpām, tad vienai no vidēm -- Cart Pole -- tika veiktas izmaiņas, lai tā
 pieņemtu skalārus lielumus kā darbības.
 
-Stimulētās mācišanās aģenti, kas realizē nodaļā~\ref{sec:ccacla} aprakstītos
+Stimulētās mācīšanās aģenti, kas realizē nodaļā~\ref{sec:ccacla} aprakstītos
 algoritmus, tika rakstīti valodā Python. Algoritmos izmantotie neironu tīkli
 tika programmēti ar Theano bibliotēkas palīdzību \autocite{Bastien-Theano-2012}
 \autocite{bergstra+al:2010-scipy}, kas kompilē un optimizē simboliskas
-matemātiskas izteiksmes darbināšānai uz datora procesora vai videokartes, kā arī
+matemātiskas izteiksmes darbināšanai uz datora procesora vai videokartes, kā arī
 ļauj veikt automātisku funkciju atvasināšanu, kas ievērojami atvieglo neironu
 tīklu trenēšanu, un ļauj viegli veidot sarežģītas arhitektūras neironu tīklus.
 Tas būtiski atvieglo CCACLA algoritma variantos izmantotās kombinētās neironu
@@ -1557,7 +1557,7 @@ definēšanai \autocite{lasagne}.
 Lai nodrošinātu iespēju veidot atkārtojamu eksperimentu specifikācijas, kā arī
 darbināt eksperimentus paralēli un uz vairākiem tīklā saslēgtiem datoriem, tika
 izmantota ipyparallel bibliotēka \autocite{ipyparallel} un pašizveidots
-kofigurācijas failu pieraksts paralēlu RL-Glue eksperimentu specificēšanai, kā
+konfigurācijas failu pieraksts paralēlu RL-Glue eksperimentu specificēšanai, kā
 arī attiecīgā programmatūra eksperimentu darbināšanai.
 %TODO: linki uz abiem repozitorijiem
 
@@ -1574,7 +1574,7 @@ neironi slēptajā slānī. CCACLA, CCACLA ar stāvokļa paredzēšanu un CCACLA
 paredzēšanu nākotnē algoritmos katrā tika izmantots viens neironu tīkls ar 20
 neironiem slēptajā slānī. Ieejas un izejas slāņu neironu skaits bija atkarīgs no
 konkrētā uzdevuma stāvokļu un darbību telpām. Visiem neironu tīkliem slēptajā
-slānī tika izmantota \textit{rectify} aktivācijas funckija un identitātes
+slānī tika izmantota \textit{rectify} aktivācijas funkcija un identitātes
 aktivācijas funkcija izejas slānī. Aģentu trenēšanas procesā tika izmantots
 aditīvs troksnis ar sadalījumu $\mathcal{N}(0, 0,05)$, kas tika pievienots
 izvēlētajām darbībām, lai veicinātu stāvokļu telpas izpēti.
@@ -1586,7 +1586,7 @@ skaitu, tika izmēģināta $l1$ un $l2$ regularizācija, tika mēģināts izmant
 augstiem mācīšanās tempa uzstādījumiem. Neviena no šīm izmaiņām tomēr netiek
 atspoguļota gala rezultātos, jo to mērķis ir parādīt algoritmu savstarpējo
 salīdzinājumu, pie vienādas un pēc iespējas vienkāršākas hiperparametru izvēles.
-Turlkāt netika novērots, ka kāda no minētajām izmaiņām sniegtu būtisku ieguvumu
+Turklāt netika novērots, ka kāda no minētajām izmaiņām sniegtu būtisku ieguvumu
 aģentu trenēšanas procesā.
 
 
@@ -1613,7 +1613,7 @@ netika novērots vairāk kā 2 no 10 eksperimentos.
 
 
 \subsection{Rezultāti}
-Veicot eksperiemntus problēmas sagādāja fakts, ka algoritmi bija spējīgi
+Veicot eksperimentus problēmas sagādāja fakts, ka algoritmi bija spējīgi
 mācīties pie dažādām mācīšanās ātruma (learning rate) parametra vērtībām.
 Pārsvarā novērojumi rādīja, ka CACLA un CCACLA ar paredzēšanu nākotnē derēja
 līdzīgi mācīšanās ātrumi, un CCACLA pamatalgoritmam un CCACLA ar stāvokļa
@@ -1637,9 +1637,9 @@ tendence iegūtajam atalgojumam tomēr turpināja būt augšupejoša. Tādējād
 turpinot mācīties, tomēr iespējams iegūt aģentu ar labāku stratēģiju, pastāvīgi
 veicot aģenta novērtēšanu.
 
-Kā jau iepriekš tika minēts, algiritmus CACLA (attēls \ref{fig:pole-cacla}) un
+Kā jau iepriekš tika minēts, algoritmus CACLA (attēls \ref{fig:pole-cacla}) un
 CCACLA-future (attēls \ref{fig:pole-ccacla-future}) varēja trenēt ar krietni
-augstāku mācīšanās ātrumu, tāpēc var novērot, ka iegūtā atlagojuma līknes šiem
+augstāku mācīšanās ātrumu, tāpēc var novērot, ka iegūtā atalgojuma līknes šiem
 algoritmiem ir daudz gludākas par CCACLA-basic un CCACLA-state, t.i. mācīšanās
 procesā bija jāsaskaras ar mazāku tendenci procesam diverģēt. Tomēr uz šī rēķina
 abu algoritmu mācīšanās temps bija lēnāks. Zīmīgi gan ir tas, ka, neskatoties uz
@@ -1734,10 +1734,10 @@ izdevās laika gaitā uzlabot rezultātus, kas liecina par mācīšanos.
 
 Arī CCACLA-future algoritms acrobot vide sagādāja lielākas problēmas nekā
 cart-pole. Toties, salīdzinot ar CACLA, vērojams, ka tam ir mazāka rezultātu
-izkliede, un lielākā daļa eksperimenta instaču laika gaitā uzlabo rezultātus,
+izkliede, un lielākā daļa eksperimenta instanču laika gaitā uzlabo rezultātus,
 kas liecina par mācīšanos (attēls \ref{fig:acrobot-ccacla-future}).
 
-CCACLA-state algoritmam vairāku eskperimenta instanču rezultātus nācās atmest,
+CCACLA-state algoritmam vairāku eksperimenta instanču rezultātus nācās atmest,
 jo tajos mācīšanās bija diverģējusi. No atlikušajiem rezultātiem var secināt, ka
 arī šim algoritmam uzdevums sagādā problēmas, tomēr ir vērojama mazāka rezultātu
 izkliede nekā CACLA algoritmam (attēls \ref{fig:acrobot-ccacla-future}).
@@ -1748,11 +1748,11 @@ risinājums būtu vēl samazināt mācīšanās ātrumu, tomēr, tā kā tas iev
 palielināt trenēšanas laiku (šim un pārējiem acrobot eksperimentiem), tas netika
 darīts.
 
-Visu algoritmu kopējie rezutāti apskatāmi attēlā \ref{fig:acrobot-all}. Redzams,
+Visu algoritmu kopējie rezultāti apskatāmi attēlā \ref{fig:acrobot-all}. Redzams,
 ka CCACLA-future sasniedz augstāko atalgojumu, tomēr kāpums attiecībā pret
 treniņa sākumu ir maznozīmīgs, kas atspoguļo katra algoritma eksperimentos
 novērotās mācīšanās problēmas. Kopumā jāsecina, ka neviens no algoritmiem līdz
-derīgam mācīšanās rezultātam ar izmanto stāvoļu telpas izpētes shēmu
+derīgam mācīšanās rezultātam ar izmanto stāvokļu telpas izpētes shēmu
 (normālsadalījuma trokšņa pievienošana izvēlētajām darbībām) nav spējīgs nonākt.
 Mērķa stāvoklis tiek sasniegts tikai dažas reizes epohā.
 
@@ -1836,7 +1836,7 @@ CACLA un CCACLA-future algoritmiem šajā uzdevumā veicās labāk. CACLA algori
 eksperimentos visās eksperimenta instancēs bija vērojams iegūtā atalgojuma
 pieaugums (attēls \ref{fig:car-cacla}), neskatoties uz ļoti lielo rezultātu
 izkliedi. Šajā ziņā rezultāti ir pārsteidzoši, jo ļoti lielā iegūtā
-atlagojuma amplitūda, kas tika novērota secīgiem secīgām eksperiementa epohām,
+atalgojuma amplitūda, kas tika novērota secīgiem secīgām eksperimenta epohām,
 liktu liktu domāt par mācīšanās diverģēšanu, tomēr, apskatot iegūtā atalgojuma
 vidējo vērtību grafikus, nākas secināt, ka algoritms tomēr mācās. CCACLA-future
 algoritmam rezultāti ir līdzīgi, tomēr tam bija vērojams krietni mazāks
@@ -1945,7 +1945,7 @@ palēnina CCACLA-future mācīšanās ātrumu uz pārējo fona, dodot sava veida
 pretsparu regulārajām apvienotā neironu tīkla parametru izmaiņām, kas notiek uz
 stāvokļu vērtības funkcijas izmaiņu rēķina. Apskatot CCACLA-basic algoritma
 sniegumu, iepriekš minētie apsvērumi vedina domāt, ka arī šim algoritmam būtu
-iespējams uzlabot mācīšanās rezultātus, vienkārši samazinot mācīšanāš ātruma
+iespējams uzlabot mācīšanās rezultātus, vienkārši samazinot mācīšanās ātruma
 parametra vērtību. Novērojumus, ka CACLA algoritms pie tādās pašas mācīšanās
 ātruma parametra vērtības mācās lēnāk nekā CCACLA-basic un CCACLA-state, var
 skaidrot ar to, ka CACLA algoritma aktiera komponente, kas ir atbildīga par
@@ -1958,7 +1958,7 @@ ar troksni, kas rodas, pielāgojot funkciju kopīgos parametrus, vērtību funkc
 izmaiņu rezultātā.
 
 Otrs ievērības cienīgais novērojums cart-pole eksperimentos bija, ka CCACLA
-algoritmos neironu tīklu apvienošana ļauj sasniegt līdzvērtībus rezultātus ar
+algoritmos neironu tīklu apvienošana ļauj sasniegt līdzvērtīgus rezultātus ar
 divas reizes mazāk neironiem slēptajā slānī, salīdzinot ar CACLA algoritmu. Tas
 apstiprina izteikto ideju, ka abas algoritma komponentes no stāvokļu telpas
 izgūst līdzīgas pazīmes. Šeit gan jāpiemin novērojums, ka tā kā gan vērtību gan
@@ -1984,13 +1984,13 @@ stāvokļu vērtību funkcijas pielāgojumu rezultātā, un kādu iespaidu tas a
 salīdzinot ar CACLA algoritmu, kam šāda problēma nepastāv. Diemžēl izrādījās, ka
 ne tikai CCACLA algoritmi, bet arī CACLA algoritms mācīšanās procesā nebija
 spējīgs nonākt pie jebkāda ievērības cienīga rezultāta, tāpēc šādu salīdzinājumu
-praktiski nevar veikt. Sliktie rezultāti ir skaidrojami ar lietotās izētes
+praktiski nevar veikt. Sliktie rezultāti ir skaidrojami ar lietotās izpētes
 stratēģijas nepiemērotību saņemtā atalgojuma signāla tipam, kas abos uzdevumos
 nedod informāciju par to, kā no zema atalgojuma stāvokļiem (atalgojums -1)
 nonākt pie kāda no mērķa stāvokļiem (atalgojums 0). Darba ietvaros netika
 meklētas alternatīvas izmantotajai izpētes stratēģijai. Apskatot algoritmu
 darbību individuāli gan bija iespējams veikt novērojumus, kas varētu liecināt,
-ka CCACLA algoritmiem papildus grūtības sagādā tikšāna galā ar stāvokļu vērtību
+ka CCACLA algoritmiem papildus grūtības sagādā tikšana galā ar stāvokļu vērtību
 funkcijas pielāgošanas radīto troksni, proti, sākotnējās eksperimentu epizodēs
 stratēģijas funkcijai bija tendence dot priekšroku darbībām, kas traucēja nonākt
 līdz mērķa stāvoklim (mountain car uzdevumā, piemēram, braukt pretējā virzienā),
@@ -2020,7 +2020,7 @@ vērtības. Viena no CCACLA algoritma versijām CCACLA-future demonstrēja, ka
 papildus informācijas izmantošana treniņa procesā, liekot aģentam paredzēt arī
 stāvokli, kādā nonāks vide, pēc tā izvēlētās darbības, kā arī stāvokļu vērtības
 funkcijas paredzēšana nākamajam stāvoklim, nevis esošajam, kalpo par pretsparu
-biežās stāvokļu vērtības funkcijas pielāgošas radītajam troksnim apvienotajā
+biežās stāvokļu vērtības funkcijas pielāgošanas radītajam troksnim apvienotajā
 neironu tīklā, kas CCACLA-basic algoritmam traucēja mācīties pie augstākām
 mācīšanās ātruma parametra vērtībām. Līdzīgs efekts bija vērojams arī
 CCACLA-state algoritma trenēšanas procesā, kas atšķirībā no CCACLA-future
@@ -2041,7 +2041,7 @@ ietvaros netika risināta.
 Kopumā gan var teikt, ka darba sākumā izvirzītās hipotēzes vismaz daļā gadījumu
 ir apstiprinātas. Nepieciešami gan turpmāki pētījumi, lai pilnvērtīgāk
 pārbaudītu, kādu iespaidu darbā aprakstītās metodes atstāj citās stimulētās
-mācīšanāš vidēs. Kā priekšnosacījums tam būtu stāvokļu un darbību telpu izpētes
+mācīšanās vidēs. Kā priekšnosacījums tam būtu stāvokļu un darbību telpu izpētes
 stratēģijas pielāgošana, lai pārvarētu acrobot un mountain car vidēs novērotās
 mācīšanās problēmas. Otra alternatīva ir pētīt citu stimulētās mācīšanās
 algoritmu savietojamību ar darbā paustajām idejām.
