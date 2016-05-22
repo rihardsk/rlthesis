@@ -1482,6 +1482,9 @@ darbības ir \textit{reverse}, \textit{neutral} un \textit{forward}, kas
 attiecīgi nozīmē braukšanu atpakaļ, braukšanu brīvgaitā un braukšanu uz
 priekšu.
 
+Aģents saņem atalgojumu 0, ja sasniedz mērķa stāvokli ieplakas augšpusē, un
+-1 pretējā gadījumā.
+
 \subsection{Acrobot vide}
 Acrobot uzdevumā aģentam ir jādarbina divu posmu mehānisms ar aktuatoru starp
 abiem posmiem. Posmi brīvi nokarājas, piestiprināti fiksētā punktā (eņģē).
@@ -1509,8 +1512,8 @@ darbības ${0, 1, 2}$, kas attiecīgi nozīmē, ka aktuators pielieto spēku $-1
 $0$ vai $1$ (patvaļīgas mērvienības, kas piemeklētas atkarībā no posmu masas un
 garuma).
 
-Katrā stāvoklī aģents saņem atalgojumu 0, ja tiek sasniegts mērķa stāvoklis, un 1
--- citādi. Mērķa stāvoklis parasti tiek definēts kā tāds, kur abi posmi atrodas
+Katrā solī aģents saņem atalgojumu 0, ja tiek sasniegts mērķa stāvoklis, un -1
+-- citādi. Mērķa stāvoklis parasti tiek definēts kā tāds, kur galējais posms atrodas
 noteiktā augstumā virs fiksētā punkta.
 
 
@@ -1589,13 +1592,17 @@ salīdzinājumu, pie vienādas un pēc iespējas vienkāršākas hiperparametru 
 Turklāt netika novērots, ka kāda no minētajām izmaiņām sniegtu būtisku ieguvumu
 aģentu trenēšanas procesā.
 
+% (visi apskatītie stimulētās mācīšanās uzdevumi ir epizodiski).
 
 \subsection{Eksperimentu metodika}
 Salīdzināšana tika veikta, novērtējot algoritmus CACLA, CCACLA, CCACLA ar
 stāvokļa paredzēšanu un CCACLA ar paredzēšanu nākotnē. Katrs no ar attiecīgo
 algoritmu trenētajiem aģentiem tika pārbaudīts cart-pole uzdevumā. Katram no
-algoritmiem tika veikti 10 eksperimenti. Katrs eksperiments ilga 50000 epizodes
-(visi apskatītie stimulētās mācīšanās uzdevumi ir epizodiski). Atsevišķie
+algoritmiem tika veikti 10 eksperimenti. Katrs eksperiments ilga 100 epohas, kur
+epoha sastāv no 50000 soļiem, un viens solis atbilst vienas darbības veikšanai
+stimulētās mācīšanās vidē, videi pēc tam pārejot nākamajā stāvoklī, un dodot
+atbilstošu atalgojuma signālu. Izņēmums ir cart-pole uzdevums, kur epoha ilga
+100000 soļus, lai aģenti paspētu sasniegt labākos rezultātus. Atsevišķie
 eksperimenti tika apkopoti, lai iegūtu attiecīgā algoritma vidējo rezultātu.
 Eksperimentu gaitā tika apkopota kopējā katrā epizodē iegūtā atalgojuma vērtība,
 kā arī tika veidota statistika par vidējo līdz epizodei iegūto atalgojuma
@@ -1609,7 +1616,7 @@ beigām. Šādi gadījumi tika uzskatīti par anomālijām, un netika iekļauti 
 rezultātos, jo atstāja dramatisku iespaidu uz aģenta iegūto vidējo atalgojumu 10
 veiktajos eksperimentos. Šī iemesla dēļ atsevišķos grafikos ir attēloti mazāk
 par 10 eksperimentiem kādam konkrētam aģentam. Tipiski šādu anomāliju skaits
-netika novērots vairāk kā 2 no 10 eksperimentos.
+netika novērots vairāk kā 3 no 10 eksperimentos.
 
 
 \subsection{Rezultāti}
@@ -1681,7 +1688,7 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{pole.ccacla-state.all}.pdf}
-  \caption{CCACLA ar stāvokļa paredzēšānu iegūtais atalgojums cart-pole uzdevumā}
+  \caption{CCACLA ar stāvokļa paredzēšanu iegūtais atalgojums cart-pole uzdevumā}
   \medskip
   \small
   Grafikos attēlots 10 CACLA-state algoritma instanču sniegums cart-pole uzdevumā.
@@ -1715,7 +1722,9 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
   \medskip
   \small
   Grafikos attēlots visu apskatīto algoritmu instanču vidējais sniegums
-  cart-pole uzdevumā. Kreisajā pusē redzama vidējā vērtība katrā treniņa epohā
+  cart-pole uzdevumā, kā arī CACLA un CCACLA-future eksperimenti, kas tika
+  darbināti ar augstāku mācīšanās ātruma parametra vērtību. Tie ir apzīmēti ar
+  \textit{\_high} sufiksu. Kreisajā pusē redzama vidējā vērtība katrā treniņa epohā
   konkrētā algoritma instanču iegūtajam kopējam atalgojumam, kur treniņa epoha
   sastāv no 100000 soļiem (katrā solī aģents saņem atalgojumu 1 vai 0). Labajā
   pusē redzams šo pašu algoritmu vidējais iegūtais atalgojums solī, kur vidējā
@@ -1781,7 +1790,7 @@ Mērķa stāvoklis tiek sasniegts tikai dažas reizes epohā.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{acrobot.ccacla-state.all}.pdf}
-  \caption{CCACLA ar stāvokļa paredzēšānu iegūtais atalgojums acrobot uzdevumā}
+  \caption{CCACLA ar stāvokļa paredzēšanu iegūtais atalgojums acrobot uzdevumā}
   \medskip
   \small
   Grafikos attēlots 10 CCACLA-state algoritma instanču sniegums acrobot uzdevumā.
@@ -1881,7 +1890,7 @@ stāvoklis tiek sasniegts tikai dažas reizes epohā.
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Img/{car.ccacla-state.all}.pdf}
-  \caption{CCACLA ar stāvokļa paredzēšānu iegūtais atalgojums mountain car uzdevumā}
+  \caption{CCACLA ar stāvokļa paredzēšanu iegūtais atalgojums mountain car uzdevumā}
   \medskip
   \small
   Grafikos attēlots 10 CCACLA-state algoritma instanču sniegums mountain-car uzdevumā.
