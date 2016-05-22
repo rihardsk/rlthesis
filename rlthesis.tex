@@ -1974,10 +1974,45 @@ Domājams, ka tas notiek līdzīgu procesu ietekmē, kā cart-pole gadījumā.
 %\chapter{Diskusija}
 % TODO
 \chapter{Secinājumi}
-%galvenā bija ideja par aģenta iekšējā modeļa veidošanu. šīs idejas attīstīšana
-%noveda pie idejas par aktiera un kritiķa komponenšu apvienošanu, kas izrādījās
-%derīga pati par sevi
-TODO
+Darbā tika pētīta ideja par aģenta iekšējā modeļa veidošanu, kas iekodētu
+dažādus vides aspektus stimulētās mācīšanās uzdevumos. Šīs idejas attīstīšana
+noveda pie idejas par CACLA algoritma aktiera un kritiķa komponenšu apvienošanu
+vienā, to realizējot ar neironu tīklu, kas spējīgs gan veikt stāvokļu vērtības
+noteikšanas funkcijas, gan arī optimālās stratēģijas noteikšanu. Tika novērots,
+ka šādi iespējams gan visas CACLA algoritma funkcijas veikt ar divas reizes
+mazāku neironu tīklu, kas ļauj samazināt tīkla trenēšanas laiku un samazina
+modeļa izmēru atmiņā, gan šādi iespējams paātrināt mācīšanās procesu. Tika
+novērots, ka cart-pole uzdevumā CCACLA algoritma varianti ātrāk sasniedz labus
+rezultātus, salīdzinot ar CACLA, lietojot tādas pat mācīšanās parametra
+vērtības. Viena no CCACLA algoritma versijām CCACLA-future demonstrēja, ka
+papildus informācijas izmantošana treniņa procesā, liekot aģentam paredzēt arī
+stāvokli, kādā nonāks vide, pēc tā izvēlētās darbības, kā arī stāvokļu vērtības
+funkcijas paredzēšana nākamajam stāvoklim, nevis esošajam, kalpo par pretsparu
+biežās stāvokļu vērtības funkcijas pielāgošas radītajam troksnim apvienotajā
+neironu tīklā, kas CCACLA-basic algoritmam traucēja mācīties pie augstākām
+mācīšanās ātruma parametra vērtībām. Līdzīgs efekts bija vērojams arī
+CCACLA-state algoritma trenēšanas procesā, kas atšķirībā no CCACLA-future
+paredzēja tikai vides nākamo stāvokli, tomēr CCACLA-state gadījumā tas izpaudās
+mazāk.
+
+Tika arī secināts, ka visiem apskatītajiem algoritmiem ir problēmas mācīties
+stimulētās mācīšanās uzdevumos, kuros vides stāvokļu telpas izpēte prasa
+mērķtiecīgu darbu, un atalgojuma signāla izmaiņas nesniedz informāciju par to,
+kā no zema atalgojuma stāvokļiem nonākt augsta atalgojuma stāvokļos, kā tas bija
+acrobot un mountain car uzdevumos. Lai arī šajos uzdevumos algoritmi parādīja
+līdzīgu sniegumu, no šī fakta grūti ko secināt, jo nevienā no veiktajiem
+eksperimentiem algoritmi nebija spējīgi nonākt pie derīgiem rezultātiem. Šī gan
+nav ar pašiem algoritmiem tiešā veidā saistāma problēma, bet gan lietotajai
+stāvokļu un darbību telpu izpētes stratēģijai raksturīga problēma, kura darba
+ietvaros netika risināta.
+
+Kopumā gan var teikt, ka darba sākumā izvirzītās hipotēzes vismaz daļā gadījumu
+ir apstiprinātas. Nepieciešami gan turpmāki pētījumi, lai pilnvērtīgāk
+pārbaudītu, kādu iespaidu darbā aprakstītās metodes atstāj citās stimulētās
+mācīšanāš vidēs. Kā priekšnosacījums tam būtu stāvokļu un darbību telpu izpētes
+stratēģijas pielāgošana, lai pārvarētu acrobot un mountain car vidēs novērotās
+mācīšanās problēmas. Otra alternatīva ir pētīt citu stimulētās mācīšanās
+algoritmu savietojamību ar darbā paustajām idejām.
 
 
 \printbibliography
