@@ -1609,7 +1609,8 @@ eksperimenti tika apkopoti, lai iegūtu attiecīgā algoritma vidējo rezultātu
 Eksperimentu gaitā tika apkopota kopējā katrā epizodē iegūtā atalgojuma vērtība,
 kā arī tika veidota statistika par vidējo līdz epizodei iegūto atalgojuma
 vērtību ar mērķi skaidrāk attēlot kopējo algoritma sniegumu, neņemot vērā
-troksni trenēšanas procesā.
+troksni trenēšanas procesā. Trenēšanas laikā mācīšanās ātruma parametram tika
+iestatīta vērtība $10^{-5}$
 
 Trenēšanas procesā tika novērots, ka atsevišķos gadījumos aģenti mēdza iestrēgt
 pārmēru sliktās stratēģijās. Tas bija novērojams kā liels kritums aģenta iegūto
@@ -1653,8 +1654,21 @@ algoritmiem ir daudz gludākas par CCACLA-basic un CCACLA-state, t.i. mācīšan
 procesā bija jāsaskaras ar mazāku tendenci procesam diverģēt. Tomēr uz šī rēķina
 abu algoritmu mācīšanās temps bija lēnāks. Zīmīgi gan ir tas, ka, neskatoties uz
 mazāko kāpuma tempu, CCACLA-future algoritmam izdodas laika gaitā sasniegt
-augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
-\ref{fig:pole-all}).
+vidējo atalgojumu, kas tuvs augstākajam rezultātam. Kopā ar jau aprakstītajiem
+algoritmu eksperimentu variantiem \ref{fig:pole-all} attēlā parādīti arī CACLA
+un CCACLA-future algoritmu eksperimenti, kas tika darbināti ar mācīšanās ātruma
+parametra vērtību $10^{-4}$ (pārējos eksperimentos tika izmantota vērtība
+$10^{-5}$). Var novērot, ka algoritmi sasniedza augstākās vidējā iegūtā
+atalgojuma vērtības, tomēr CCACLA-future bija vērojama neliela rezultātu
+izkliede.
+
+Cart-pole uzdevumā tika veikta vēl viena eksperimentu sērija, kas gan darbā
+grafiski netiek attēlota. Visi aprakstītie algoritmi tika darbināti ar 10
+neironiem slēptajā slānī, ar mērķi noskaidrot, vai gadījumā CCACLA algoritmu
+apvienotā neironu tīkla neironu ekonomija nav mānīga un vai atšķirības neparādās
+pie mazāka neironu skaita. Tomēr eksperimenti šai idejai nedeva apstiprinājumu.
+Algoritmu savstarpējās sniegumu attiecības saglabājās ļoti līdzīgas kā lielāko
+neironu tīklu gadījumā.
 
 \begin{figure}
   \centering
@@ -1725,7 +1739,7 @@ augstāko vidējo atalgojumu, pārspējot pārējos algoritmus (attēls
   \small
   Grafikos attēlots visu apskatīto algoritmu instanču vidējais sniegums
   cart-pole uzdevumā, kā arī CACLA un CCACLA-future eksperimenti, kas tika
-  darbināti ar augstāku mācīšanās ātruma parametra vērtību. Tie ir apzīmēti ar
+  darbināti ar 10 reizes augstāku mācīšanās ātruma parametra vērtību. Tie ir apzīmēti ar
   \textit{\_high} sufiksu. Kreisajā pusē redzama vidējā vērtība katrā treniņa epohā
   konkrētā algoritma instanču iegūtajam kopējam atalgojumam, kur treniņa epoha
   sastāv no 100000 soļiem (katrā solī aģents saņem atalgojumu 1 vai 0). Labajā
