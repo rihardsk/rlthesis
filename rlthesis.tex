@@ -89,10 +89,10 @@
 
 \begin{abstract-lv}
   \textit{Continuous actor-critic learning automaton}, jeb CACLA, algoritma
-  aktiera un kritiķa komponentes ir apvienojamas vienā, izmantojot faktu ka tās no
+  aktiera un kritiķa komponentes ir apvienojamas vienā, izmantojot faktu, ka tās no
   stāvokļu telpas izgūst līdzīgas pazīmes savu funkciju veikšanai. Tas ļauj divas
   reizes samazināt to realizēšanā izmantotā neironu tīkla trenējamo parametru
-  skaitu, kā arī ļauj aģentam ātrāk nonāk pie labas stratēģijas uz tā rēķina, ka
+  skaitu, kā arī ļauj aģentam ātrāk nonāk pie labas stratēģijas, jo
   optimālās stratēģijas funkcijas parametri tiek pielāgoti arī vērtību funkcijas
   izmaiņu rezultātā. Tas noved pie savdabīga optimālās stratēģijas funkcijas
   parametru nepārraudzītās mācīšanās procesa. Šāds netiešā veidā veikts optimālās
@@ -183,13 +183,13 @@ automātisku lidaparāta kontroli.
 
 No augstāk minētā dabīgi seko doma par paredzošās kodēšanas ideju pielietošanu
 stimulētās mācīšanās uzdevumu risināšanā. Interesi raisa ideja par vides nākamā
-stāvokļa paredzēšanu, ņemot vērā pašreizējo, un vai tas palīdzētu mācīšanās
+stāvokļa paredzēšanu, ņemot vērā pašreizējo, un, vai tas palīdzētu mācīšanās
 procesā. Tas liktu stimulētās mācīšanās aģentam tuvināti iemācīties vides
 modeli. Var izteikt hipotēzi, ka šāds iekšējs modelis palīdzētu
 mācīšanās procesā.
 
 Darbā ar jēdzienu iekšējs modelis nav domāta vides dinamikas precīza
-paredzēšana, ar mērķi no tās atvasināt darbības stratēģiju konkrētajā vidē. Tā
+paredzēšana ar mērķi no tās atvasināt darbības stratēģiju konkrētajā vidē. Tā
 vietā tiek apskatīti veidi, kā ar papildus informācijas palīdzību trenēšanas
 procesā uzlabot rezultātus. Šāda jēdziena izpratne mudina pētīt arī citas
 iespējas stimulētās mācīšanās aģentam trenēšanas laikā likt apgūt kādus ar
@@ -197,7 +197,7 @@ uzdevuma vidi saistītus aspektus. Precīzāk, interesi piesaista tā sauktie
 \textit{actor-critic} stimulētās mācīšanās algoritmi, kas tradicionāli izmanto
 divas neatkarīgas komponentes -- aktieri un kritiķi --, lai mācītos darboties
 stimulētās mācīšanās vidē. Var teikt, ka abas šīs komponentes iekodē kādus
-stimulētās mācīšanās vides aspektus, kas iespējams pārklājas. Iepriekš pausto
+stimulētās mācīšanās vides aspektus, kas, iespējams, pārklājas. Iepriekš pausto
 ideju kontekstā šī \textit{actor-critic} algoritmu īpašība padara tos
 pievilcīgus padziļinātākai pētīšanai, jo var izteikt hipotēzi, ka aktiera un
 kritiķa komponenšu apvienošana palīdzētu trenēšanas procesā, intuitīvi to
@@ -222,7 +222,7 @@ algoritmu.
 
 Darbs tiek iesākts ar vispārīgu stimulētās mācīšanās paradigmas apskatu, kur
 autors galvenokārt pieturas pie izklāsta kas atrodams \autocite{Krislauks2015}.
-Tam seko Combined CACLA algoritma apraksts, un salīdzinājums ar CACLA algoritmu, uz
+Tam seko Combined CACLA algoritma apraksts un salīdzinājums ar CACLA algoritmu, uz
 kā tas ir balstīts.
 % TODO papildināt, kad ir vairāk gatavs no satura
 %NOTE: pie cacla algoritma jāpastāsta, kas ir tie aspekti, kas padara viņu
@@ -252,8 +252,9 @@ Lai sniegtu pilnīgāku priekšstatu par darbā izstrādātajiem CCACLA algoritm
 paveidiem un CACLA algoritmu, nodaļā tiek tuvāk apskatīti Markova izvēles
 procesi, funkciju aproksimācija, un tiek formāli definēta stimulētās mācīšanās
 problēma. Apskatot stimulētās mācīšanās tēmu, tiek pievērsta uzmanība arī
-\textit{actor-critic} metodēm, kas ir pamatā tālākā nodaļā aprakstītajiem CACLA
-un CCACLA algoritmiem.
+\textit{actor-critic} metodēm, kas ir pamatā \ref{chap:algo} nodaļā
+aprakstītajiem CACLA un CCACLA algoritmiem.
+
 \section{Markova izvēles procesi} \label{sec:mdp}
 Nodaļā tiek apskatīti Markova izvēles procesi ar mērķi sniegt vispārīgu
 priekšstatu par tēmu. Tiek doti arī piemēri un paņēmieni, kas tieši neattiecas
@@ -273,17 +274,18 @@ MDP vispārina MI (mākslīgā intelekta) plānošanas paradigmu
 \autocite{Hendler1990ai}. Tie ļauj plānošanas problēmu modelī iekļaut nejaušību,
 kas saistīta ar darbību izpildi, un ļauj specificēt mazāk konkrētus plāna
 mērķus. Turklāt MDP ļauj formalizēt sistēmas, kuru darbībā jāņem vērā resursu
-patēriņš. Plāns MI plānošanas izpratnē kā soļu virkne, kas paredzēta, lai no
+patēriņš. Jēdziens ``plāns'', ar ko MI plānošanas izpratnē tiek saprasta soļu
+virkne, kas paredzēta, lai no
 sākuma stāvokļa sasniegtu uzdoto beigu stāvokli, MDP formālismā tiek vispārināts
 par stratēģiju, jeb funkciju, kas katram sistēmas stāvoklim piekārto optimālo
-darbību, tā lai sistēmas kontroles procesā tiktu maksimizēta kāda no uzdevuma
+darbību tā, lai sistēmas kontroles procesā tiktu maksimizēta kāda no uzdevuma
 atkarīga metrika.
 
 \autocite{Otterlo} tiek dots piemērs tipiskai MI plānošanas problēmai. Var
 iedomāties, ka ir dota kāda telpa ar tajā sakrāmētām kastēm, un uzdevums ir
 kastes pārkrāmēt tā, lai dažas no tām pārliktu norādītās vietās. Šo uzdevumu var
 risināt ar MI plānošanas metodēm. Toties, ja tiek apskatīta situācija, kur kastu
-krāmēšanas operators, piemēram, robots, darbības neizpilda pilnīgi precīzi, bet
+krāmēšanas operators, piemēram, robots, darbības neizpilda pilnīgi precīzi,
 var pieļaut kļūdas, vai arī var iestāties kādi citi apstākļi, kas nav operatora
 kontrolē, tad šādam uzstādījumam dabīgāk atbilst MDP paradigma, kurā var,
 teiksim, uzdevuma mērķi atslābināt un teikt, ka uzdevuma mērķis ir maksimizēt
@@ -368,7 +370,7 @@ gan arī atalgojums, kas saņemts nākotnē, pēc šī stāvokļa apmeklēšanas
 vārdiem -- darbības izdevīgums ir jāvērtē ilgtermiņā. Vēl viens aspekts, kura
 nozīme pieaug jo īpaši nepārtrauktās stāvokļu un darbību telpās, ir soļu skaits,
 pēc kura aģents atrod stratēģiju, kas tuva optimālajai. Ja pārtrauktās, galīgās
-stāvokļu telpās vēlme ir, lai, meklējot optimālo stratēģiju katrs stāvoklis
+stāvokļu telpās vēlme ir, lai, meklējot optimālo stratēģiju, katrs stāvoklis
 tiktu apmeklēts pēc iespējas mazāk reižu, tad nepārtrauktās stāvokļu un darbību
 telpās katru stāvokli un darbību nemaz nav iespējams izmēģināt, tā kā to skaits
 ir neierobežots. Šis apsvērums nošķir stratēģijas, kas izmantojamas MDP
@@ -382,7 +384,7 @@ risināšanas algoritmā. %TODO laikam slikti skan. jāpārformulē
 
 Jāpiebilst, ka tie paši apsvērumi, kas šajā nodaļā ir izteikti par nepārtrauktām
 stāvokļu un darbību telpām, lielā mērā ir attiecināmi arī uz diskrētām, bet
-lielām telpām. Turpmākajā tekstā, runājot par diskrētām telpām, domātas ir
+lielām telpām. Turpmākajā tekstā, runājot par diskrētām telpām, domātas
 telpas, kuras ir pietiekami mazas. Konkrēti apmēri šeit netiek minēti, jo tie
 atkarīgi no pieejamajiem skaitļošanas resursiem.
 
@@ -408,7 +410,7 @@ bezgalīgā horizonta nozīmē, ja tā maksimizē izteiksmi:
 \[
 	E\left[\sum_{t=0}^{\infty}\gamma^t r_t\right],
 \]
-kur $\gamma \in \left[0, 1\right)$ ir atlaides koeficients, un $r_t$ apzīmē
+kur $\gamma \in \left[0, 1\right)$ ir atlaides koeficients un $r_t$ apzīmē
 $t$-ajā solī saņemto atalgojumu, kontrolējot $K$ pēc shēmas $\pi$.
 \end{definicija}
 
@@ -505,7 +507,7 @@ izmantotas modeļa aproksimēšanā, skatīt \autocite{nguyen2011model}.
 
 Kad modelis ir zināms, optimālās stratēģijas atrašana galīgam stāvokļu un
 darbību telpām ir samērā vienkārša. Var tikt izmantots, piemēram, \textit{value
-  iteration} vai \textit{policy iteration} algoritms, kam ir var pierādīt, ka
+  iteration} vai \textit{policy iteration} algoritms, kam var pierādīt, ka
 tie konverģē uz optimālo $\pi^*$ \autocite{Barto}. Tomēr vispārīgā gadījumā MDP
 nepārtrauktās stāvokļu telpās situācija ir krietni sarežģītāka -- katram
 stāvoklim optimālo stratēģiju atrast nav iespējams \autocite{Otterlo}. Piemēram,
@@ -516,9 +518,9 @@ skaits ir bezgalīgi liels.
 %TODO šo varbūt var iekļaut: Alternatīvi \autocite{Otterlo} tiek minēta iespēja
 %tuvināto MDP izmantot, lai ģenerētu 
 
-Lai arī iepriekš minētie argumenti nav spēkā uz MDP ar nepārtrauktām darbību
+Lai arī iepriekš minētie argumenti nav spēkā MDP ar nepārtrauktām darbību
 telpām, autors neredz tiešu veidu, kā pieeja būtu vispārināma, lai no iegūtā MDP
-modeļa atvasinātu stratēģiju, kas optimālo darbību stāvoklī atrod ar neirona
+modeļa atvasinātu stratēģiju, kas optimālo darbību stāvoklī atrod ar neironu
 tīkla palīdzību.
 %TODO jāpasaka, kāpēc neironu tīkls būtu labāks
 Turklāt, lai arī kā darba mērķis netika uzstādīta prasība algoritmam darboties
@@ -527,8 +529,8 @@ samazināšana, ja no tā var izvairīties, tiek uzskatīta par nevēlamu.
 
 Vēl ir jāmin, ka metodes aproksimētā modeļa risināšanai ir tuvākas dinamiskās
 programmēšanas paradigmai, tāpēc tās šķiet mazāk saistošas. Pastāv gan arī
-hibrīd varianti, kur modelis tiek aproksimēts, lai uz tā veiktu trenēšanu ar
-stimulētās mācīšanās metodēm, gadījumos, kad mācīšanās īstajā domēnā ir pārāk
+hibrīdi varianti, kur modelis tiek aproksimēts, lai uz tā veiktu trenēšanu ar
+stimulētās mācīšanās metodēm gadījumos, kad mācīšanās īstajā domēnā ir pārāk
 resursietilpīga, bet šīs metodes saskaras jau ar citām problēmām
 \autocite{Hasselt2012}.
 
@@ -582,7 +584,7 @@ iespējams kaut ko pateikt par pašreizējo spēles stāvokli, aģentam ir jāie
 pikseļu vērtības abstrahēt sarežģītākos objektos. To šeit paveic neironu tīkls.
 
 Ar nepārtrauktām darbību telpām ir citādi. Tā kā bieži šajos algoritmos, lai
-atrastu optimālo stratēģiju, atbilstoši \eqref{eq:2} tiek meklēts atrisinājums
+atrastu optimālo stratēģiju atbilstoši \eqref{eq:2}, tiek meklēts atrisinājums
 izteiksmei
 \[
 	\arg \max_a Q^*(s, a),
@@ -591,7 +593,7 @@ tad nevar iztikt bez darbību telpas diskretizēšanas. Literatūrā un praksē
 sastopami dažādi diskretizācijas varianti -- sākot no vienkāršākajiem kā
 \textit{tile coding}, kur darbību telpa tiek sadalīta nepārklājošos apgabalos,
 kas katrs uztverams kā diskretizētās darbību telpas atsevišķs elements, līdz
-sarežģītākām, kā, piemēram, \textit{Kanerva coding} \autocite{Barto}.
+sarežģītākiem, kā, piemēram, \textit{Kanerva coding} \autocite{Barto}.
 
 Algoritmus, kuros optimālā stratēģija tiek atvasināta no $Q^*$ funkcijas, kā
 redzams augstāk, grūti vispārināt atbilstoši darba mērķim darbībai ar neironu
@@ -652,7 +654,7 @@ telpas punktus, lai algoritms spētu sekmīgi darboties.
 
 Mašīnmācīšanās pieejas nav vienmēr tiešā veidā pielietojamas stimulētās
 mācīšanās uzdevumos. Stimulētās mācīšanās kontekstā uzdevumu parasti papildus
-apgrūtina fakts, ka vērtības, kas tiek izmantotas, lai funkcijas aproksimētāja
+apgrūtina fakts, ka vērtības, kas tiek izmantotas funkcijas aproksimētāja
 pielāgošanai, pašas ir atkarīgas no tā snieguma -- gājieni, ko veic aģents ir
 atkarīgi no spēles stāvokļa novērtējuma.
 
@@ -664,7 +666,7 @@ Funkciju aproksimētājus, atkarībā no to uzbūves, mēdz iedalīt lineārajos
 nelineārajos. Lineārie aproksimētaji tiek apskatīti ierobežoti, vairāk uzmanības
 veltot nelineārajiem aproksimētājiem. Jēdziens funkciju aproksimētājs tiek
 lietots, apzīmējot funkciju, kas tiek izmantota dotās mērķa funkcijas
-aproksimēšanai. Piemēram, sakot "lineārs funkciju aproksimētājs" jāsaprot, ka
+aproksimēšanai. Piemēram, sakot ``lineārs funkciju aproksimētājs'' jāsaprot, ka
 izmantotā funkcija ir lineāra.
 
 \subsubsection{Lineārā funkciju aproksimēšana}
@@ -683,12 +685,12 @@ funkcijas aproksimēšanai, to var izteikt formā
 \]
 Jāpiemin, ka nosacījums, ka stāvokļu vērtības funkcija ir izsakāma kā lineāra
 kombinācija no parametru vērtībām, nenozīmē, ka tai jābūt lineārai attiecībā
-pret stāvokļu telpu. Izvēloties pazīme, kas nav lineāras attiecībā pret stāvokļu
+pret stāvokļu telpu. Izvēloties pazīmes, kas nav lineāras attiecībā pret stāvokļu
 telpu, tiek iegūta nelineāra stāvokļu vērtības funkcija attiecībā pret $S$.
 
 Kā redzams, gadījumā, kad stāvokļu telpa ir nepārtraukta, funkcija $\phi$ to
 attēlo uz galīgu skaitu elementu. Citiem vārdiem -- stāvokļu telpa tiek
-diskretizēta. Pats veids, kā notiek pazīmju piekārtošana stāvokļiem nosaka
+diskretizēta. Pats veids, kā notiek pazīmju piekārtošana stāvokļiem, nosaka
 diskretizācijas veidu. Piemēram, ja stāvokļu telpa tiek sadalīta vienādos
 apgabalos, kam katram tiek piekārtota sava unikāla pazīme, tad iegūto attēlojumu
 sauc par \textit{tile coding}, kas tika minēts jau iepriekš.
@@ -697,12 +699,12 @@ Lineārajiem funkciju aproksimētājiem nepārtrauktās telpās piemīt iepriek�
 sadaļā minētā īpašība par novērojumu vispārināšanu iepriekš neapskatītiem telpas
 punktiem. Šajā darbā gan lineārā funkciju aproksimēšana tiešā veidā netiek
 lietota, jo priekšroka tiek dota tādiem nelineārajiem funkciju aproksimētājiem
-kā neironu tīkli. Lineārā funkciju aproksimēšana gan darbā parādās netiešā
+kā neironu tīkli. Lineārā funkciju aproksimēšana tomēr darbā parādās netiešā
 veidā. Vēlāk aprakstītajos CACLA un CCACLA algoritmos tiek izmantoti neironu
 tīkli ar lineāru pēdējo slāni (ar identitātes aktivācijas funkciju), kas nozīmē,
 ka to pēdējais slānis darbojas, kā lineārs funkciju aproksimators. Tiešā veidā
 lineāro funkciju aproksimēšanu gan traucē izmantot arī citas problēmas (ar kurām
-gan var ar dažādiem panākumiem cīnīties), kas vairāk aprakstītas
+tomēr var ar dažādiem panākumiem cīnīties), kas vairāk aprakstītas
 \autocite{Hasselt2012}.
 
 \subsubsection{Neironu tīkli un nelineārā funkciju aproksimēšana}
@@ -710,7 +712,7 @@ Neironu tīkliem ir īpaša nozīme darba ietvaros, jo tie tiek izmantoti kā ak
 un kritiķa komponentes CACLA un jaunizveidotajā CCACLA algoritmā.
 Neironu tīkli pieder pie nelineārajiem funkciju aproksimētājiem. Tie ir veidoti
 uz līdzību pamata ar bioloģisko neironu tīkliem smadzenēs un parasti tiek
-formulēti kā savstarpēji savienotu "neironu" sistēma, kas dotus ieejas datus
+formulēti kā savstarpēji savienotu ``neironu'' sistēma, kas dotus ieejas datus
 pārvērš izejas datos atbilstoši sistēmas neironu svariem. Katru neironu raksturo
 svaru komplekts, kas ir koeficienti dotā neirona ieejas neironu vērtībām.
 Neirons izejā dod ieejas neironu signālu un svaru lineāru kombināciju, kam
@@ -741,8 +743,8 @@ var būt vairāki), kuru izejas vērtības tiek atgrieztas kā rezultāts. Pār�
 līmeņus, šoreiz tāds ir tikai viens -- $L_2$ --, sauc par slēptajiem līmeņiem.
 Ar $+1$ tiek apzīmēti neironi, kas nesaņem ieejā citu neironu vērtības; tie
 atgriež konstanti $1$, un ļauj neironu vērtību un svaru lineārajā kombinācijā
-pieskaitīt koeficientu, kas nav atkarīgs no ieejas vērtībām. Bultiņas apzīmē,
-kuru neironu atgrieztās vērtības tiek izmantotas kāda neirona ieejā.
+pieskaitīt koeficientu, kas nav atkarīgs no ieejas vērtībām. Bultiņas norāda,
+kuru neironu atgrieztās vērtības tiek izmantotas kāda cita neirona ieejā.
 
 Ir pierādīts, ka neironu tīkli darbojas kā universāli funkciju aproksimētāji
 \autocite{hornik1991approximation}. Šo apgalvojumu formulē kā universālās
@@ -846,7 +848,7 @@ tabulārā formā (tā ir diskrēta), tad iepriekšējā izteiksme apzīmē soli
 \[
 	A_{t+1}(x) = A_t(x) + \alpha(A_t(x) - B_t).
 \]
-Ja funkcija $A(x)$ ir nepārtraukta, un ir parametrizēta ar kādu papildus vektoru
+Ja funkcija $A(x)$ ir nepārtraukta un ir parametrizēta ar kādu papildus vektoru
 $\theta$, tad ar pierakstu saprotam
 \[
 	\theta_{t+1} = \theta_t + \alpha \left(B_t - A_t(x)\right) \nabla_\theta A_t(x),
@@ -867,9 +869,9 @@ lai to tuvinātu optimālajai stratēģijai $\pi^*$. Tas ļauj izvairīties no
 grūtībām, ar ko nākas saskarties tīrajās vērtību aproksimācijas metodēs (sauktas
 arī par \textit{critic-only} metodēm), tā kā
 nav nepieciešams papildus darbs, lai atrastu labāko stratēģiju algoritma
-darbības beigās, vai arī labāko gājienu kādam stāvoklim algoritma darbības
+darbības beigās vai arī labāko gājienu kādam stāvoklim algoritma darbības
 laikā. Tas ir nozīmīgs ieguvums nepārtrauktās darbību telpās, jo nav jāveic
-darbību telpas diskretizācija, un ir pat iespējams lietot procesa stāvokļus
+darbību telpas diskretizācija un ir pat iespējams lietot procesa stāvokļus
 tiešā veidā bez atsevišķa parametru iegūšanas soļa. Šie ir būtiski ieguvumi, kas
 motivēja izvēli izmantot CACLA algoritmu, kas pieder pie tālāk apskatītajām
 \textit{actor-critic} metodēm, par pamatu darba mērķu sasniegšanai.
@@ -924,8 +926,8 @@ izsakot $\nabla_\psi V^\pi(s_t)$ ar $\pi$ funkciju
 
 Sagaidāmā vērtība šajā un atvasinātajās metodēs tiek iegūta ar \textit{Monte
   Carlo} metodēm \autocite{halton1970retrospective}. Īsumā -- meklējamā vērtība
-tiek novērtēta ar vairāku nejaušu paraugu palīdzību. \textit{Monte Carlo}
-metodes pielietojot gradienta aprēķiniem \textit{actor-only} piegājienā, ir
+tiek novērtēta ar vairāku nejaušu paraugu palīdzību. Pielietojot \textit{Monte
+  Carlo} metodes gradienta aprēķiniem \textit{actor-only} piegājienā, ir
 novērots, ka tās saistās ir lielas dispersijas ieviešanu rezultātos. Tas var
 būtiski negatīvi ietekmēt laiku, kas algoritmam ir nepieciešams, lai sasniegtu
 rezultātu. Ar dažādiem paņēmieniem ar šo efektu ir iespējams cīnīties, bet, kā
@@ -956,10 +958,10 @@ paaugstināt $V^\pi$ sagaidāmo vērtību. Alternatīva ir parametrus pielāgot,
 cenšoties samazināt stratēģijas $\pi$ atšķirības no optimālās stratēģijas
 $\pi^*$. Citiem vārdiem -- ņemt vērā pašreizējās stratēģijas optimālo gājienu
 prognožu kļūdas. Šī ideja ir būtiska \textit{continuous action-critic learning
-  automaton} (CACLA) algoritmam, un nošķir to no vairuma citu
+  automaton} (CACLA) algoritmam un nošķir to no vairuma citu
 \textit{actor-critic} metožu.
 
-\chapter{Algoritmi}
+\chapter{Algoritmi}\label{chap:algo}
 CACLA un darbā ieviestie CCACLA algoritma paveidi ir stimulētās mācīšanās
 algoritmi, kas spējīgi mācīties vidēs ar nepārtrauktām stāvokļu un darbību
 telpām. Tie pieder pie \textit{actor-critic} algoritmu saimes -- tie savas
@@ -1086,7 +1088,7 @@ Zīmīgi ir arī tas, ka TD izmaiņas apjoma ignorēšana var dot mācīšanās 
 pieaugumu. Tas ir novērojams, kad stāvokļu vērtības funkcijas parametri nonāk
 apgabalos ar mazām izmaiņām funkcijas vērtību telpā. Šādos apgabalos TD izmaiņas
 apjoms ir mazs, un klasiskajā gadījumā tas noved pie mazas izmaiņas aktiera
-parametros. Intuīcija saka, ka pielāgojot aktiera uzvedību, attālums līdz jaunai
+parametros. Intuīcija saka, ka, pielāgojot aktiera uzvedību, attālums līdz jaunai
 daudzsološai darbībai ir nozīmīgāks nekā stāvokļa vērtības pieaugums, ko jaunā
 uzvedība sniegtu sniegtu.
 
@@ -1149,7 +1151,7 @@ jautājums, vai šādi netiek darīts lieks darbs. Gan stāvokļu vērtības fun
 aproksimācijas $V$ gan optimālās stratēģijas funkcijas aproksimācijas $A$ domēns
 ir vides stāvokļu telpa $S$. Ir saprātīgi pieņemt, ka abu funkciju vērtības
 varētu noteikt līdzīgas pazīmes stāvokļu telpā. Abu attiecīgo neironu tīklu
-otrais slānis varētu būt trenēšanas rezultātā iemācījies izejā dot līdzīgus
+otrais slānis varētu būt trenēšanas rezultātā iemācījies izejā dot līdzīgas
 aktivācijas vienos un tajos pašos stāvokļus, tāpēc rodas jautājums, vai abus
 tīklus nav iespējams apvienot.
 
@@ -1185,7 +1187,7 @@ izmantošanas trenēšanas procesā. %TODO: pārformulēt pēdējo teikumu.
 Šajā nodaļā tiek apskatītas vairākas CACLA algoritma modifikācijas, kuras to
 kopīgo īpašību dēļ autors ievieto vienā algoritmu grupā ar kopīgo nosaukumu
 Combined CACLA, jeb CCACLA. Visu algoritmu kopīgā iezīme, kas tos atšķir no
-iepriekš apskatītā CACLA algoritma ir viena neironu tīkla izmantošana gan
+iepriekš apskatītā CACLA algoritma, ir viena neironu tīkla izmantošana gan
 vērtību funkcijas $V$ gan optimālās stratēģijas funkcijas $A$ aproksimācijai.
 Tiek apskatīti vairāki šī algoritma paveidi, kas ietver modifikācijas tajā, kāda
 informācija tiek izmantota tīkla trenēšanai.
@@ -1208,14 +1210,14 @@ algoritma, izmanto funkciju
 lai stāvoklī $s$ paredzētu gan optimālo darbību $a$, gan stāvokļa vērtību $v$ kā
 $Av_\Theta(s) = (a, v)$. Funkcija $Av_\Theta$ tiek realizēta ar
 neironu tīklu, kas sastāv no ieejas slāņa, slēptā slāņa, un diviem izejas
-slāņiem, kas slēptā slāņa aktivācijas pārvērš, respektīvi, optimālajā darbībā
+slāņiem, kas slēptā slāņa aktivācijas pārvērš attiecīgi optimālajā darbībā
 $a$ un stāvokļa vērtībā. Šīs vērtības tad attiecīgi var izteikt, kā
 \begin{equation}\label{eq:ccacla-act}
   v = V(s), V(s) = f_a\left(f_h(s^T \cdot W_h) \cdot W_a\right)
 \end{equation} un
 \begin{equation}\label{eq:ccacla-val}
-  a = Ac(s), Ac(s) = f_v\left(f_h(s^T \cdot W_h) \cdot W_v\right)
-\end{equation}, kur $s$ ir
+  a = Ac(s), Ac(s) = f_v\left(f_h(s^T \cdot W_h) \cdot W_v\right),
+\end{equation} kur $s$ ir
 ieejas vektors (stāvoklis), $W_h$ ir slēptā slāņa svaru matrica, $W_a$ ir
 darbības slāņa svaru matrica, $W_v$ ir vērtības slāņa svaru matrica, $f_h$ ir
 slēptā slāņa aktivācijas funkcija, $f_a$ ir darbības slāņa aktivācijas funkcija
@@ -1229,10 +1231,10 @@ varam arī izteikt funkciju $Av$
 
 Citos aspektos CCACLA pamatalgoritms, ko turpmāk dēvēsim arī vienkāršāk -- par
 CCACLA-basic --, neatšķiras no CACLA. Šādi izteiktas funkcijas
-$V(s)$ un $Ac(s)$ ļauj izmantot jau iepriekš definēto CACLA algoritmu
-\ref{alg:cacla}. Atbilstoši vienādojumam \ref{eq:ccacla-actval} iespējams
+$V(s)$ un $Ac(s)$ ļauj izmantot jau iepriekš definēto \ref{alg:cacla} CACLA
+algoritmu. Atbilstoši vienādojumam \ref{eq:ccacla-actval} iespējams
 arī definēt optimizētu versiju, kas izmanto faktu, ka $a$ un $v$ iespējams
-izrēķināt vienlaicīgi. Tas parādīts algoritmā \ref{alg:ccacla-basic}.
+izrēķināt vienlaicīgi. Tas parādīts \ref{alg:ccacla-basic} algoritmā.
 
 \begin{spacing}{1}
 \begin{algorithm}
@@ -1282,11 +1284,11 @@ darbības veikšanas. Tas noved pie funkcijas $Aov$
 \end{equation}
 Līdz ar funkciju \ref{eq:ccacla-act} un \ref{eq:ccacla-val} tagad ieviesīsim arī
 funkciju $St$, kas vēlāk tiek izmantota, CCACLA-state algoritma pseidokodā, lai
-atvieglotu gradient descent soļu pierakstu
+atvieglotu \textit{gradient descent} soļu pierakstu
 \begin{equation}\label{eq:ccacla-obs}
-  s' = St(s), St(s) = f_s(f_h(s^T \cdot W_h) \cdot W_a)
+  s' = St(s), St(s) = f_s(f_h(s^T \cdot W_h) \cdot W_a),
 \end{equation} 
-, kur $W_S$ ir nākamā stāvokļa paredzēšanas slāņa svaru matrica, un $f_S$ ir
+kur $W_S$ ir nākamā stāvokļa paredzēšanas slāņa svaru matrica, un $f_S$ ir
 slāņa aktivācijas funkcija.
 Analogi vienādojumam \ref{eq:ccacla-actval} tagad varam definēt funkciju $Aov$,
 kas parāda, kā funkciju \ref{eq:ccacla-act}, \ref{eq:ccacla-act} un
@@ -1360,7 +1362,7 @@ aģentam likt veidot iekšēju vides modeli, ideju var intuitīvi pamatot, sakot
 nākamā stāvokļa vērtības paredzēšanai šāds modelis ir nepieciešams.
 
 Ņemot vērā iepriekšējos apsvērumus, veidosim algoritma CCACLA variantu ar
-paredzēšanu nākotnē (CCACLA-future). Šis algoritma variants izmantos tādu pat neirona tīkla
+paredzēšanu nākotnē (CCACLA-future). Šis algoritma variants izmantos tādu pat neironu tīkla
 struktūru, kā CCACLA ar stāvokļa paredzēšanu. Atšķirības būs tikai tīkla
 trenēšanas procesā, kā rezultātā tiks pielāgoti funkciju $V$, $Ov$ un $Aov$
 parametri tā, lai stāvokļa vērtība, ko atgriež šīs funkcijas, atbilstu stāvoklim
@@ -1433,7 +1435,7 @@ dimensiju skaits, kā arī darbību telpu veids un dimensiju skaits atšķiras.
 \subsection{Cart-pole vide}
 Cart-pole vidē ir jāveic kārts balansēšanas uzdevums \autocite{Barto}. Mērķis ir
 pēc iespējas ilgāk balansēt kārti, kas piestiprināta kustīgā eņģē pie
-horizontāli (vienā dimensijā) kustināmiem ratiņiem. Aģents mijiedarbojas ar vidi
+horizontāli (vienā dimensijā) kustināmiem ratiņiem. Aģents mijiedarbojas ar vidi,
 pielietojot spēku ratiņiem vienā vai otrā virzienā. Katrā laika vienībā, kurā
 kārts nav apgāzusies, t.i., tā atrodas kādā noteiktā leņķu intervālā attiecībā
 pret zemi, un kurā ratiņi nav izbraukuši ārpus norādītām robežām, aģents saņem
@@ -1454,10 +1456,10 @@ kārts leņķiskais ātrums. Vides dinamiku apraksta vienādojumi
   x_{t+1} = x_t + v_t \\
   v_{t+1} = v_t + \ddot{x} \\
   \theta_{t+1} = \theta_t + \omega_t \\
-  \omega_{t+1} = \omega_t + \ddot{\theta}
-\end{gather},
+  \omega_{t+1} = \omega_t + \ddot{\theta},
+\end{gather}
 kur $l$ ir kārts garums, $m_p$ ir kārts masa, $m_c$ ir ratiņu masa un $F$ ir
-aģenta pielietotais spēks ir aģenta pielietotais spēks. Šajos vienādojumos
+aģenta pielietotais spēks. Šajos vienādojumos
 netiek ņemta vērā berze starp ratiņiem un virsmu, uz kuras tie kustās.
 
 Uzdevumam ir 1 dimensijas nepārtraukta darbību telpa. Katrā laika vienībā
@@ -1465,7 +1467,7 @@ aģentam ir iespēja noteikt spēku $F \in \mathbb{R}$, ar kuru tas iedarbosies 
 ratiņiem.
 
 \subsection{Mountain car vide}
-Mountain car uzdevumā aģentam ir jāuzbrauc no parabolas tipa ieplakas (divās
+Mountain car uzdevumā aģentam ir jāizbrauc no parabolas tipa ieplakas (divās
 dimensijās) ar mašīnu, kam pietrūkst jaudas, lai to izdarītu bez ieskrējiena.
 Lai pārvarētu uzdevumu, aģentam nākas vairākas reizes pārvietoties augšā
 pamīšus pretējās ieplakas malās, lai iegūtu potenciālo enerģiju, kas ļautu no
@@ -1530,7 +1532,7 @@ nodaļā ir aprakstīta tikai daļa no tiem, kas parāda izstrādāto algoritmu
 savstarpējo salīdzinājumu.
 
 \subsection{Eksperimentu tehniskā realizācija}
-Stimulētās mācīšanās eksperimentu vadīšanai tikai izmantots RL-Glue
+Stimulētās mācīšanās eksperimentu vadīšanai tika izmantots RL-Glue
 programmēšanas ietvars \autocite{rl-glue}. RL-Glue ietvars sniedz iespēju veidot
 modulārus stimulētās mācīšanās eksperimentus, kur uzdevuma vide, aģents un
 eksperiments ir atsevišķas komponentes, starp kurām komunikāciju vada RL-Glue
@@ -1551,10 +1553,10 @@ tika programmēti ar Theano bibliotēkas palīdzību \autocite{Bastien-Theano-20
 \autocite{bergstra+al:2010-scipy}, kas kompilē un optimizē simboliskas
 matemātiskas izteiksmes darbināšanai uz datora procesora vai videokartes, kā arī
 ļauj veikt automātisku funkciju atvasināšanu, kas ievērojami atvieglo neironu
-tīklu trenēšanu, un ļauj viegli veidot sarežģītas arhitektūras neironu tīklus.
+tīklu trenēšanu un ļauj viegli veidot sarežģītas arhitektūras neironu tīklus.
 Tas būtiski atvieglo CCACLA algoritma variantos izmantotās kombinētās neironu
 tīkla arhitektūras izveidi. Papildus tika izmantota Lasagne bibliotēka, kas ir
-balstīta uz Theano, un piedāvā atkalizmantojamas komponentes neironu tīklu slāņu
+balstīta uz Theano un piedāvā atkalizmantojamas komponentes neironu tīklu slāņu
 definēšanai \autocite{lasagne}.
 
 Lai nodrošinātu iespēju veidot atkārtojamu eksperimentu specifikācijas, kā arī
@@ -1582,7 +1584,7 @@ aktivācijas funkcija izejas slānī. Aģentu trenēšanas procesā tika izmanto
 aditīvs troksnis ar sadalījumu $\mathcal{N}(0, 0,05)$, kas tika pievienots
 izvēlētajām darbībām, lai veicinātu stāvokļu telpas izpēti.
 
-Sākotnēji izstrādājot algoritmus, tika eksperimentēts ar dažādiem citiem
+Sākotnēji, izstrādājot algoritmus, tika eksperimentēts ar dažādiem citiem
 hiperparametriem. Tika izmēģināti neironu tīkli ar lielāku slēpto stāvokļu
 skaitu, tika izmēģināta $l1$ un $l2$ regularizācija, tika mēģināts izmantot
 \textit{gradient clipping}, lai cīnītos ar treniņu diverģēšanu pie pārāk
@@ -1623,7 +1625,7 @@ netika novērots vairāk kā 3 no 10 eksperimentos.
 Veicot eksperimentus problēmas sagādāja fakts, ka algoritmi bija spējīgi
 mācīties pie dažādām mācīšanās ātruma (learning rate) parametra vērtībām.
 Pārsvarā novērojumi rādīja, ka CACLA un CCACLA ar paredzēšanu nākotnē derēja
-līdzīgi mācīšanās ātrumi, un CCACLA pamatalgoritmam un CCACLA ar stāvokļa
+līdzīgi mācīšanās ātrumi un CCACLA pamatalgoritmam un CCACLA ar stāvokļa
 paredzēšanu arī derēja līdzīgi mācīšanās ātrumi. Savstarpēji abiem minētajiem
 pāriem mācīšanās ātrumi nebija viegli savietojami. CACLA un CCACLA-future bija
 spējīgi mācīties pie augstāka mācīšanās ātruma nekā CCACLA-basic un
@@ -1741,7 +1743,7 @@ mācīties. CACLA algoritmam tika novērota ļoti plaša rezultātu izkliede (at
 praktiski nebija spējīgs mācīties, apmēram pusē no instancēm algoritmam sekmīgi
 izdevās laika gaitā uzlabot rezultātus, kas liecina par mācīšanos.
 
-Arī CCACLA-future algoritms acrobot vide sagādāja lielākas problēmas nekā
+Arī CCACLA-future algoritmam acrobot vide sagādāja lielākas problēmas nekā
 cart-pole. Toties, salīdzinot ar CACLA, vērojams, ka tam ir mazāka rezultātu
 izkliede, un lielākā daļa eksperimenta instanču laika gaitā uzlabo rezultātus,
 kas liecina par mācīšanos (attēls \ref{fig:acrobot-ccacla-future}).
@@ -1749,12 +1751,12 @@ kas liecina par mācīšanos (attēls \ref{fig:acrobot-ccacla-future}).
 CCACLA-state algoritmam vairāku eksperimenta instanču rezultātus nācās atmest,
 jo tajos mācīšanās bija diverģējusi. No atlikušajiem rezultātiem var secināt, ka
 arī šim algoritmam uzdevums sagādā problēmas, tomēr ir vērojama mazāka rezultātu
-izkliede nekā CACLA algoritmam (attēls \ref{fig:acrobot-ccacla-future}).
+izkliede nekā CACLA algoritmam (attēls \ref{fig:acrobot-ccacla-state}).
 
 CCACLA-basic algoritma rezultāti šeit netiek attēloti, jo nevienā no
 eksperimenta instancēm tam neizdevās pabeigt treniņu nediverģējot. Šeit
 risinājums būtu vēl samazināt mācīšanās ātrumu, tomēr, tā kā tas ievērojami
-palielināt trenēšanas laiku (šim un pārējiem acrobot eksperimentiem), tas netika
+palielinātu trenēšanas laiku (šim un pārējiem acrobot eksperimentiem), tas netika
 darīts.
 
 Visu algoritmu kopējie rezultāti apskatāmi attēlā \ref{fig:acrobot-all}. Redzams,
@@ -1845,8 +1847,8 @@ CACLA un CCACLA-future algoritmiem šajā uzdevumā veicās labāk. CACLA algori
 eksperimentos visās eksperimenta instancēs bija vērojams iegūtā atalgojuma
 pieaugums (attēls \ref{fig:car-cacla}), neskatoties uz ļoti lielo rezultātu
 izkliedi. Šajā ziņā rezultāti ir pārsteidzoši, jo ļoti lielā iegūtā
-atalgojuma amplitūda, kas tika novērota secīgiem secīgām eksperimenta epohām,
-liktu liktu domāt par mācīšanās diverģēšanu, tomēr, apskatot iegūtā atalgojuma
+atalgojuma amplitūda, kas tika novērota secīgām eksperimenta epohām,
+liktu domāt par mācīšanās diverģēšanu, tomēr, apskatot iegūtā atalgojuma
 vidējo vērtību grafikus, nākas secināt, ka algoritms tomēr mācās. CCACLA-future
 algoritmam rezultāti ir līdzīgi, tomēr tam bija vērojams krietni mazāks
 īpatsvars ar eksperimenta instancēm, kas spējīgas mācīties (attēls
@@ -1937,20 +1939,20 @@ stāvoklis tiek sasniegts tikai dažas reizes epohā.
 \section{Rezultātu analīze}
 Analizējot veikto eksperimentu rezultātus, pievērsīsim uzmanību divām darba
 sākumā izteiktajām hipotēzēm -- 1) aktiera un kritiķa komponenšu apvienošana
-CCACLA algoritmā dod ieguvumus mācīšanās procesā, un 2) papildus vides aspektu
+CCACLA algoritmā dod ieguvumus mācīšanās procesā un 2) papildus vides aspektu
 apgūšana, konkrētāk, vides nākamā stāvokļa paredzēšana, dod ieguvumus mācīšanās
 procesā.
 
-Apskatot cart-pole eksperimentus rezultātus, redzams, ka visiem algoritmiem
-izņemot CCACLA-basic bija visai līdzīgi rezultāti. Piemeklējot atbilstošu
+Apskatot cart-pole eksperimentu rezultātus, redzams, ka visiem algoritmiem,
+izņemot CCACLA-basic, bija visai līdzīgi rezultāti. Piemeklējot atbilstošu
 mācīšanās ātruma parametru, bija iespējams viena vai otra algoritma rezultātus
 pacelt pār pārējiem. Vismazākās problēmas ar mācīšanās procesa stabilitāti bija
 CACLA un CCACLA-future algoritmam. Tas var norādīt gan uz to, ka CCACLA-future
 ir izrādījies pārāks par abiem pārējiem CCACLA algoritma variantiem, gan,
 ticamāk, uz to, ka, liekot CCACLA-future algoritmam paredzēt nākamo stāvokli, un,
-liekot paredzēt stāvokļa vērtību par vienu soli nākotnē, tiek veikta sava veida
+liekot paredzēt stāvokļa vērtību par vienu soli nākotnē, tiek veikta īpatnēja
 regularizācija, kas pie vienas un tās pašas mācīšanās ātruma parametra vērtības
-palēnina CCACLA-future mācīšanās ātrumu uz pārējo fona, dodot sava veida
+palēnina CCACLA-future mācīšanās ātrumu uz pārējo fona, dodot nosacītu
 pretsparu regulārajām apvienotā neironu tīkla parametru izmaiņām, kas notiek uz
 stāvokļu vērtības funkcijas izmaiņu rēķina. Apskatot CCACLA-basic algoritma
 sniegumu, iepriekš minētie apsvērumi vedina domāt, ka arī šim algoritmam būtu
@@ -1963,14 +1965,14 @@ CCACLA algoritmos veiktā aktiera un kritiķa komponentes apvienošana tiešām 
 ar stāvokļu vērtības funkcijas pielāgošanu uzlabot stratēģijas funkcijas
 sniegumu, nodrošinot ātrāku mācīšanos, un nākamā stāvokļa paredzēšana un
 stāvokļa vērtības paredzēšana nākotnē ļauj optimālās darbības funkcijai cīnīties
-ar troksni, kas rodas, pielāgojot funkciju kopīgos parametrus, vērtību funkcijas
+ar troksni, kas rodas, pielāgojot funkciju kopīgos parametrus vērtību funkcijas
 izmaiņu rezultātā.
 
 Otrs ievērības cienīgais novērojums cart-pole eksperimentos bija, ka CCACLA
 algoritmos neironu tīklu apvienošana ļauj sasniegt līdzvērtīgus rezultātus ar
 divas reizes mazāk neironiem slēptajā slānī, salīdzinot ar CACLA algoritmu. Tas
 apstiprina izteikto ideju, ka abas algoritma komponentes no stāvokļu telpas
-izgūst līdzīgas pazīmes. Šeit gan jāpiemin novērojums, ka tā kā gan vērtību gan
+izgūst līdzīgas pazīmes. Šeit gan jāpiemin novērojums, ka tā kā gan vērtību, gan
 stratēģijas funkcijas pēdējais (atšķirīgais) slānis bija lineārs (ar identitātes
 aktivācijas funkciju), tad abas funkcijas veido divas dažādas slēptā slāņa
 izgūto pazīmju lineāras kombinācijas, kas varētu būt ierobežojošs faktors citos
@@ -2027,7 +2029,7 @@ novērots, ka cart-pole uzdevumā CCACLA algoritma varianti ātrāk sasniedz lab
 rezultātus, salīdzinot ar CACLA, lietojot tādas pat mācīšanās parametra
 vērtības. Viena no CCACLA algoritma versijām CCACLA-future demonstrēja, ka
 papildus informācijas izmantošana treniņa procesā, liekot aģentam paredzēt arī
-stāvokli, kādā nonāks vide, pēc tā izvēlētās darbības, kā arī stāvokļu vērtības
+stāvokli, kādā nonāks vide pēc tā izvēlētās darbības, kā arī stāvokļu vērtības
 funkcijas paredzēšana nākamajam stāvoklim, nevis esošajam, kalpo par pretsparu
 biežās stāvokļu vērtības funkcijas pielāgošanas radītajam troksnim apvienotajā
 neironu tīklā, kas CCACLA-basic algoritmam traucēja mācīties pie augstākām
@@ -2042,12 +2044,12 @@ mērķtiecīgu darbu, un atalgojuma signāla izmaiņas nesniedz informāciju par
 kā no zema atalgojuma stāvokļiem nonākt augsta atalgojuma stāvokļos, kā tas bija
 acrobot un mountain car uzdevumos. Lai arī šajos uzdevumos algoritmi parādīja
 līdzīgu sniegumu, no šī fakta grūti ko secināt, jo nevienā no veiktajiem
-eksperimentiem algoritmi nebija spējīgi nonākt pie derīgiem rezultātiem. Šī gan
+eksperimentiem algoritmi nebija spējīgi nonākt pie derīgiem rezultātiem. Šī tomēr
 nav ar pašiem algoritmiem tiešā veidā saistāma problēma, bet gan lietotajai
 stāvokļu un darbību telpu izpētes stratēģijai raksturīga problēma, kura darba
 ietvaros netika risināta.
 
-Kopumā gan var teikt, ka darba sākumā izvirzītās hipotēzes vismaz daļā gadījumu
+Kopumā var teikt, ka darba sākumā izvirzītās hipotēzes vismaz daļā gadījumu
 ir apstiprinātas. Nepieciešami gan turpmāki pētījumi, lai pilnvērtīgāk
 pārbaudītu, kādu iespaidu darbā aprakstītās metodes atstāj citās stimulētās
 mācīšanās vidēs. Kā priekšnosacījums tam būtu stāvokļu un darbību telpu izpētes
