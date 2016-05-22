@@ -1239,7 +1239,7 @@ izrēķināt vienlaicīgi. Tas parādīts \ref{alg:ccacla-basic} algoritmā.
 \begin{spacing}{1}
 \begin{algorithm}
 \caption{CCACLA pamatalgoritma pseidokods}\label{alg:ccacla-basic}
-inicializē $\theta_0, \psi_0, s_0$ \\
+inicializē $s_0$ \\
 \For{$t \in \{0,1,2,\ldots\}$}{
   \If{$s_t$ ir sākumstāvoklis}{
     $(a_t', v_t) := Av_t(s_t)$ \\
@@ -1318,7 +1318,7 @@ algoritmā \ref{alg:ccacla-state}.
 \begin{spacing}{1}
 \begin{algorithm}
 \caption{CCACLA ar stāvokļa paredzēšanu pseidokods}\label{alg:ccacla-state}
-inicializē $\theta_0, \psi_0, s_0$ \\
+inicializē $s_0$ \\
 \For{$t \in \{0,1,2,\ldots\}$}{
   \If{$s_t$ ir sākumstāvoklis}{
     $(a_t', v_t) := Av_t(s_t)$ \\
@@ -1376,7 +1376,7 @@ CCACLA ar paredzēšanu nākotnē precīzāk definēts algoritmā \ref{alg:ccacl
 \begin{spacing}{1}
 \begin{algorithm}
 \caption{CACLA ar parezēšānu nākotnē pseidokods}\label{alg:ccacla-future}
-inicializē $\theta_0, \psi_0, s_0$ \\
+inicializē $s_0$ \\
 \For{$t \in \{0,1,2,\ldots\}$}{
   \If{$s_t$ ir sākumstāvoklis}{
     $(a_t', v_t) := Av_t(s_t)$ \\
