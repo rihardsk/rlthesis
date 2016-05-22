@@ -153,8 +153,24 @@ No augstāk minētā dabīgi seko doma par paredzošās kodēšanas ideju pielie
 stimulētās mācīšanās uzdevumu risināšanā. Interesi raisa ideja par vides nākamā
 stāvokļa paredzēšanu, ņēmot vērā pašreizējo, un vai tas palīdzētu mācīšanās
 procesā. Tas liktu stimulētās mācīšanās aģentam tuvināti iemācīties vides
-modeli. Tuvākas izpētes vērts ir jautājums, vai šāds iekšējs modelis palīdzētu
+modeli. Var izteikt hipotēzi, ka šāds iekšējs modelis palīdzētu
 macīšanās procesā.
+
+Darbā ar jēdzienu iekšējs modelis nav domāta vides dinamikas precīza
+paredzēšana, ar mērķi no tās atvasināt darbības stratēģiju konkrētajā vidē. Tā
+vietā tiek apskatīti veidi, kā ar papildus informācijas palīdzību trenēšanas
+procesā uzlabot rezultātus. Šāda jēdziena izpratne mudina pētīt arī citas
+iespējas stimulētās mācīšanās aģentam trenēšanas laikā likt apgūt kādus ar
+uzdevuma vidi saistītus aspektus. Precīzāk, interesi piesaista tā sauktie
+\textit{actor-critic} stimulētās mācīšanās algoritmi, kas tradicionāli izmanto
+divas neatkarīgas komponentes -- aktieri un kritiķi --, lai mācītos darboties
+stimulētās mācīšanās vidē. Var teikt, ka abas šīs komponentes iekodē kādus
+stimulētās mācīšanās vides aspektus, kas iespējams pārklājas. Iepriekš pausto
+ideju kontekstā šī \textit{actor-critic} algoritmu īpašība padara tos
+pievilcīgus padziļinātākai pētīšanai, jo var izteikt hipotēzi, ka aktiera un
+kritiķa komponenšu apvienošana palīdzētu trenēšanas procesā, intuitīvi to
+pamatojot ar to, ka vienas komponentes iekodētie vides aspekti var palīdzēt
+otrai, kopā veidojot pilnīgāku iekšējo vides modeli.
 
 % Darbā tiek pētītas iespējas, izmantot paredzošās kodēšanas idejas stimulētās
 % mācīšanas uzdevumu risināšanai, kā arī tiek pētītas dažādas citas iespējas ar
@@ -1703,7 +1719,10 @@ darīts.
 Visu algoritmu kopējie rezutāti apskatāmi attēlā \ref{fig:acrobot-all}. Redzams,
 ka CCACLA-future sasniedz augstāko atalgojumu, tomēr kāpums attiecībā pret
 treniņa sākumu ir maznozīmīgs, kas atspoguļo katra algoritma eksperimentos
-novērotās mācīšanās problēmas.
+novērotās mācīšanās problēmas. Kopumā jāsecina, ka neviens no algoritmiem līdz
+derīgam mācīšanās rezultātam ar izmanto stāvoļu telpas izpētes shēmu
+(normālsadalījuma trokšņa pievienošana izvēlētajām darbībām) nav spējīgs nonākt.
+Mērķa stāvoklis tiek sasniegts tikai dažas reizes epohā.
 
 \begin{figure}
   \centering
@@ -1793,7 +1812,9 @@ algoritmam rezultāti ir līdzīgi, tomēr tam bija vērojams krietni mazāks
 \ref{fig:car-ccacla-future}).
 
 Visu algoritmu apkopotie rezultāti mountain car uzdevumā apskatāmi attēlā
-\ref{fig:car-all}.
+\ref{fig:car-all}. Arī šeit līdzīgi kā acrobot vidē jāsecina, ka algoritmi ar
+izvēlēto izpētes shēmu nav spējīgi nonākt līdz derīgam rezultātam. Mērķa
+stāvoklis tiek sasniegts tikai dažas reizes epohā.
 
 \begin{figure}
   \centering
@@ -1871,9 +1892,91 @@ Visu algoritmu apkopotie rezultāti mountain car uzdevumā apskatāmi attēlā
 \label{fig:car-all}
 \end{figure}
 
+
+\section{Rezultātu analīze}
+Analizējot veikto eksperimentu rezultātus, pievērsīsim uzmanību divām darba
+sākumā izteiktajām hipotēzēm -- 1) aktiera un kritiķa komponenšu apvienošana
+CCACLA algoritmā dod ieguvumus mācīšanās procesā, un 2) papildus vides aspektu
+apgūšana, konkrētāk, vides nākamā stāvokļa paredzēšana, dod ieguvumus mācīšanās
+procesā.
+
+Apskatot cart-pole eksperimentus rezultātus, redzams, ka visiem algoritmiem
+izņemot CCACLA-basic bija visai līdzīgi rezultāti. Piemeklējot atbilstošu
+mācīšanās ātruma parametru, bija iespējams viena vai otra algoritma rezultātus
+pacelt pār pārējiem. Vismazākās problēmas ar mācīšanās procesa stabilitāti bija
+CACLA un CCACLA-future algoritmam. Tas var norādīt gan uz to, ka CCACLA-future
+ir izrādījies pārāks par abiem pārējiem CCACLA algoritma variantiem, gan,
+ticamāk, uz to, ka, liekot CCACLA-future algoritmam paredzēt nākamo stāvokli, un,
+liekot paredzēt stāvokļa vērtību par vienu soli nākotnē, tiek veikta sava veida
+regularizācija, kas pie vienas un tās pašas mācīšanās ātruma parametra vērtības
+palēnina CCACLA-future mācīšanās ātrumu uz pārējo fona, dodot sava veida
+pretsparu regulārajām apvienotā neironu tīkla parametru izmaiņām, kas notiek uz
+stāvokļu vērtības funkcijas izmaiņu rēķina. Apskatot CCACLA-basic algoritma
+sniegumu, iepriekš minētie apsvērumi vedina domāt, ka arī šim algoritmam būtu
+iespējams uzlabot mācīšanās rezultātus, vienkārši samazinot mācīšanāš ātruma
+parametra vērtību. Novērojumus, ka CACLA algoritms pie tādās pašas mācīšanās
+ātruma parametra vērtības mācās lēnāk nekā CCACLA-basic un CCACLA-state, var
+skaidrot ar to, ka CACLA algoritma aktiera komponente, kas ir atbildīga par
+stratēģijas izvēli, tiek pielāgota daudz retāk nekā pārējiem algoritmiem, un
+CCACLA algoritmos veiktā aktiera un kritiķa komponentes apvienošana tiešām ļauj
+ar stāvokļu vērtības funkcijas pielāgošanu uzlabot stratēģijas funkcijas
+sniegumu, nodrošinot ātrāku mācīšanos, un nākamā stāvokļa paredzēšana un
+stāvokļa vērtības paredzēšana nākotnē ļauj optimālās darbības funkcijai cīnīties
+ar troksni, kas rodas, pielāgojot funkciju kopīgos parametrus, vērtību funkcijas
+izmaiņu rezultātā.
+
+Otrs ievērības cienīgais novērojums cart-pole eksperimentos bija, ka CCACLA
+algoritmos neironu tīklu apvienošana ļauj sasniegt līdzvērtībus rezultātus ar
+divas reizes mazāk neironiem slēptajā slānī, salīdzinot ar CACLA algoritmu. Tas
+apstiprina izteikto ideju, ka abas algoritma komponentes no stāvokļu telpas
+izgūst līdzīgas pazīmes. Šeit gan jāpiemin novērojums, ka tā kā gan vērtību gan
+stratēģijas funkcijas pēdējais (atšķirīgais) slānis bija lineārs (ar identitātes
+aktivācijas funkciju), tad abas funkcijas veido divas dažādas slēptā slāņa
+izgūto pazīmju lineāras kombinācijas, kas varētu būt ierobežojošs faktors citos
+uzdevumos. Lai to risinātu, iespējams ieviest vēl vienu katrai funkcijai
+atsevišķu slēpto slāni tieši pirms izejas slāņa. Šāds neironu tīkls atsevišķos
+(šeit plašāk neaprakstītos) eksperimentos tika pārbaudīts, tomēr cart-pole
+uzdevumā netika novērotas būtiskas atšķirības tā sniegumā, salīdzinot ar
+aprakstītajiem algoritmiem.
+
+Viss iepriekš minētais ļauj secināt, ka abas izteiktās hipotēzes cart-pole
+uzdevumā apstiprinās.
+
+Acrobot un mountain car uzdevumos paveras cita situācija. Par izteiktajām
+hipotēzēm šo uzdevumu kontekstā ir grūti spriest, jo neviens no algoritmiem
+praktiski nebija spējīgs mācīties. Eksperimenti šajās vidēs tika veikti, lai
+novērotu algoritmu darbību situācijā, kad stāvokļu vērtības funkcija tiek
+pielāgota \textbf{daudz} biežāk nekā stratēģijas funkcija, lai pārbaudītu, kā
+CCACLA algoritmu stratēģijas funkcija tiek galā ar troksni, kas rodas biežo
+stāvokļu vērtību funkcijas pielāgojumu rezultātā, un kādu iespaidu tas atstāj
+salīdzinot ar CACLA algoritmu, kam šāda problēma nepastāv. Diemžēl izrādījās, ka
+ne tikai CCACLA algoritmi, bet arī CACLA algoritms mācīšanās procesā nebija
+spējīgs nonākt pie jebkāda ievērības cienīga rezultāta, tāpēc šādu salīdzinājumu
+praktiski nevar veikt. Sliktie rezultāti ir skaidrojami ar lietotās izētes
+stratēģijas nepiemērotību saņemtā atalgojuma signāla tipam, kas abos uzdevumos
+nedod informāciju par to, kā no zema atalgojuma stāvokļiem (atalgojums -1)
+nonākt pie kāda no mērķa stāvokļiem (atalgojums 0). Darba ietvaros netika
+meklētas alternatīvas izmantotajai izpētes stratēģijai. Apskatot algoritmu
+darbību individuāli gan bija iespējams veikt novērojumus, kas varētu liecināt,
+ka CCACLA algoritmiem papildus grūtības sagādā tikšāna galā ar stāvokļu vērtību
+funkcijas pielāgošanas radīto troksni, proti, sākotnējās eksperimentu epizodēs
+stratēģijas funkcijai bija tendence dot priekšroku darbībām, kas traucēja nonākt
+līdz mērķa stāvoklim (mountain car uzdevumā, piemēram, braukt pretējā virzienā),
+tomēr šo tendenci bija iespējams pārvarēt, mazliet palielinot izpētes nolūkiem
+izmantoto aditīvo troksni. Līdz galam gan nav saprotams, kāpēc acrobot un
+mountain car vidēs CCACLA-future uzrāda mazliet labākus rezultātus par abiem
+pārējiem CCACLA algoritmiem, un acrobot uzdevumā arī par CACLA algoritmu.
+Domājams, ka tas notiek līdzīgu procesu ietekmē, kā cart-pole gadījumā.
+
+
+
+
 \chapter{Diskusija}
 TODO
 \chapter{Secinājumi}
+%galvenā bija ideja par aģenta iekšējā modeļa veidošanu. šīs idejas attīstīšana
+%noveda pie idejas par aktiera un kritiķa komponenšu apvienošanu, kas izrādījās
+%derīga pati par sevi
 TODO
 
 
