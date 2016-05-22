@@ -88,16 +88,48 @@
 \maketitle
 
 \begin{abstract-lv}
-  TODO
+  \textit{Continuous actor-critic learning automaton}, jeb CACLA, algoritma
+  aktiera un kritiķa komponentes ir apvienojamas vienā, izmantojot faktu ka tās no
+  stāvokļu telpas izgūst līdzīgas pazīmes savu funkciju veikšanai. Tas ļauj divas
+  reizes samazināt to realizēšanā izmantotā neironu tīkla trenējamo parametru
+  skaitu, kā arī ļauj aģentam ātrāk nonāk pie labas stratēģijas uz tā rēķina, ka
+  optimālās stratēģijas funkcijas parametri tiek pielāgoti arī vērtību funkcijas
+  izmaiņu rezultātā. Tas noved pie savdabīga optimālās stratēģijas funkcijas
+  parametru nepārraudzītās mācīšanās procesa. Šāds netiešā veidā veikts optimālās
+  stratēģijas funkcijas parametru pielāgošanas process atstāj ietekmi uz
+  trenēšanas procesu, jo saistās ar troksni optimālās stratēģijas funkcijas
+  parametru vērtību izmaiņās. Ar to iespējams cīnīties, liekot apvienotajai
+  aktiera-kritiķa komponentei apgūt papildus vides dinamikas aspektus, kas nav
+  tiešā veidā nepieciešami algoritma darbībā. Darbā tiek parādīts, kā šie efekti
+  ir apvienojami, radot algoritmu saimi, ko autors dēvē par Combined CACLA, jeb
+  CCACLA. CCACLA priekšrocības tiek parādītas eksperimentāli. Tas tiek salīdzināts
+  ar CACLA dažādos stimulētās mācīšanās uzdevumos.
 
-\keywords{stimulētā mācīšanās; neironu tīkli; Markova izvēles procesi; nepārtrauktas telpas.}
+  \keywords{stimulētā mācīšanās; neironu tīkli; Markova izvēles procesi;
+    nepārtrauktas telpas.}
 \end{abstract-lv}
 \clearpage
 
 \begin{abstract-en}
-  TODO
+  The Continuous actor-critic learning automaton (CACLA) algorithm uses two
+  separate components---the actor and the critic---to facilitate learning in a
+  reinforcement learning setting. Both of these components can be combined into
+  one to reduce the number of trainable parameters by a factor of two leveraging
+  the fact that both of them learn to extract similar features from the
+  environment's state space during training. Furthermore this allows to speed up
+  the training process by exploiting the state-value function's updates to
+  adjust the optimal action function's parameters which they hold in common.
+  Such indirect adjustments are however associated with a noise in the action
+  function's parameter updates. This effect can be mitigated by allowing the
+  now-combined actor-critic component to learn additional aspects of the
+  environment's dynamics that are not directly helpful in the learning process.
+  The author distills the aforementioned effects into what is called the
+  Combined CACLA (CCACLA) algorithm family. The advantages of CCACLA are shown
+  experimentally and it is compared with CACLA in various reinforcement learning
+  problems.
 
-\keywords{reinforcement learning; artificial neural networks; Markov decision processes; continuous spaces.}
+  \keywords{reinforcement learning; artificial neural networks; Markov decision
+    processes; continuous spaces.}
 \end{abstract-en}
 
 
